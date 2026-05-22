@@ -881,7 +881,84 @@ Click the help icon above to learn more.
 			.submenu {
 				margin-left: 0px !important;
 			}
+		
+				/* Styling the existing class to act as the 3D frame boundary */
+		.pictag {
+			position: relative;
+			overflow: hidden; /* Essential: Clips the background layer while allowing layout room */
+			display: flex;
+			justify-content: center;
+			align-items: flex-end;
+			transition: box-shadow 0.4s ease;
+
+			
 		}
+
+		/* Container framework - matches your exact structure */
+		a {
+			display: inline-block;
+			text-decoration: none;
+			text-align: center;
+		}
+
+		/* Your original class name */
+		.pictag {
+			position: relative;
+			width: 100%; /* Adapts to your current layout width */
+			max-width: 300px; /* Optional: sets a standard size limit */
+			margin: 0 auto;
+			overflow: visible; /* CRITICAL: Allows the image to pop outside the borders */
+		}
+
+		/* Styling the single image layer */
+		.pictag img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			display: block;
+			
+			/* 1. At rest: Cut off the top 15% of the image and curve the top edges into a frame */
+			clip-path: inset(15% 0% 0% 0% round 20px 20px 0% 0%);
+			
+			transform: scale(1);
+			transform-origin: bottom center;
+			transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), 
+						clip-path 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+		}
+
+		/* --- THE 3D HOVER EFFECT --- */
+		a:hover .pictag img {
+			/* 2. Scale up the image to make it jump forward toward the user */
+			transform: scale(1.1);
+			
+			/* 3. Instantly remove the top cutoff, releasing the top of the head/image */
+			clip-path: inset(0% 0% 0% 0% round 0px 0px 0% 0%);
+		}
+
+		.main_pictag {
+			position: relative;
+			width: 100%; /* Adapts to your current layout width */
+			max-width: 300px; /* Optional: sets a standard size limit */
+			margin: 0 auto;
+			overflow: visible; /* CRITICAL: Allows the image to pop outside the borders */
+		}
+
+		/* Styling the single image layer */
+		.main_pictag img {
+			width: 50%;
+			height: 50%;
+			object-fit:contain;
+			display: block;
+			
+			/* 1. At rest: Cut off the top 15% of the image and curve the top edges into a frame */
+			clip-path: inset(15% 0% 0% 0% round 20px 20px 0% 0%);
+			
+			transform: scale(1);
+			transform-origin: bottom center;
+			transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), 
+						clip-path 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+		}
+
 	</style>
 </head>
 
@@ -902,7 +979,7 @@ Click the help icon above to learn more.
 			<li id="menu-item-63" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-63"><a
 					href="">108 kutiya Knowledge</a></li>
 			<li id="menu-item-4286" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4286"><a
-					href="">108 kutiya Mandirs</a></li>
+					href="./temples.html">108 kutiya Mandirs</a></li>
 			<li id="menu-item-66" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-66"><a
 					href="">108 kutiya Philanthropy</a></li>
 			<li id="menu-item-2618" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2618"><a
@@ -939,10 +1016,9 @@ Click the help icon above to learn more.
 						<div class="sec01">
 							<ul>
 								<li>
-									<a href="./about-us.html">
-										<div class="pictag">
-											<img src="./assets/karundasjimaharaj.jpeg"
-												alt="Karundas Ji Maharaj">
+									<a href="./about.html" class="profile-3d-card">
+										<div class="main_pictag">
+											<img src="./assets/karundasjimaharaj.jpeg" alt="Karundas Ji Maharaj">
 										</div>
 										<h4>About Karundas Ji Maharaj</h4>
 									</a>
@@ -975,7 +1051,7 @@ Click the help icon above to learn more.
 									</a>
 								</li>
 								<li>
-									<a href="https://jkp.org.in/jkpmandirs/">
+									<a href="./temples.html">
 										<div class="pictag">
 											<img src="https://www.jkp.org.in/wp-content/uploads/2017/12/home-pic-5.png"
 												alt="">

@@ -768,7 +768,228 @@
 			clip: rect(0, 0, 0, 0);
 			border: 0;
 		}
-	</style>
+
+		/* ============================================================
+		YOUTUBE VIDEO GALLERY & MODAL
+		============================================================ */
+		.video-section {
+			margin-bottom: 4rem;
+		}
+
+		.video-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+			gap: 1.5rem;
+		}
+
+		.video-card {
+			background: var(--card-bg);
+			border: 1px solid var(--border);
+			border-radius: 12px;
+			overflow: hidden;
+			cursor: pointer;
+			transition: transform 0.3s ease, box-shadow 0.3s ease;
+			position: relative;
+		}
+
+		.video-card:hover {
+			transform: translateY(-6px);
+			box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(74, 159, 224, 0.2);
+			border-color: rgba(74, 159, 224, 0.5);
+		}
+
+		.video-thumb-container {
+			position: relative;
+			width: 100%;
+			aspect-ratio: 16/9;
+		}
+
+		.video-thumb {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			display: block;
+		}
+
+		/* Custom Play Button on Thumbnail */
+		.play-icon {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			width: 50px;
+			height: 50px;
+			background: rgba(240, 192, 96, 0.85); /* Gold */
+			border-radius: 50%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			box-shadow: 0 4px 15px rgba(0,0,0,0.6);
+			transition: all 0.3s ease;
+		}
+
+		.play-icon::after {
+			content: '';
+			border-top: 10px solid transparent;
+			border-bottom: 10px solid transparent;
+			border-left: 16px solid var(--navy);
+			margin-left: 4px;
+		}
+
+		.video-card:hover .play-icon {
+			transform: translate(-50%, -50%) scale(1.15);
+			background: var(--gold);
+		}
+
+		.video-info {
+			padding: 1.2rem;
+		}
+
+		.video-title {
+			font-family: 'Inter', sans-serif;
+			font-size: 0.95rem;
+			color: var(--cream);
+			line-height: 1.4;
+			display: -webkit-box;
+			-webkit-line-clamp: 2;
+			-webkit-box-orient: vertical;
+			overflow: hidden;
+		}
+
+		/* Modal Popup Player Styles */
+		.video-modal {
+			display: none; /* Hidden by default */
+			position: fixed;
+			z-index: 9999;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			background-color: rgba(6, 15, 34, 0.92);
+			backdrop-filter: blur(8px);
+			align-items: center;
+			justify-content: center;
+			opacity: 0;
+			transition: opacity 0.3s ease;
+		}
+
+		.video-modal.show {
+			display: flex;
+			opacity: 1;
+		}
+
+		.modal-content {
+			position: relative;
+			width: 90%;
+			max-width: 900px;
+			background: #000;
+			border: 1px solid var(--border);
+			border-radius: 12px;
+			box-shadow: 0 0 50px rgba(74, 159, 224, 0.3);
+		}
+
+		.close-btn {
+			position: absolute;
+			top: -45px;
+			right: 0;
+			color: rgba(255, 255, 255, 0.7);
+			font-size: 2.5rem;
+			background: none;
+			border: none;
+			cursor: pointer;
+			line-height: 1;
+			transition: color 0.3s;
+		}
+
+		.close-btn:hover {
+			color: var(--gold);
+		}
+
+		.iframe-container {
+			position: relative;
+			width: 100%;
+			padding-bottom: 56.25%; /* Perfect 16:9 Aspect Ratio */
+			height: 0;
+			border-radius: 12px;
+			overflow: hidden;
+		}
+
+		.iframe-container iframe {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			border: none;
+		}
+
+		/* CTA BUTTONS */
+		.cta-row {
+			text-align: center;
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+			gap: 1rem;
+			padding: 2rem 0 1rem;
+		}
+
+		.cta-copy {
+			width: 100%;
+			font-family: 'Cormorant Garamond', serif;
+			font-style: italic;
+			font-size: 1.15rem;
+			color: rgba(168, 212, 245, 0.7);
+			margin-bottom: 0.5rem;
+		}
+
+		.cta-button {
+			display: inline-flex;
+			align-items: center;
+			gap: 0.65rem;
+			padding: 13px 36px;
+			border-radius: 40px;
+			font-family: 'Cinzel Decorative', cursive;
+			font-size: 0.78rem;
+			letter-spacing: 2px;
+			text-decoration: none;
+			transition: all 0.3s ease;
+			white-space: nowrap;
+		}
+
+		.cta-button.youtube {
+			background: linear-gradient(130deg, #2A5FC8, #4A9FE0);
+			color: #fff;
+			box-shadow: 0 4px 20px rgba(42, 95, 200, 0.5);
+		}
+
+		.cta-button.youtube:hover {
+			transform: translateY(-4px);
+			box-shadow: 0 10px 30px rgba(42, 95, 200, 0.7);
+		}
+
+		.cta-button.instagram {
+			background: radial-gradient(circle at 30% 30%, #feda75 0%, #d62976 40%, #962fbf 60%, #4f5bd5 100%);
+			color: #fff;
+			box-shadow: 0 4px 20px rgba(148, 83, 200, 0.4);
+		}
+
+		.cta-button.instagram:hover {
+			transform: translateY(-4px);
+			box-shadow: 0 10px 30px rgba(148, 83, 200, 0.65);
+		}
+
+		.cta-button.secondary {
+			background: rgba(42, 95, 200, 0.15);
+			border: 1px solid rgba(74, 159, 224, 0.35);
+			color: rgba(168, 212, 245, 0.9);
+		}
+
+		.cta-button.secondary:hover {
+			background: rgba(42, 95, 200, 0.25);
+			border-color: rgba(74, 159, 224, 0.6);
+		}
+
+		</style>
 </head>
 
 <body>
@@ -1132,83 +1353,45 @@
 				</div>
 			</div>
 		</div>
+				<!-- ====== VIDEO GALLERY ====== -->
+	<div class="video-section fade-up delay-3">
+		<div class="sec-heading">
+			<h2>✦ &nbsp; Pravachan & Satsang Videos</h2>
+			<div class="sec-line"></div>
+		</div>
+		
+		<!-- Videos will be generated here by JavaScript -->
+		<div class="video-grid" id="videoContainer"></div>
+	</div>
 
-		<!-- ====== PHOTO GALLERY ====== -->
-		<div class="gallery-section fade-up delay-3">
-			<div class="sec-heading">
-				<h2>✦ &nbsp; Katha Darshan — Gallery</h2>
-				<div class="sec-line"></div>
-			</div>
-
-			<div class="gallery-grid">
-				<div class="gallery-item">
-					<img src="https://i.ytimg.com/vi/ajzHYGah7jE/maxresdefault.jpg"
-						alt="Shrimad Bhagwat Katha — Swami Karun Dass Ji, 108 Kutiya"
-						onerror="this.src='https://i.ytimg.com/vi/ajzHYGah7jE/hqdefault.jpg'">
-					<div class="g-caption">Shrimad Bhagwat Katha, 2025</div>
-				</div>
-				<div class="gallery-item">
-					<img src="https://i.ytimg.com/vi/ptX7ukgcDsU/maxresdefault.jpg"
-						alt="Shri Ram Katha — Swami Karun Dass Ji, Nimbark TV"
-						onerror="this.src='https://i.ytimg.com/vi/ptX7ukgcDsU/hqdefault.jpg'">
-					<div class="g-caption">Shri Ram Katha, Oct 2024</div>
-				</div>
-				<div class="gallery-item">
-					<img src="https://i.ytimg.com/vi/YYaorPau6Sk/maxresdefault.jpg"
-						alt="Braj Chaurasi Kos Darshan — Swami Karun Dass Ji"
-						onerror="this.src='https://i.ytimg.com/vi/YYaorPau6Sk/hqdefault.jpg'">
-					<div class="g-caption">Braj Chaurasi Kos Darshan, Jan 2025</div>
-				</div>
-				<div class="gallery-item">
-					<img src="https://i.ytimg.com/vi/SHdmyXZtcfw/maxresdefault.jpg"
-						alt="Shri Bhatt Devarcharya Ji Charitr — Swami Karun Dass Ji"
-						onerror="this.src='https://i.ytimg.com/vi/SHdmyXZtcfw/hqdefault.jpg'">
-					<div class="g-caption">Shri Bhatt Devarcharya Ji Charitr</div>
-				</div>
-				<div class="gallery-item">
-					<img src="https://i.ytimg.com/vi/6nudeZuqbTU/maxresdefault.jpg"
-						alt="Rukmani Bai Ji Katha — Swami Karun Dass Ji, 108 Kutiya"
-						onerror="this.src='https://i.ytimg.com/vi/6nudeZuqbTU/hqdefault.jpg'">
-					<div class="g-caption">Rukmani Bai Ji Katha, 2023</div>
-				</div>
-				<div class="gallery-item">
-					<img src="https://i.ytimg.com/vi/47HmIHBCPHw/maxresdefault.jpg"
-						alt="Nikunj Ashtayam Katha — Swami Karun Dass Ji, 108 Kutiya"
-						onerror="this.src='https://i.ytimg.com/vi/47HmIHBCPHw/hqdefault.jpg'">
-					<div class="g-caption">Nikunj Ashtayam Katha</div>
-				</div>
+	<!-- ====== VIDEO PLAYER MODAL ====== -->
+	<div class="video-modal" id="videoModal">
+		<div class="modal-content">
+			<button class="close-btn" id="closeModal">&times;</button>
+			<div class="iframe-container">
+				<!-- The iframe src will be dynamically set by Javascript so it doesn't slow down your website -->
+				<iframe id="youtubePlayer" src="" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 			</div>
 		</div>
+	</div> 
 
 		<!-- CTA -->
-		<div style="text-align:center; padding: 2rem 0 1rem;">
-			<p
-				style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.15rem;color:rgba(168,212,245,0.7);margin-bottom:1.5rem;">
-				Unke pravachan sunne ke liye visit karein —
-			</p>
-			<a href="https://www.youtube.com/c/SwamiKarunDassJi" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:10px;padding:13px 36px;
-              background:linear-gradient(130deg,#2A5FC8,#4A9FE0);
-              border-radius:40px;font-family:'Cinzel Decorative',cursive;
-              font-size:0.78rem;letter-spacing:2px;color:#fff;
-              box-shadow:0 4px 20px rgba(42,95,200,0.5);
-              transition:all 0.3s ease;"
-				onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 10px 30px rgba(42,95,200,0.7)'"
-				onmouseout="this.style.transform='';this.style.boxShadow='0 4px 20px rgba(42,95,200,0.5)'">
-				▶ &nbsp; YouTube Channel Dekhein
+		<div class="cta-row">
+			<p class="cta-copy">Unke pravachan sunne ke liye visit karein —</p>
+			<a href="https://www.youtube.com/c/SwamiKarunDassJi" target="_blank" rel="noopener" class="cta-button youtube">
+				▶ &nbsp; YouTube Channel
 			</a>
-			&nbsp;&nbsp;
-			<a href="home.html" style="display:inline-flex;align-items:center;gap:10px;padding:13px 36px;
-              background:rgba(42,95,200,0.15);border:1px solid rgba(74,159,224,0.35);
-              border-radius:40px;font-family:'Cinzel Decorative',cursive;
-              font-size:0.78rem;letter-spacing:2px;color:rgba(168,212,245,0.9);
-              transition:all 0.3s ease;"
-				onmouseover="this.style.background='rgba(42,95,200,0.25)';this.style.borderColor='rgba(74,159,224,0.6)'"
-				onmouseout="this.style.background='rgba(42,95,200,0.15)';this.style.borderColor='rgba(74,159,224,0.35)'">
+			<a href="https://www.instagram.com/108kutiya/" target="_blank" rel="noopener" class="cta-button instagram">
+				📸 &nbsp; Instagram
+			</a>
+			<a href="home.html" class="cta-button secondary">
 				🏠 &nbsp; 108 Kutiya Home
 			</a>
 		</div>
 
 	</div><!-- /page-wrap -->
+
+	
 
 	<!-- FOOTER -->
 	<footer>
@@ -1249,6 +1432,149 @@
 			}
 			requestAnimationFrame(tick);
 		})();
+	// 1. Array of Maharaj Ji's real YouTube Video IDs and Titles
+	// You can add as many videos as you want here by just grabbing the ID from the YouTube link.
+	// Example: in youtube.com/watch?v=PSJOF1sBCWc, the ID is "PSJOF1sBCWc"
+
+	const maharajVideos = [
+		{
+			id: "PSJOF1sBCWc",
+			title: "LIVE : Day 1 / Sh. Bhaktmal Katha / Swami Karun Dass Ji Maharaj"
+		},
+		{
+			id: "7JMlWbGdkB0",
+			title: "क्या 108 कुटिया में महिलाएं भी रह सकती हैं? 108 कुटिया के नियम"
+		},
+		{
+			id: "fIz6VD9TIHI",
+			title: "पूज्य श्री गुरुदेव In 108 KUTIYA, BARSANA || Pujya Sant Swami Sh. Karun Dass Ji"
+		},
+		{
+			id: "lJVoL13S-eI",
+			title: "108 कुटिया, श्रीधाम बरसाना पर परम पूज्य संत श्री विनोद बाबा के हृदय के उद्गार"
+		},
+		{
+			id: "KYP74fBi97c",
+			title: "बाबा आप तो भक्तमाल गाथा में आते हो - 108 कुटिया में छोटी सी लाली संग पूज्य महाराज श्री की वार्ता"
+		},
+		{
+			id: "9U6kGCFA24s",
+			title: "श्री राधा नाम मालिका || निकुंज उपासकों के लिए विशेष उपहार"
+		},
+		{
+			id: "WrWtJsh125Y",
+			title: "ललिता सखी की कृष्ण से शर्त कथा || Lalita Sakhi Ki Krishn Se Shart"
+		},
+		{
+			id: "IQPnAu2L18M",
+			title: "LIVE : Day 7 / Sh. Bhaktmal Katha / Swami Karun Dass Ji Maharaj"
+		},
+		{
+			id: "A6_seMPoAIA",
+			title: "LIVE : Day 1 / Satsang Kripa Prasad - ब्रज वृन्दावन माधुरी / Swami Karun Dass Ji"
+		},
+		{
+			id: "cxmkVzbZwU8",
+			title: "LIVE : Day 2 / Sh. Bhaktmal Katha / Swami Karun Dass Ji Maharaj"
+		},
+		{
+        id: "tIg7SxMLqiQ",
+        title: "LIVE : Day 8 / Sh. Bhaktmal Katha / Swami Karun Dass Ji Maharaj"
+    },
+    {
+        id: "XEE7CnNzV3s",
+        title: "LIVE : Day 35 / Satsang Kripa Prasad / Shri Radha Naam Maalika"
+    },
+    {
+        id: "hunQ_j5Jd2Q",
+        title: "LIVE : Satsang Kripa Prasad / Swami Karun Dass Ji Maharaj, Charan Chhaya"
+    },
+    {
+        id: "wZ6Ar5qB7i0",
+        title: "LIVE : Day 37 / Satsang Kripa Prasad / Swami Karun Dass Ji"
+    },
+    {
+        id: "rkft_3LUK_g",
+        title: "Swami Karun Dass Ji Bhajan - मुझे बुला लो श्री वृन्दावन यहाँ लगे ना इक पल भी मन"
+    },
+    {
+        id: "5tsskH-f2Uk",
+        title: "राधा नाम संकीर्तन ll Swami Karun Dass Ji Maharaj, Goverdhan"
+    },
+	{
+        id: "asPQKvXmjyQ",
+        title: "LIVE : Day 14 / Satsang Kripa Prasad / Swami Karun Dass Ji / Shri Radha Naam Maalika"
+    },
+    {
+        id: "o2s1L_syEJA",
+        title: "LIVE : Day 11 / Satsang Kripa Prasad / Swami Karun Dass Ji / Shri Radha Naam Maalika"
+    },
+    {
+        id: "4ulSzOE4Lbk",
+        title: "LIVE : Day 21 / Satsang Kripa Prasad / Swami Karun Dass Ji / Shri Radha Naam Maalika"
+    },
+    {
+        id: "HVnlvly9zmg",
+        title: "LIVE : Day 4 / Satsang Kripa Prasad / Swami Karun Dass Ji / Shri Radha Naam Maalika"
+    },
+    {
+        id: "twSprkxUtHU",
+        title: "LIVE : Day 28 / Satsang Kripa Prasad / Swami Karun Dass Ji / Shri Radha Naam Maalika"
+    }
+	];
+
+	// 2. Elements from the DOM
+	const videoContainer = document.getElementById('videoContainer');
+	const videoModal = document.getElementById('videoModal');
+	const youtubePlayer = document.getElementById('youtubePlayer');
+	const closeModal = document.getElementById('closeModal');
+
+	// 3. Dynamically create the video gallery
+	maharajVideos.forEach(video => {
+		// We use YouTube's official thumbnail image server (i.ytimg.com)
+		const thumbnailUrl = `https://i.ytimg.com/vi/${video.id}/hqdefault.jpg`;
+
+		// Create the HTML for each video card
+		const videoHTML = `
+			<div class="video-card" onclick="openVideo('${video.id}')">
+				<div class="video-thumb-container">
+					<img src="${thumbnailUrl}" alt="${video.title}" class="video-thumb">
+					<div class="play-icon"></div>
+				</div>
+				<div class="video-info">
+					<h3 class="video-title">${video.title}</h3>
+				</div>
+			</div>
+		`;
+		
+		// Inject it into the page
+		videoContainer.innerHTML += videoHTML;
+	});
+
+	// 4. Function to open the modal and play the video
+	function openVideo(videoId) {
+		// Adding '?autoplay=1' forces it to play immediately when the popup opens
+		youtubePlayer.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1`;
+		videoModal.classList.add('show');
+	}
+
+	// 5. Function to close the modal and stop the video
+	function closeVideo() {
+		videoModal.classList.remove('show');
+		// We must clear the src, otherwise the video keeps playing audio in the background!
+		youtubePlayer.src = ""; 
+	}
+
+	// 6. Close events
+	closeModal.addEventListener('click', closeVideo);
+
+	// Close if user clicks anywhere outside the video on the dark background
+	videoModal.addEventListener('click', function(e) {
+		if (e.target === videoModal) {
+			closeVideo();
+		}
+	});
+
 	</script>
 
 </body>

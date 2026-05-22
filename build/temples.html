@@ -1,0 +1,1287 @@
+<!DOCTYPE html>
+<html lang="hi">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>108 Kutiya Mandir — Barsana</title>
+	<link
+		href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap"
+		rel="stylesheet">
+	<style>
+		*,
+		*::before,
+		*::after {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+
+		:root {
+			--navy: #0B1A3A;
+			--deep-blue: #0D2151;
+			--accent-blue: #2A5FC8;
+			--sky-blue: #4A9FE0;
+			--light-blue: #A8D4F5;
+			--gold: #F0C060;
+			--cream: #EEF4FF;
+			--white: #ffffff;
+			--card-bg: rgba(20, 50, 110, 0.45);
+			--border: rgba(100, 170, 255, 0.22);
+		}
+
+		html {
+			scroll-behavior: smooth;
+		}
+
+		body {
+			font-family: 'Inter', sans-serif;
+			background: var(--navy);
+			color: var(--cream);
+			min-height: 100vh;
+			overflow-x: hidden;
+		}
+
+		a {
+			text-decoration: none;
+			color: inherit;
+		}
+
+		.bg-fixed {
+			position: fixed;
+			inset: 0;
+			z-index: 0;
+			background:
+				radial-gradient(ellipse at 10% 20%, rgba(42, 95, 200, 0.25) 0%, transparent 50%),
+				radial-gradient(ellipse at 90% 80%, rgba(26, 58, 122, 0.35) 0%, transparent 50%),
+				radial-gradient(ellipse at 50% 50%, rgba(11, 26, 58, 0.9) 0%, transparent 100%),
+				linear-gradient(160deg, #060F22 0%, #0D2151 50%, #060F22 100%);
+		}
+
+		.mandala-bg {
+			position: fixed;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			width: min(100vw, 900px);
+			height: min(100vw, 900px);
+			opacity: 0.03;
+			animation: spin 120s linear infinite;
+			z-index: 0;
+			pointer-events: none;
+		}
+
+		@keyframes spin {
+			to {
+				transform: translate(-50%, -50%) rotate(360deg);
+			}
+		}
+
+		#starfield {
+			position: fixed;
+			inset: 0;
+			z-index: 0;
+			pointer-events: none;
+		}
+
+		header {
+			position: sticky;
+			top: 0;
+			z-index: 200;
+			background: rgba(6, 15, 34, 0.96);
+			border-bottom: 1px solid rgba(100, 170, 255, 0.2);
+			backdrop-filter: blur(16px);
+		}
+
+		.header-inner {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			padding: 14px 2rem;
+			max-width: 1200px;
+			margin: 0 auto;
+		}
+
+		.logo-link {
+			display: flex;
+			align-items: center;
+			gap: 12px;
+		}
+
+		.logo-orb {
+			width: 44px;
+			height: 44px;
+			border-radius: 50%;
+			border: 1.5px solid rgba(240, 192, 96, 0.6);
+			background: radial-gradient(circle at 40% 35%, #0D2151, #060F22);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-size: 1.2rem;
+			box-shadow: 0 0 16px rgba(74, 159, 224, 0.3);
+		}
+
+		.site-name {
+			font-family: 'Cinzel Decorative', cursive;
+			font-size: 1rem;
+			background: linear-gradient(120deg, var(--gold) 0%, var(--sky-blue) 100%);
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+			background-clip: text;
+		}
+
+		nav {
+			display: flex;
+			gap: 0;
+			flex-wrap: wrap;
+		}
+
+		nav a {
+			font-family: 'Cinzel Decorative', cursive;
+			font-size: 0.55rem;
+			letter-spacing: 1.5px;
+			color: rgba(168, 212, 245, 0.65);
+			padding: 8px 10px;
+			position: relative;
+			transition: color 0.3s;
+			text-transform: uppercase;
+		}
+
+		nav a::after {
+			content: '';
+			position: absolute;
+			bottom: 0;
+			left: 50%;
+			width: 0;
+			height: 1.5px;
+			background: var(--sky-blue);
+			transform: translateX(-50%);
+			transition: width 0.3s;
+		}
+
+		nav a:hover {
+			color: var(--light-blue);
+		}
+
+		nav a:hover::after {
+			width: 70%;
+		}
+
+		nav a.active {
+			color: var(--gold);
+		}
+
+		nav a.active::after {
+			width: 70%;
+			background: var(--gold);
+		}
+
+		.hero-banner {
+			position: relative;
+			z-index: 10;
+			padding: 5rem 2rem 4rem;
+			text-align: center;
+			background: linear-gradient(180deg, rgba(13, 33, 81, 0) 0%, rgba(13, 33, 81, 0.5) 100%);
+			border-bottom: 1px solid var(--border);
+		}
+
+		.hero-label {
+			font-family: 'Cinzel Decorative', cursive;
+			font-size: 0.65rem;
+			letter-spacing: 6px;
+			color: var(--sky-blue);
+			text-transform: uppercase;
+			margin-bottom: 1rem;
+			opacity: 0.8;
+		}
+
+		.hero-title {
+			font-family: 'Cinzel Decorative', cursive;
+			font-size: clamp(1.6rem, 4vw, 2.8rem);
+			background: linear-gradient(130deg, var(--white) 0%, var(--gold) 60%, var(--sky-blue) 100%);
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+			background-clip: text;
+			line-height: 1.3;
+			margin-bottom: 0.6rem;
+		}
+
+		.hero-sub {
+			font-family: 'Cormorant Garamond', serif;
+			font-style: italic;
+			font-size: clamp(1rem, 2vw, 1.3rem);
+			color: var(--light-blue);
+			opacity: 0.8;
+		}
+
+		.page-wrap {
+			position: relative;
+			z-index: 10;
+			max-width: 1100px;
+			margin: 0 auto;
+			padding: 4rem 2rem 6rem;
+		}
+
+		.intro-grid {
+			display: grid;
+			grid-template-columns: 320px 1fr;
+			gap: 3rem;
+			align-items: start;
+			margin-bottom: 4rem;
+		}
+
+		@media (max-width: 768px) {
+			.intro-grid {
+				grid-template-columns: 1fr;
+			}
+		}
+
+		.photo-card {
+			position: relative;
+		}
+
+		.photo-main {
+			position: relative;
+			border-radius: 16px;
+			overflow: hidden;
+			border: 1px solid rgba(74, 159, 224, 0.35);
+			box-shadow: 0 0 0 1px rgba(74, 159, 224, 0.1), 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 40px rgba(42, 95, 200, 0.2);
+			background: var(--card-bg);
+			aspect-ratio: 3/4;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+
+		.photo-main img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			display: block;
+			border-radius: 16px;
+		}
+
+		.photo-main::after {
+			content: '';
+			position: absolute;
+			inset: 0;
+			background: linear-gradient(to top, rgba(6, 15, 34, 0.7) 0%, transparent 50%);
+			border-radius: 16px;
+			pointer-events: none;
+		}
+
+		.photo-caption {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			padding: 1.5rem 1rem 1rem;
+			z-index: 2;
+			text-align: center;
+		}
+
+		.photo-caption .name {
+			font-family: 'Cinzel Decorative', cursive;
+			font-size: 0.9rem;
+			color: var(--white);
+			letter-spacing: 1px;
+			display: block;
+		}
+
+		.photo-caption .place {
+			font-family: 'Cormorant Garamond', serif;
+			font-style: italic;
+			font-size: 0.9rem;
+			color: var(--light-blue);
+			opacity: 0.8;
+			display: block;
+			margin-top: 2px;
+		}
+
+		.badge-strip {
+			display: flex;
+			gap: 0.5rem;
+			flex-wrap: wrap;
+			margin-top: 1rem;
+		}
+
+		.badge {
+			background: rgba(42, 95, 200, 0.2);
+			border: 1px solid rgba(74, 159, 224, 0.3);
+			border-radius: 20px;
+			padding: 5px 14px;
+			font-size: 0.72rem;
+			color: var(--light-blue);
+			letter-spacing: 0.5px;
+		}
+
+		.intro-text h2 {
+			font-family: 'Cinzel Decorative', cursive;
+			font-size: clamp(1rem, 2.5vw, 1.4rem);
+			color: var(--gold);
+			margin-bottom: 1.2rem;
+			letter-spacing: 1px;
+		}
+
+		.intro-text p {
+			font-family: 'Cormorant Garamond', serif;
+			font-size: 1.18rem;
+			line-height: 1.9;
+			color: rgba(238, 244, 255, 0.85);
+			margin-bottom: 1rem;
+		}
+
+		.intro-text p strong {
+			color: var(--light-blue);
+			font-style: italic;
+		}
+
+		.quote-block {
+			background: linear-gradient(135deg, rgba(42, 95, 200, 0.15), rgba(13, 33, 81, 0.3));
+			border-left: 3px solid var(--sky-blue);
+			border-radius: 0 12px 12px 0;
+			padding: 1.2rem 1.5rem;
+			margin: 1.5rem 0;
+		}
+
+		.quote-block p {
+			font-family: 'Cormorant Garamond', serif;
+			font-style: italic;
+			font-size: 1.2rem;
+			color: var(--cream);
+			margin: 0;
+		}
+
+		.quote-block cite {
+			display: block;
+			font-size: 0.82rem;
+			color: var(--sky-blue);
+			margin-top: 0.5rem;
+			font-style: normal;
+			letter-spacing: 1px;
+		}
+
+		.sec-heading {
+			display: flex;
+			align-items: center;
+			gap: 1rem;
+			margin-bottom: 2rem;
+		}
+
+		.sec-heading h2 {
+			font-family: 'Cinzel Decorative', cursive;
+			font-size: clamp(0.9rem, 2vw, 1.1rem);
+			color: var(--gold);
+			letter-spacing: 2px;
+			white-space: nowrap;
+		}
+
+		.sec-line {
+			flex: 1;
+			height: 1px;
+			background: linear-gradient(90deg, rgba(74, 159, 224, 0.4), transparent);
+		}
+
+		.role-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+			gap: 1.2rem;
+		}
+
+		.role-card {
+			background: var(--card-bg);
+			border: 1px solid var(--border);
+			border-radius: 14px;
+			padding: 1.8rem 1.5rem;
+			transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+			position: relative;
+			overflow: hidden;
+		}
+
+		.role-card::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			height: 2px;
+			background: linear-gradient(90deg, transparent, var(--accent-blue), var(--sky-blue), transparent);
+			opacity: 0;
+			transition: opacity 0.3s;
+		}
+
+		.role-card:hover {
+			transform: translateY(-6px);
+			border-color: rgba(74, 159, 224, 0.45);
+			box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(42, 95, 200, 0.15);
+		}
+
+		.role-card:hover::before {
+			opacity: 1;
+		}
+
+		.role-icon {
+			font-size: 2rem;
+			margin-bottom: 1rem;
+			display: block;
+			filter: drop-shadow(0 0 8px rgba(74, 159, 224, 0.4));
+		}
+
+		.role-card h3 {
+			font-family: 'Cinzel Decorative', cursive;
+			font-size: 0.75rem;
+			letter-spacing: 2px;
+			color: var(--light-blue);
+			margin-bottom: 0.7rem;
+			text-transform: uppercase;
+		}
+
+		.role-card p {
+			font-family: 'Cormorant Garamond', serif;
+			font-size: 1.05rem;
+			line-height: 1.75;
+			color: rgba(238, 244, 255, 0.7);
+		}
+
+		.timeline {
+			position: relative;
+			padding-left: 2rem;
+		}
+
+		.timeline::before {
+			content: '';
+			position: absolute;
+			left: 0;
+			top: 0;
+			bottom: 0;
+			width: 2px;
+			background: linear-gradient(180deg, var(--sky-blue), var(--accent-blue), transparent);
+		}
+
+		.timeline-item {
+			position: relative;
+			margin-bottom: 2rem;
+			padding-left: 1.5rem;
+		}
+
+		.timeline-item::before {
+			content: '';
+			position: absolute;
+			left: -2.5rem;
+			top: 6px;
+			width: 12px;
+			height: 12px;
+			border-radius: 50%;
+			background: var(--sky-blue);
+			box-shadow: 0 0 12px rgba(74, 159, 224, 0.6);
+			border: 2px solid var(--navy);
+		}
+
+		.timeline-item .t-label {
+			font-family: 'Cinzel Decorative', cursive;
+			font-size: 0.62rem;
+			letter-spacing: 3px;
+			color: var(--sky-blue);
+			text-transform: uppercase;
+			margin-bottom: 0.3rem;
+		}
+
+		.timeline-item h3 {
+			font-family: 'Cormorant Garamond', serif;
+			font-size: 1.2rem;
+			font-weight: 600;
+			color: var(--gold);
+			margin-bottom: 0.4rem;
+		}
+
+		.timeline-item p {
+			font-family: 'Cormorant Garamond', serif;
+			font-size: 1.05rem;
+			line-height: 1.8;
+			color: rgba(238, 244, 255, 0.72);
+		}
+
+		.gurus-intro {
+			font-family: 'Cormorant Garamond', serif;
+			font-size: 1.12rem;
+			line-height: 1.85;
+			color: rgba(238, 244, 255, 0.8);
+			margin-bottom: 2rem;
+		}
+
+		.gurus-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+			gap: 1rem;
+		}
+
+		.guru-pill {
+			display: flex;
+			align-items: center;
+			gap: 10px;
+			background: rgba(26, 58, 122, 0.35);
+			border: 1px solid rgba(74, 159, 224, 0.2);
+			border-radius: 10px;
+			padding: 12px 14px;
+			transition: all 0.3s ease;
+		}
+
+		.guru-pill:hover {
+			background: rgba(42, 95, 200, 0.2);
+			border-color: rgba(74, 159, 224, 0.45);
+			transform: translateX(4px);
+		}
+
+		.guru-pill .g-dot {
+			width: 8px;
+			height: 8px;
+			border-radius: 50%;
+			background: var(--sky-blue);
+			flex-shrink: 0;
+			box-shadow: 0 0 8px rgba(74, 159, 224, 0.6);
+		}
+
+		.guru-pill .g-name {
+			font-family: 'Cormorant Garamond', serif;
+			font-size: 1rem;
+			color: var(--cream);
+			line-height: 1.3;
+		}
+
+		.guru-pill .g-place {
+			font-size: 0.78rem;
+			color: var(--light-blue);
+			opacity: 0.7;
+			display: block;
+		}
+
+		.gallery-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+			gap: 1rem;
+		}
+
+		.gallery-item {
+			border-radius: 12px;
+			overflow: hidden;
+			border: 1px solid var(--border);
+			background: var(--card-bg);
+			aspect-ratio: 16/9;
+			position: relative;
+			transition: transform 0.35s ease, box-shadow 0.35s ease;
+		}
+
+		.gallery-item:hover {
+			transform: scale(1.03);
+			box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(42, 95, 200, 0.2);
+		}
+
+		.gallery-item img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			transition: transform 0.4s ease;
+		}
+
+		.gallery-item:hover img {
+			transform: scale(1.07);
+		}
+
+		.gallery-item .g-caption {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			background: linear-gradient(to top, rgba(6, 15, 34, 0.85), transparent);
+			padding: 0.8rem 0.6rem 0.5rem;
+			font-size: 0.75rem;
+			color: var(--light-blue);
+			font-style: italic;
+			font-family: 'Cormorant Garamond', serif;
+		}
+
+		.cta-row {
+			text-align: center;
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: center;
+			gap: 1rem;
+			padding: 2rem 0 1rem;
+		}
+
+		.cta-copy {
+			width: 100%;
+			font-family: 'Cormorant Garamond', serif;
+			font-style: italic;
+			font-size: 1.15rem;
+			color: rgba(168, 212, 245, 0.7);
+			margin-bottom: 0.5rem;
+		}
+
+		.cta-button {
+			display: inline-flex;
+			align-items: center;
+			gap: 0.75rem;
+			padding: 13px 36px;
+			border-radius: 40px;
+			font-family: 'Cinzel Decorative', cursive;
+			font-size: 0.78rem;
+			letter-spacing: 2px;
+			text-decoration: none;
+			transition: all 0.3s ease;
+			white-space: nowrap;
+		}
+
+		.cta-button.youtube {
+			background: linear-gradient(130deg, #2A5FC8, #4A9FE0);
+			color: #fff;
+			box-shadow: 0 4px 20px rgba(42, 95, 200, 0.5);
+		}
+
+		.cta-button.youtube:hover {
+			transform: translateY(-4px);
+			box-shadow: 0 10px 30px rgba(42, 95, 200, 0.7);
+		}
+
+		.cta-button.instagram {
+			background: radial-gradient(circle at 30% 30%, #feda75 0%, #d62976 40%, #962fbf 60%, #4f5bd5 100%);
+			color: #fff;
+			box-shadow: 0 4px 20px rgba(148, 83, 200, 0.4);
+		}
+
+		.cta-button.instagram:hover {
+			transform: translateY(-4px);
+			box-shadow: 0 10px 30px rgba(148, 83, 200, 0.65);
+		}
+
+		.cta-button.secondary {
+			background: rgba(42, 95, 200, 0.15);
+			border: 1px solid rgba(74, 159, 224, 0.35);
+			color: rgba(168, 212, 245, 0.9);
+		}
+
+		.cta-button.secondary:hover {
+			background: rgba(42, 95, 200, 0.25);
+			border-color: rgba(74, 159, 224, 0.6);
+		}
+
+		footer {
+			position: relative;
+			z-index: 10;
+			text-align: center;
+			padding: 1.5rem 2rem;
+			border-top: 1px solid var(--border);
+			color: rgba(168, 212, 245, 0.35);
+			font-size: 0.75rem;
+			letter-spacing: 2px;
+			font-family: 'Cinzel Decorative', cursive;
+		}
+
+		.om-sym {
+			color: var(--gold);
+			font-size: 1.2rem;
+			margin: 0 12px;
+			vertical-align: middle;
+		}
+
+		@media (max-width: 768px) {
+			.hero-banner {
+				padding: 4rem 1.5rem 3rem;
+			}
+
+			.page-wrap {
+				padding: 3rem 1.5rem 4rem;
+			}
+
+			nav {
+				justify-content: center;
+			}
+		}
+
+		/* Navigational Button Blocks */
+		.quick-links-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+			gap: 1.5rem;
+			margin-bottom: 4rem;
+		}
+
+		.quick-btn {
+			background: linear-gradient(135deg, rgba(42, 95, 200, 0.15), rgba(13, 33, 81, 0.4));
+			border: 1px solid var(--sky-blue);
+			border-radius: 12px;
+			padding: 2rem 1.5rem;
+			text-align: center;
+			color: var(--cream);
+			font-family: 'Cinzel Decorative', cursive;
+			font-size: 0.9rem;
+			letter-spacing: 1px;
+			cursor: pointer;
+			transition: all 0.3s ease;
+			text-decoration: none;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			gap: 1rem;
+		}
+
+		.quick-btn:hover {
+			transform: translateY(-8px);
+			background: rgba(42, 95, 200, 0.3);
+			box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4), 0 0 15px rgba(74, 159, 224, 0.3);
+			border-color: var(--gold);
+			color: var(--gold);
+		}
+
+		.quick-btn span {
+			font-size: 2.5rem;
+			filter: drop-shadow(0 0 8px rgba(74, 159, 224, 0.4));
+		}
+
+		/* Detail Blocks */
+		.temple-detail-block {
+			background: var(--card-bg);
+			border: 1px solid var(--border);
+			border-radius: 16px;
+			padding: 2.5rem;
+			margin-bottom: 3rem;
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			gap: 3rem;
+			align-items: center;
+			scroll-margin-top: 100px;
+			transition: transform 0.3s ease, box-shadow 0.3s ease;
+		}
+
+		.temple-detail-block:hover {
+			transform: scale(1.01);
+			box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(42, 95, 200, 0.15);
+			border-color: rgba(74, 159, 224, 0.45);
+		}
+
+		/* Alternating layout for detail blocks */
+		.temple-detail-block:nth-child(even) .temple-img-wrap {
+			order: 2;
+		}
+
+		.temple-detail-block:nth-child(even) .temple-info {
+			order: 1;
+		}
+
+		@media (max-width: 768px) {
+			.temple-detail-block {
+				grid-template-columns: 1fr;
+				gap: 2rem;
+				padding: 1.5rem;
+			}
+
+			.temple-detail-block:nth-child(even) .temple-img-wrap {
+				order: 1;
+			}
+
+			.temple-detail-block:nth-child(even) .temple-info {
+				order: 2;
+			}
+		}
+
+		.temple-img-wrap {
+			border-radius: 12px;
+			overflow: hidden;
+			border: 1px solid rgba(74, 159, 224, 0.3);
+			aspect-ratio: 4/3;
+			box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+			position: relative;
+		}
+
+		.temple-img-wrap img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			transition: transform 0.6s ease;
+		}
+
+		.temple-img-wrap:hover img {
+			transform: scale(1.08);
+		}
+
+		.temple-info h3 {
+			font-family: 'Cinzel Decorative', cursive;
+			font-size: 1.6rem;
+			color: var(--gold);
+			margin-bottom: 1.2rem;
+			line-height: 1.3;
+		}
+
+		.temple-info .lang-hindi {
+			font-family: 'Inter', sans-serif;
+			font-size: 1.05rem;
+			color: rgba(238, 244, 255, 0.95);
+			margin-bottom: 1.2rem;
+			line-height: 1.7;
+			padding-left: 1rem;
+			border-left: 2px solid var(--sky-blue);
+		}
+
+		.temple-info .lang-english {
+			font-family: 'Cormorant Garamond', serif;
+			font-size: 1.15rem;
+			color: var(--light-blue);
+			font-style: italic;
+			line-height: 1.6;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="bg-fixed"></div>
+	<svg class="mandala-bg" viewBox="0 0 900 900" xmlns="http://www.w3.org/2000/svg" stroke="#4A9FE0" fill="none"
+		stroke-width="0.5">
+		<g transform="translate(450,450)">
+			<circle r="80" />
+			<circle r="140" />
+			<circle r="200" />
+			<circle r="260" />
+			<circle r="320" />
+			<circle r="400" />
+			<g id="p">
+				<ellipse rx="22" ry="65" transform="translate(0,-110)" />
+				<ellipse rx="14" ry="45" transform="translate(0,-175)" />
+			</g>
+			<use href="#p" transform="rotate(30)" />
+			<use href="#p" transform="rotate(60)" />
+			<use href="#p" transform="rotate(90)" />
+			<use href="#p" transform="rotate(120)" />
+			<use href="#p" transform="rotate(150)" />
+			<use href="#p" transform="rotate(180)" />
+			<use href="#p" transform="rotate(210)" />
+			<use href="#p" transform="rotate(240)" />
+			<use href="#p" transform="rotate(270)" />
+			<use href="#p" transform="rotate(300)" />
+			<use href="#p" transform="rotate(330)" />
+			<line x1="0" y1="-400" x2="0" y2="400" />
+			<line x1="-400" y1="0" x2="400" y2="0" />
+			<line x1="-283" y1="-283" x2="283" y2="283" />
+			<line x1="283" y1="-283" x2="-283" y2="283" />
+		</g>
+	</svg>
+	<canvas id="starfield"></canvas>
+	<header>
+		<div class="header-inner">
+			<a href="./index.html" class="logo-link">
+				<div class="logo-orb">🪷</div>
+				<span class="site-name">108 Kutiya</span>
+			</a>
+			<nav>
+				<a href="./home.html">Home</a>
+				<a href="./home.html">Explore</a>
+				<a href="./about.html">About Maharaj Ji</a>
+				<a href="./home.html#satsangs">Satsangs</a>
+				<a href="./home.html#knowledge">Knowledge</a>
+				<a href="./temples.html" class="active">Temples</a>
+				<a href="./contact-us.html">Contact</a>
+			</nav>
+		</div>
+	</header>
+
+	<div class="hero-banner fade-up">
+		<p class="hero-label">✦ &nbsp; 108 Kutiya&nbsp; ✦</p>
+		<h1 class="hero-title">108 Kutiya Mandir — Barsana</h1>
+		<p class="hero-sub">Barsana mein sthit 108 Kutiya ka dharmik darshan aur mandir yatra.</p>
+	</div>
+
+	<div class="page-wrap">
+		<div class="intro-grid fade-up delay-1">
+			<div class="photo-card">
+				<div class="photo-main">
+					<img src="https://upload.wikimedia.org/wikipedia/commons/4/48/Barsana_Temple.jpg"
+						alt="Radha Rani Temple, Barsana" loading="lazy">
+					<div class="photo-caption">
+						<span class="name">Radha Rani Mandir, Barsana</span>
+						<span class="place">Karun Das Ji Maharaj ka 108 Kutiya</span>
+					</div>
+				</div>
+				<div class="badge-strip">
+					<span class="badge">🙏 Barsana, Mathura</span>
+					<span class="badge">🌺 108 Mandir Sthal</span>
+					<span class="badge">✨ Bhakti aur Darshan</span>
+				</div>
+			</div>
+			<div class="intro-text">
+				<h2>Barsana ka pavitra mandir samuh</h2>
+				<p><strong>108 Kutiya</strong> ek vishesh dharmik sthal hai jahan <strong>Radha-Krishna</strong> ke anek
+					swaroopon ka darshan hota hai. Yeh mandir complex puri tarah se <strong>bhakti, katha aur
+						shringar</strong> ki mahima se juda hai.</p>
+				<p>Har mandir apni alag kahani rakhta hai — Radha ji ki prema bhavna, Braj ke ras, aur Barsana ki mahima
+					ko darshata hai. Yeh 108 mandir Karun Das Ji Maharaj ke drishtikon se nirmit hain aur aapko Bhakti
+					ki shudh anubhuti dete hain. Yahan ke mandir aur anubhav aapko ek aadhyatmik yatra par le jate hain.
+				</p>
+				<div class="quote-block">
+					<p>"108 Kutiya mein har shraddhalu ko Braj ki vatsalya bhakti aur Radha-Krishna ki anant leela ka
+						anubhav milta hai."</p>
+					<cite>— 108 Kutiya, Barsana</cite>
+				</div>
+				<p><strong>108 Kutiya</strong> ki yatra mein aapko Bhakti Bhavan, Satsang Kendra, Raas Leela Mandir,
+					Bhajan Vatika aur Sant Sewa Kendra jaisi jagahen dekhi jayengi. Yeh sabhi mandir apne prati ek
+					pavitra aur shantipurn mahal dete hain.</p>
+			</div>
+		</div>
+
+		<div class="stats-bar fade-up delay-2">
+			<div class="stat-box">
+				<span class="stat-number">108</span>
+				<span class="stat-label">Pramukh Mandir</span>
+			</div>
+			<div class="stat-box">
+				<span class="stat-number">7+</span>
+				<span class="stat-label">Bhakti Sthal</span>
+			</div>
+			<div class="stat-box">
+				<span class="stat-number">Daily</span>
+				<span class="stat-label">Aarti & Bhajan</span>
+			</div>
+			<div class="stat-box">
+				<span class="stat-number">Barsana</span>
+				<span class="stat-label">Radha ji ka Ghar</span>
+			</div>
+			<div class="stat-box">
+				<span class="stat-number">Braj</span>
+				<span class="stat-label">Lila Darshan</span>
+			</div>
+		</div>
+
+		<div class="role-section fade-up delay-2">
+			<div class="sec-heading">
+				<h2>✦ &nbsp; 108 Kutiya ke mukhya mandir</h2>
+				<div class="sec-line"></div>
+			</div>
+			<div class="role-grid">
+				<div class="role-card">
+					<span class="role-icon">🛕</span>
+					<h3>Radha Krishna Mandir</h3>
+					<p>Yah mandir 108 Kutiya ka hriday hai. Yahan Radha-Rani aur Shyam ki bhavpurn pratimaon ke pass
+						bhajan aur katha hoti hai.</p>
+				</div>
+				<div class="role-card">
+					<span class="role-icon">🎶</span>
+					<h3>Bhajan Vatika</h3>
+					<p>Bhajan aur kirtan ke liye ek shant aur prerna daayak sthal jahan sadhna aur gaurav bhare geet
+						sunaye jaate hain.</p>
+				</div>
+				<div class="role-card">
+					<span class="role-icon">🌸</span>
+					<h3>Raas Leela Mandir</h3>
+					<p>Radha-Krishna ki amritmay leelaon ko yaad karte hue yeh mandir Braj ras aur prem se bhara hota
+						hai.</p>
+				</div>
+				<div class="role-card">
+					<span class="role-icon">🕯️</span>
+					<h3>Shringar Sthal</h3>
+					<p>Radha ji aur Shyam ka sajaya hua shringar darshan, phoolon aur deepon se alokith mandir mein hota
+						hai.</p>
+				</div>
+				<div class="role-card">
+					<span class="role-icon">🤝</span>
+					<h3>Seva Bhavan</h3>
+					<p>Yah mandir seva aur prasadam prabandh ke liye bana hai, jahan yatri aur bhakton ke liye
+						suvidhaayein uplabdh karayi jaati hain.</p>
+				</div>
+				<div class="role-card">
+					<span class="role-icon">📜</span>
+					<h3>Mahima Mandir</h3>
+					<p>Barsana ki mahima aur Braj ki pavitra kahaniyan yahan ki deewaron par darshayi jaati hain.</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="journey-section fade-up delay-2">
+			<div class="sec-heading">
+				<h2>✦ &nbsp; 108 Kutiya ki yatra</h2>
+				<div class="sec-line"></div>
+			</div>
+			<div class="timeline">
+				<div class="timeline-item">
+					<p class="t-label">Pratham Sthal</p>
+					<h3>Vatsalya Darshan</h3>
+					<p>Yah pehli manzil aapko Radha ji ke barsane wale ghar ki vatsalya aur prem ka ehsaas karati hai.
+					</p>
+				</div>
+				<div class="timeline-item">
+					<p class="t-label">Madhya Sthal</p>
+					<h3>Bhakti Uday</h3>
+					<p>Itne saare mandir aur gufaon ka sangrah aapko bhakti ke har roop se milata hai — jaise satsang,
+						katha aur bhajan.</p>
+				</div>
+				<div class="timeline-item">
+					<p class="t-label">Sangrah Sthal</p>
+					<h3>Seva aur Sadhana</h3>
+					<p>Bhakt aur yatri yahan seva ke madhyam se apne jeevan mein shanti aur dharmik anubhav paate hain.
+					</p>
+				</div>
+				<div class="timeline-item">
+					<p class="t-label">Antim Sthal</p>
+					<h3>Dharmik Sankalp</h3>
+					<p>108 Kutiya ki yatra samapt hone par aapke hriday mein Radha-Krishna ke liye nayi shraddha aur
+						prerna jagti hai.</p>
+				</div>
+			</div>
+		</div>
+
+		<div class="gurus-section fade-up delay-3">
+			<div class="sec-heading">
+				<h2>✦ &nbsp; 108 Kutiya ke vishesht sthal</h2>
+				<div class="sec-line"></div>
+			</div>
+			<p class="gurus-intro">108 Kutiya ka pratyek mandir ek alag bhavna aur anubhav deta hai. Niche diye gaye
+				pramukh sthal yatra ke sabse adhik dekhe jaane wale mandir hain.</p>
+			<div class="gurus-grid">
+				<div class="guru-pill">
+					<div class="g-dot"></div>
+					<div>
+						<span class="g-name">Radha Vallabh Mandir</span>
+						<span class="g-place">Prem aur vatsalya se bhara darshan</span>
+					</div>
+				</div>
+				<div class="guru-pill">
+					<div class="g-dot"></div>
+					<div>
+						<span class="g-name">Leela Sthal</span>
+						<span class="g-place">Krishna ki rachnatmak leelaon ka pratibimb</span>
+					</div>
+				</div>
+				<div class="guru-pill">
+					<div class="g-dot"></div>
+					<div>
+						<span class="g-name">Sant Sewa Kendra</span>
+						<span class="g-place">Darshakon ke liye seva aur satkar</span>
+					</div>
+				</div>
+				<div class="guru-pill">
+					<div class="g-dot"></div>
+					<div>
+						<span class="g-name">Rang Bhavan</span>
+						<span class="g-place">Raas leela aur utsav ka manch</span>
+					</div>
+				</div>
+				<div class="guru-pill">
+					<div class="g-dot"></div>
+					<div>
+						<span class="g-name">Sankirtan Mandap</span>
+						<span class="g-place">Bhajan-sangeet ka pavitra mandal</span>
+					</div>
+				</div>
+				<div class="guru-pill">
+					<div class="g-dot"></div>
+					<div>
+						<span class="g-name">Vatsalya Bhoomi</span>
+						<span class="g-place">Radha ji aur Braj ki maaya se juda sthaan</span>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="hero-banner">
+			<p class="hero-label">✦ &nbsp; Divine Destinations &nbsp; ✦</p>
+			<h1 class="hero-title">Temples & Sites of 108 Kutiya</h1>
+			<p class="hero-sub">Explore the magnificent ashram structures constructed under the guidance of Swami Karun
+				Das Ji Maharaj.</p>
+		</div>
+
+		<div class="page-wrap">
+
+			<div class="sec-heading">
+				<h2>✦ &nbsp; Quick Navigation</h2>
+				<div class="sec-line"></div>
+			</div>
+
+			<!-- Interactive Blocks (Buttons) -->
+			<div class="quick-links-grid">
+				<a href="#bhajan-kutiyas" class="quick-btn">
+					<span>🛖</span>
+					108 Bhajan Kutiyas
+				</a>
+				<a href="#brajeshwar-mahadev" class="quick-btn">
+					<span>🔱</span>
+					Brajeshwar Mahadev
+				</a>
+				<a href="#satsang-hall" class="quick-btn">
+					<span>🛕</span>
+					Satsang Bhavan
+				</a>
+				<a href="#shri-vigraha" class="quick-btn">
+					<span>🌸</span>
+					Shri Vigraha Mandir
+				</a>
+				<a href="#goshala" class="quick-btn">
+					<span>🐄</span>
+					Shri Goshala
+				</a>
+			</div>
+
+			<div class="sec-heading">
+				<h2>✦ &nbsp; Complete Descriptions & Darshan</h2>
+				<div class="sec-line"></div>
+			</div>
+
+			<!-- 1. 108 Bhajan Kutiyas -->
+			<div id="bhajan-kutiyas" class="temple-detail-block">
+				<div class="temple-img-wrap">
+					<img src="https://upload.wikimedia.org/wikipedia/commons/7/7a/Barsana_View_from_Shriji_Temple.jpg"
+						alt="108 Bhajan Kutiyas Barsana" loading="lazy">
+				</div>
+				<div class="temple-info">
+					<h3>108 Bhajan Kutiyas (भजन कुटिया)</h3>
+					<p class="lang-hindi">निंबार्क संप्रदाय के पूज्य संत स्वामी श्री करुण दास जी महाराज द्वारा इन 108
+						कुटिया का निर्माण कराया गया है। यहाँ संतों और भक्तों के लिए भजन, साधना और रहने की निःशुल्क
+						व्यवस्था है, जहाँ अत्यंत शांतिपूर्ण और दिव्य वातावरण का अनुभव होता है。</p>
+					<p class="lang-english">Constructed by revered Saint Swami Shri Karun Das Ji Maharaj of the Nimbarka
+						Sampradaya, these 108 huts (kutiyas) are dedicated to deep meditation and devotion. They provide
+						free accommodation and a highly peaceful, divine environment for saints and devotees to practice
+						constant remembrance of God.</p>
+				</div>
+			</div>
+
+			<!-- 2. Brajeshwar Mahadev -->
+			<div id="brajeshwar-mahadev" class="temple-detail-block">
+				<div class="temple-img-wrap">
+					<img src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAHruDqBnJtf_-KBsrQUGXmpLnZEAFUQaykODEQIH-DjmHYny-YFVWt-4YxDK3UNGuJN0lO_WPlCFIHPlXj7KN5efYqK2BPOEtqpHfY0ITtcRk2WAs2dP1wTx47at5-GIdOl9p_WQQ=s1360-w1360-h1020-rw"
+						alt="Brajeshwar Mahadev Temple" loading="lazy">
+				</div>
+				<div class="temple-info">
+					<h3>Brajeshwar Mahadev (ब्रजेश्वर महादेव)</h3>
+					<p class="lang-hindi">108 कुटिया परिसर के समीप ही ब्रजेश्वर महादेव का अत्यंत सुंदर और पवित्र मंदिर
+						स्थित है। ब्रज भूमि के रक्षक के रूप में भगवान शिव की यहाँ आराधना की जाती है और भक्तगण कुटिया
+						दर्शन के साथ यहाँ आशीर्वाद प्राप्त करते हैं。</p>
+					<p class="lang-english">Located immediately adjacent to the 108 Kutiya complex is the highly sacred
+						Brajeshwar Mahadev temple. Worshipped as the protector of the Braj region, Lord Shiva is
+						venerated here, and pilgrims seek His blessings during their spiritual tour of the ashram.</p>
+				</div>
+			</div>
+
+			<!-- 3. Satsang Bhavan -->
+			<div id="satsang-hall" class="temple-detail-block">
+				<div class="temple-img-wrap">
+					<img src="https://upload.wikimedia.org/wikipedia/commons/7/74/Radharani_Temple_Barsana_2.jpg"
+						alt="Satsang Hall" loading="lazy">
+				</div>
+				<div class="temple-info">
+					<h3>Satsang Bhavan (सत्संग हॉल)</h3>
+					<p class="lang-hindi">आश्रम के भीतर एक विशाल सत्संग हॉल स्थापित है जहाँ प्रतिदिन सुंदर कथाएँ आयोजित
+						होती हैं। स्वामी करुण दास जी महाराज के सानिध्य में यहाँ श्रीमद्भागवत कथा, श्री भक्तमाल कथा और
+						दिव्य रासलीला का आयोजन किया जाता है जो मन को मोह लेता है。</p>
+					<p class="lang-english">A massive Satsang Hall is established within the ashram premises where daily
+						spiritual discourses take place. Under the divine guidance of Swami Karun Das Ji Maharaj,
+						magnificent events like Shrimad Bhagwat Katha, Bhaktmal Katha, and divine Raas Leela are
+						organized here, captivating the hearts of all attendees.</p>
+				</div>
+			</div>
+
+			<!-- 4. Shri Vigraha Mandir -->
+			<div id="shri-vigraha" class="temple-detail-block">
+				<div class="temple-img-wrap">
+					<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMLkaZ_Z3wwPRLS0hxSsL6EZY-zA7GBbcU8pQDagNxbTeWzAuOMFvyH7E&s=10"
+						alt="Shri Radha Krishna Vigraha" loading="lazy">
+				</div>
+				<div class="temple-info">
+					<h3>Shri Vigraha Mandir (श्री विग्रह दर्शन)</h3>
+					<p class="lang-hindi">मुख्य मंदिर में श्री राधा-कृष्ण के अत्यंत सुंदर विग्रह स्थापित हैं। यहाँ नित्य
+						आरती, मनमोहक शृंगार और सुंदर कुंज के दर्शन होते हैं, जो भक्तों को ब्रज के प्रेम और भक्ति रस में
+						डुबो देते हैं。</p>
+					<p class="lang-english">The main shrine houses the exceptionally beautiful deities (Vigrahas) of
+						Shri Radha and Krishna. The daily Aarti, exquisite adornments, and beautifully crafted sacred
+						groves (Kunjas) immerse the devotees entirely in the pure love and devotional essence of Braj.
+					</p>
+				</div>
+			</div>
+
+			<!-- 5. Shri Goshala -->
+			<div id="goshala" class="temple-detail-block">
+				<div class="temple-img-wrap">
+					<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBWf-LFf2hWkuq-mCW0DwRUPh_GX4FLQc1mISmDN0jSg&s=10"
+						alt="Goshala at 108 Kutiya" loading="lazy">
+				</div>
+				<div class="temple-info">
+					<h3>Shri Goshala (श्री गौशाला)</h3>
+					<p class="lang-hindi">108 कुटिया परिसर में एक विशाल गौशाला का भी निर्माण किया गया है जहाँ गौ माताओं
+						की निस्वार्थ भाव से सेवा की जाती है। यह स्थल ब्रज की संस्कृति और भगवान कृष्ण के गौ-प्रेम का
+						सच्चा प्रतीक है。</p>
+					<p class="lang-english">The 108 Kutiya complex also maintains a large Goshala (cow shelter) where
+						cows are served and cared for with selfless devotion. This specific site acts as a true symbol
+						of traditional Braj culture and Lord Krishna's eternal love for cows.</p>
+				</div>
+			</div>
+
+			<div class="gallery-section fade-up delay-3">
+				<div class="sec-heading">
+					<h2>✦ &nbsp; 108 Kutiya Darshan Gallery</h2>
+					<div class="sec-line"></div>
+				</div>
+				<div class="gallery-grid">
+					<div class="gallery-item">
+						<img src="https://upload.wikimedia.org/wikipedia/commons/4/48/Barsana_Temple.jpg"
+							alt="Shriji Temple, Barsana" loading="lazy">
+						<div class="g-caption">Radha Rani Mandir ki pramukh bhavya drishti.</div>
+					</div>
+					<div class="gallery-item">
+						<img src="https://upload.wikimedia.org/wikipedia/commons/7/7a/Barsana_View_from_Shriji_Temple.jpg"
+							alt="Barsana view from Shriji Temple" loading="lazy">
+						<div class="g-caption">Shriji Mandir se Barsana ka uttar drishya.</div>
+					</div>
+					<div class="gallery-item">
+						<img src="https://upload.wikimedia.org/wikipedia/commons/6/66/Chhatris_of_Barsana_02.jpg"
+							alt="Chhatris of Barsana" loading="lazy">
+						<div class="g-caption">Barsana ke pavitra chhatris aur seva mandap.</div>
+					</div>
+					<div class="gallery-item">
+						<img src="https://upload.wikimedia.org/wikipedia/commons/7/74/Radharani_Temple_Barsana_2.jpg"
+							alt="Barsana temple complex" loading="lazy">
+						<div class="g-caption">Barsana mandir complex mein shringar aur sthaaptya.</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="cta-row">
+				<p class="cta-copy">108 Kutiya ke darshan aur yatra ke liye humari website par visit karein —</p>
+				<a href="https://www.youtube.com/c/SwamiKarunDassJi" target="_blank" rel="noopener"
+					class="cta-button youtube">▶ &nbsp; YouTube Channel</a>
+				<a href="https://www.instagram.com/108kutiya/" target="_blank" rel="noopener"
+					class="cta-button instagram">📸 &nbsp; Instagram</a>
+				<a href="./home.html" class="cta-button secondary">🏠 &nbsp; 108 Kutiya Home</a>
+			</div>
+
+
+		</div>
+
+		<footer>
+			<span class="om-sym">ॐ</span> Jai Shri Radhe Shyam &nbsp;|&nbsp; 108 Kutiya, Barsana <span
+				class="om-sym">🪷</span>
+		</footer>
+
+		<script>
+			(function () {
+				const c = document.getElementById('starfield');
+				const ctx = c.getContext('2d');
+				let W, H, stars;
+				function resize() { W = c.width = window.innerWidth; H = c.height = window.innerHeight; }
+				resize();
+				window.addEventListener('resize', resize);
+				stars = Array.from({ length: 80 }, () => ({ x: Math.random() * 1920, y: Math.random() * 1080, r: Math.random() * 1.2 + 0.2, alpha: Math.random() * 0.5 + 0.1, speed: Math.random() * 0.003 + 0.001, phase: Math.random() * Math.PI * 2 }));
+				function tick(t) {
+					ctx.clearRect(0, 0, W, H);
+					stars.forEach(s => {
+						const a = s.alpha * (0.5 + 0.5 * Math.sin(t * s.speed + s.phase));
+						ctx.save();
+						ctx.globalAlpha = a;
+						ctx.fillStyle = '#A8D4F5';
+						ctx.beginPath();
+						ctx.arc(s.x % W, s.y % H, s.r, 0, Math.PI * 2);
+						ctx.fill();
+						ctx.restore();
+					});
+					requestAnimationFrame(tick);
+				}
+				requestAnimationFrame(tick);
+			})();
+		</script>
+</body>
+
+</html>
