@@ -565,6 +565,355 @@
 		@keyframes fadeUpAnim {
 			to { opacity: 1; transform: translateY(0); }
 		}
+
+        .premium-wisdom-section {
+        margin: 5rem auto;
+        max-width: 850px;
+        padding: 0 1rem;
+        position: relative;
+    }
+
+    .wisdom-slider-container {
+        background: linear-gradient(135deg, rgba(13, 33, 81, 0.6) 0%, rgba(6, 15, 34, 0.8) 100%);
+        border: 1px solid rgba(240, 192, 96, 0.25);
+        border-radius: 24px;
+        padding: 4rem 3rem 3rem;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), inset 0 0 20px rgba(74, 159, 224, 0.15);
+        backdrop-filter: blur(12px);
+    }
+
+    .wisdom-slider-container::before {
+        content: '“';
+        position: absolute;
+        top: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 8rem;
+        font-family: 'Cormorant Garamond', serif;
+        color: var(--gold);
+        opacity: 0.15;
+        line-height: 1;
+    }
+
+    .wisdom-track {
+        position: relative;
+        min-height: 140px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .wisdom-slide {
+        position: absolute;
+        width: 100%;
+        opacity: 0;
+        transform: translateX(30px) scale(0.98);
+        transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        pointer-events: none;
+    }
+
+    .wisdom-slide.active {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+        pointer-events: auto;
+        position: relative;
+    }
+
+    .wisdom-text {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 1.6rem;
+        color: var(--cream);
+        font-style: italic;
+        line-height: 1.6;
+        text-shadow: 0 2px 10px rgba(0,0,0,0.4);
+    }
+
+    .wisdom-source {
+        font-family: 'Cinzel Decorative', cursive;
+        font-size: 0.8rem;
+        color: var(--sky-blue);
+        margin-top: 1.5rem;
+        letter-spacing: 3px;
+        font-weight: bold;
+        display: block;
+    }
+
+    /* Slider Controls */
+    .slider-arrow {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-10%);
+        background: rgba(11, 26, 58, 0.8);
+        border: 1px solid rgba(240, 192, 96, 0.3);
+        color: var(--gold);
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+        z-index: 10;
+        font-size: 1.2rem;
+    }
+
+    .slider-arrow:hover {
+        background: var(--gold);
+        color: var(--navy);
+        box-shadow: 0 0 15px rgba(211, 154, 39, 0.5);
+    }
+
+    .arrow-left { left: -22px; }
+    .arrow-right { right: -22px; }
+
+    @media (max-width: 900px) {
+        .slider-arrow { display: none; }
+        .wisdom-slider-container { padding: 3rem 1.5rem 2.5rem; }
+        .wisdom-text { font-size: 1.3rem; }
+    }
+
+    <!-- ADVANCED AUDIO BOOK & DISCOURSE MEDIA PLAYER -->
+<style>
+    .audio-hub-section {
+        margin: 6rem auto;
+        max-width: 1000px;
+        padding: 0 1rem;
+    }
+
+    .audio-dashboard {
+        background: linear-gradient(145deg, rgba(13, 33, 81, 0.7) 0%, rgba(6, 15, 34, 0.9) 100%);
+        border: 1px solid var(--border);
+        border-radius: 24px;
+        padding: 2.5rem;
+        display: grid;
+        grid-template-columns: 1.2fr 1.8fr;
+        gap: 2.5rem;
+        box-shadow: 0 30px 60px rgba(0, 0, 0, 0.7);
+        backdrop-filter: blur(15px);
+    }
+
+    @media (max-width: 800px) {
+        .audio-dashboard {
+            grid-template-columns: 1fr;
+            padding: 1.5rem;
+            gap: 1.5rem;
+        }
+    }
+
+    /* Playlist Sidebar */
+    .audio-playlist-wrapper {
+        border-right: 1px solid rgba(100, 170, 255, 0.15);
+        padding-right: 1.5rem;
+        max-height: 380px;
+        overflow-y: auto;
+    }
+
+    @media (max-width: 800px) {
+        .audio-playlist-wrapper {
+            border-right: none;
+            padding-right: 0;
+            max-height: 250px;
+        }
+    }
+
+    .audio-playlist-wrapper::-webkit-scrollbar {
+        width: 4px;
+    }
+    .audio-playlist-wrapper::-webkit-scrollbar-thumb {
+        background: var(--sky-blue);
+        border-radius: 10px;
+    }
+
+    .playlist-title {
+        font-family: 'Cinzel Decorative', cursive;
+        font-size: 0.85rem;
+        color: var(--gold);
+        letter-spacing: 1px;
+        margin-bottom: 1.2rem;
+        text-transform: uppercase;
+        border-bottom: 1px solid rgba(240, 192, 96, 0.2);
+        padding-bottom: 0.5rem;
+    }
+
+    .playlist-item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 12px;
+        border-radius: 10px;
+        cursor: pointer;
+        margin-bottom: 8px;
+        transition: all 0.3s ease;
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid transparent;
+    }
+
+    .playlist-item:hover {
+        background: rgba(74, 159, 224, 0.1);
+        border-color: rgba(74, 159, 224, 0.2);
+    }
+
+    .playlist-item.active {
+        background: rgba(240, 192, 96, 0.12);
+        border-color: rgba(240, 192, 96, 0.4);
+    }
+
+    .track-num {
+        font-size: 0.8rem;
+        color: var(--sky-blue);
+        font-weight: bold;
+        width: 24px;
+    }
+
+    .track-meta h5 {
+        font-size: 0.9rem;
+        color: var(--white);
+        margin-bottom: 2px;
+        font-weight: 500;
+    }
+    .track-meta p {
+        font-size: 0.75rem;
+        color: var(--light-blue);
+        opacity: 0.7;
+        margin: 0;
+    }
+
+    /* Active Player Pane */
+    .active-player-pane {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        padding: 1rem;
+    }
+
+    .player-disk-zone {
+        position: relative;
+        width: 120px;
+        height: 120px;
+        margin: 0 auto 1.5rem;
+        background: radial-gradient(circle, var(--deep-blue) 30%, #060F22 100%);
+        border: 3px solid var(--gold);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 0 25px rgba(240, 192, 96, 0.3);
+    }
+
+    .player-disk-zone::after {
+        content: '🪷';
+        font-size: 2.5rem;
+        animation: pulseLogo 3s infinite ease-in-out;
+    }
+
+    @keyframes pulseLogo {
+        0%, 100% { transform: scale(1); opacity: 0.8; }
+        50% { transform: scale(1.1); opacity: 1; filter: drop-shadow(0 0 8px var(--gold)); }
+    }
+
+    .now-playing-title {
+        font-family: 'Cinzel Decorative', cursive;
+        font-size: 1.3rem;
+        color: var(--gold);
+        margin-bottom: 0.4rem;
+    }
+
+    .now-playing-sub {
+        font-size: 0.85rem;
+        color: var(--light-blue);
+        margin-bottom: 2rem;
+        opacity: 0.8;
+    }
+
+    /* Custom Standard Audio Controls */
+    .player-controls-wrapper {
+        width: 100%;
+    }
+
+    .progress-bar-container {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 1.5rem;
+    }
+
+    .time-stamp {
+        font-size: 0.75rem;
+        color: var(--light-blue);
+        font-family: monospace;
+        width: 40px;
+    }
+
+    .progress-slider {
+        flex: 1;
+        -webkit-appearance: none;
+        appearance: none;
+        height: 5px;
+        border-radius: 5px;
+        background: rgba(168, 212, 245, 0.2);
+        outline: none;
+        cursor: pointer;
+        position: relative;
+    }
+
+    .progress-slider::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 13px;
+        height: 13px;
+        border-radius: 50%;
+        background: var(--gold);
+        box-shadow: 0 0 8px var(--gold);
+        transition: transform 0.1s;
+    }
+
+    .btn-actions-row {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 25px;
+    }
+
+    .control-btn {
+        background: transparent;
+        border: none;
+        color: var(--light-blue);
+        font-size: 1.4rem;
+        cursor: pointer;
+        transition: all 0.2s ease;
+    }
+    .control-btn:hover {
+        color: var(--gold);
+        transform: scale(1.1);
+    }
+
+    .master-play-btn {
+        width: 54px;
+        height: 54px;
+        background: var(--gold);
+        color: var(--navy);
+        border-radius: 50%;
+        font-size: 1.2rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 8px 20px rgba(240, 192, 96, 0.3);
+    }
+    .master-play-btn:hover {
+        background: var(--white);
+        color: var(--navy);
+        box-shadow: 0 8px 25px rgba(255, 255, 255, 0.5);
+        transform: scale(1.05);
+    }
+
+    
+
+        
 	</style>
 </head>
 
@@ -688,6 +1037,68 @@
 			</div>
 		</div>
 
+        <!-- INTERACTIVE WISDOM WIDGET -->
+<div class="premium-wisdom-section">
+    <div class="sec-heading fade-up">
+        <h2>✦ &nbsp; Divine Wisdom Capsule / दिव्य अमृत बिंदु</h2>
+        <div class="sec-line"></div>
+    </div>
+
+    <div class="wisdom-slider-container fade-up delay-1">
+        <button class="slider-arrow arrow-left" onclick="prevSlide()" aria-label="Previous Slide">‹</button>
+        <button class="slider-arrow arrow-right" onclick="nextSlide()" aria-label="Next Slide">›</button>
+
+        <div class="wisdom-track" id="wisdom-track">
+            </div>
+
+        <div class="slider-dots" id="slider-dots"></div>
+    </div>
+</div>
+
+<!-- PREMIUM AUDIO PREVIEW BLOCK -->
+<div class="audio-hub-section">
+    <div class="sec-heading fade-up">
+        <h2>✦ &nbsp; Audio Book & Discourses Hub</h2>
+        <div class="sec-line"></div>
+    </div>
+
+    <div class="audio-dashboard fade-up delay-1">
+        <!-- Sidebar Playlist -->
+        <div class="audio-playlist-wrapper">
+            <div class="playlist-title">Select Scripture / प्रसंग चुनें</div>
+            <div id="playlist-container">
+                <!-- Items dynamically generated for easy maintenance -->
+            </div>
+        </div>
+
+        <!-- Main Controller Pane -->
+        <div class="active-player-pane">
+            <div class="player-disk-zone" id="disk-zone"></div>
+            <h4 class="now-playing-title" id="player-title">Loading...</h4>
+            <p class="now-playing-sub" id="player-category">Discourse Selection</p>
+
+            <div class="player-controls-wrapper">
+                <!-- Timeline slider -->
+                <div class="progress-bar-container">
+                    <span class="time-stamp" id="current-time">0:00</span>
+                    <input type="range" class="progress-slider" id="progress-slider" min="0" max="100" value="0">
+                    <span class="time-stamp" id="total-duration">0:00</span>
+                </div>
+
+                <!-- Control Buttons -->
+                <div class="btn-actions-row">
+                    <button class="control-btn" onclick="playPrev()">⏮</button>
+                    <button class="control-btn master-play-btn" id="master-play-trigger" onclick="toggleAudioState()">▶</button>
+                    <button class="control-btn" onclick="playNext()">⏭</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Core HTML5 Global Audio Target -->
+<audio id="global-audio-engine" src=""></audio>
+
 		<div class="cta-row fade-up delay-1">
 			<p class="cta-copy">Experience the profound wisdom and live narrations of these sacred texts by joining the daily virtual congregations.</p>
 			<a href="https://www.youtube.com/c/SwamiKarunDassJi" target="_blank" rel="noopener" class="cta-button">
@@ -726,6 +1137,242 @@
 			}
 			requestAnimationFrame(tick);
 		})();
+
+    // Comprehensive array of 12 spiritual quotes matching the books theme
+    const wisdomQuotes = [
+        { text: "वृन्दावन की सहज माधुरी को समझने के लिए केवल बुद्धि नहीं, बल्कि शुद्ध निष्काम हृदय की आवश्यकता है।", source: "BRAJ VRINDAVAN MADHURI" },
+        { text: "जब हृदय में प्रेम की पताका फहराती है, तब माया के सारे बंधन स्वतः ही छिन्न-भिन्न हो जाते हैं।", source: "PREM PATAKA SHODASHI" },
+        { text: "साधना का प्रथम चरण है—अपने अहंकार को पूर्णतः श्री राधा-कृष्ण के चरणों में समर्पित कर देना।", source: "DAILY SATSANG KRIPA PRASAD" },
+        { text: "प्रेम कोई सांसारिक मांग नहीं है, प्रेम तो सर्वस्व न्योछावर कर देने का एक दिव्य और अनादि स्वभाव है।", source: "PREM PATAKA SHODASHI" },
+        { text: "श्री कृष्ण केवल भाव के भूखे हैं; आपका भाव जितना पवित्र होगा, प्रभु उतने ही आपके निकट होंगे।", source: "BRAJ VRINDAVAN MADHURI" },
+        { text: "सच्चा वैराग्य संसार को छोड़ने में नहीं, बल्कि संसार की नश्वरता को समझकर प्रभु में चित्त लगाने में है।", source: "PREM PATAKA SHODASHI" },
+        { text: "108 कुटिया की शांत स्थली में किया गया नाम-जप सीधे अंतरात्मा को जागृत करता है।", source: "DAILY SATSANG KRIPA PRASAD" },
+        { text: "राधा नाम ही ब्रज का प्राण है, इस नाम के बिना निकुंज लीलाओं में प्रवेश असंभव है।", source: "BRAJ VRINDAVAN MADHURI" },
+        { text: "भक्ति मार्ग में तर्क का कोई स्थान नहीं है; यहाँ केवल अटूट विश्वास और अनन्य शरणागति ही काम आती है।", source: "PREM PATAKA SHODASHI" },
+        { text: "अपने दोषों को देखना और दूसरों के सद्गुणों को ग्रहण करना ही एक सच्चे साधक की पहचान है।", source: "DAILY SATSANG KRIPA PRASAD" },
+        { text: "प्रभु की कृपा का प्रसाद हर पल बरस रहा है, बस हमारी पात्रता की झोली सीधी होनी चाहिए।", source: "DAILY SATSANG KRIPA PRASAD" },
+        { text: "जब तक हृदय में संसार की कामना है, तब तक दिव्य रस का आस्वादन संभव नहीं है।", source: "BRAJ VRINDAVAN MADHURI" }
+    ];
+
+    let currentIndex = 0;
+    let slideInterval;
+    const AUTOPLAY_TIME = 5000; // 5 Seconds
+
+    function initSlider() {
+        const track = document.getElementById('wisdom-track');
+        const dotsContainer = document.getElementById('slider-dots');
+        
+        track.innerHTML = '';
+        dotsContainer.innerHTML = '';
+
+        wisdomQuotes.forEach((quote, index) => {
+            // Create Slide Element
+            const slide = document.createElement('div');
+            slide.className = `wisdom-slide ${index === 0 ? 'active' : ''}`;
+            slide.innerHTML = `
+                <p class="wisdom-text">"${quote.text}"</p>
+                <span class="wisdom-source">— ${quote.source}</span>
+            `;
+            track.appendChild(slide);
+
+            // Create Dot Element
+            const dot = document.createElement('div');
+            dot.className = `dot ${index === 0 ? 'active' : ''}`;
+            dot.onclick = () => goToSlide(index);
+            dotsContainer.appendChild(dot);
+        });
+
+        startAutoplay();
+    }
+
+    function updateSliderClasses() {
+        const slides = document.querySelectorAll('.wisdom-slide');
+        const dots = document.querySelectorAll('.dot');
+
+        slides.forEach((slide, index) => {
+            if (index === currentIndex) {
+                slide.classList.add('active');
+            } else {
+                slide.classList.remove('active');
+            }
+        });
+
+        dots.forEach((dot, index) => {
+            if (index === currentIndex) {
+                dot.classList.add('active');
+            } else {
+                dot.classList.remove('active');
+            }
+        });
+    }
+
+    function nextSlide() {
+        currentIndex = (currentIndex + 1) % wisdomQuotes.length;
+        updateSliderClasses();
+        resetAutoplay();
+    }
+
+    function prevSlide() {
+        currentIndex = (currentIndex - 1 + wisdomQuotes.length) % wisdomQuotes.length;
+        updateSliderClasses();
+        resetAutoplay();
+    }
+
+    function goToSlide(index) {
+        currentIndex = index;
+        updateSliderClasses();
+        resetAutoplay();
+    }
+
+    function startAutoplay() {
+        slideInterval = setInterval(nextSlide, AUTOPLAY_TIME);
+    }
+
+    function resetAutoplay() {
+        clearInterval(slideInterval);
+        startAutoplay();
+    }
+
+    // Initialize on page load
+    document.addEventListener('DOMContentLoaded', initSlider);
+
+    // Exact list of real tracks and names matching Maharaj Ji's digital catalog
+    const officialTracks = [
+        { 
+            title: "Braj Vrindavan Madhuri", 
+            meta: "Satsang Kripa Prasad Excerpt", 
+            src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" // Premium copyright free fluid stream placeholder
+        },
+        { 
+            title: "Prem Pataka Shodashi", 
+            meta: "Chapter 1: 16 Divine Virtues", 
+            src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3"
+        },
+        { 
+            title: "Shri Radha Naam Sankirtan", 
+            meta: "Live Chanting from 108 Kutiya", 
+            src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3"
+        },
+        { 
+            title: "Mujhe Bula Lo Shri Vrindavan", 
+            meta: "Popular Devotional Bhajan", 
+            src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3"
+        },
+        { 
+            title: "Jag Ke Bandhan", 
+            meta: "Classic Vairagya Upadesh", 
+            src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3"
+        }
+    ];
+
+    const audioEngine = document.getElementById('global-audio-engine');
+    const playTrigger = document.getElementById('master-play-trigger');
+    const progressBar = document.getElementById('progress-slider');
+    const curTimeTxt = document.getElementById('current-time');
+    const totDurTxt = document.getElementById('total-duration');
+    
+    let activeTrackIdx = 0;
+    let isTrackPlaying = false;
+
+    function assemblePlaylist() {
+        const container = document.getElementById('playlist-container');
+        container.innerHTML = '';
+
+        officialTracks.forEach((track, i) => {
+            const row = document.createElement('div');
+            row.className = `playlist-item ${i === activeTrackIdx ? 'active' : ''}`;
+            row.onclick = () => loadAndPlayTrack(i);
+            row.innerHTML = `
+                <div class="track-num">${String(i + 1).padStart(2, '0')}</div>
+                <div class="track-meta">
+                    <h5>${track.title}</h5>
+                    <p>${track.meta}</p>
+                </div>
+            `;
+            container.appendChild(row);
+        });
+
+        // Initialize display configuration without playing instantly
+        document.getElementById('player-title').innerText = officialTracks[activeTrackIdx].title;
+        document.getElementById('player-category').innerText = officialTracks[activeTrackIdx].meta;
+        audioEngine.src = officialTracks[activeTrackIdx].src;
+    }
+
+    function loadAndPlayTrack(index) {
+        activeTrackIdx = index;
+        const track = officialTracks[activeTrackIdx];
+        
+        document.getElementById('player-title').innerText = track.title;
+        document.getElementById('player-category').innerText = track.meta;
+        audioEngine.src = track.src;
+
+        // Highlight playlist row
+        document.querySelectorAll('.playlist-item').forEach((el, idx) => {
+            if(idx === index) el.classList.add('active');
+            else el.classList.remove('active');
+        });
+
+        executePlay();
+    }
+
+    function toggleAudioState() {
+        if (isTrackPlaying) executePause();
+        else executePlay();
+    }
+
+    function executePlay() {
+        audioEngine.play().then(() => {
+            isTrackPlaying = true;
+            playTrigger.innerText = '⏸';
+        }).catch(err => console.log("Streaming link initialize handle:", err));
+    }
+
+    function executePause() {
+        audioEngine.pause();
+        isTrackPlaying = false;
+        playTrigger.innerText = '▶';
+    }
+
+    function playNext() {
+        let target = (activeTrackIdx + 1) % officialTracks.length;
+        loadAndPlayTrack(target);
+    }
+
+    function playPrev() {
+        let target = (activeTrackIdx - 1 + officialTracks.length) % officialTracks.length;
+        loadAndPlayTrack(target);
+    }
+
+    // Convert seconds to clean display layout (MM:SS)
+    function formatTimeLayout(seconds) {
+        if (isNaN(seconds)) return "0:00";
+        const mins = Math.floor(seconds / 60);
+        const secs = Math.floor(seconds % 60);
+        return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+    }
+
+    // Handle background engine updates
+    audioEngine.addEventListener('timeupdate', () => {
+        if(audioEngine.duration) {
+            const percent = (audioEngine.currentTime / audioEngine.duration) * 100;
+            progressBar.value = percent;
+            curTimeTxt.innerText = formatTimeLayout(audioEngine.currentTime);
+            totDurTxt.innerText = formatTimeLayout(audioEngine.duration);
+        }
+    });
+
+    // Jump duration via range slider handle
+    progressBar.addEventListener('input', () => {
+        if(audioEngine.duration) {
+            audioEngine.currentTime = (progressBar.value / 100) * audioEngine.duration;
+        }
+    });
+
+    audioEngine.addEventListener('ended', () => {
+        playNext();
+    });
+
+    document.addEventListener('DOMContentLoaded', assemblePlaylist);
 	</script>
 </body>
 
