@@ -1,11 +1,11 @@
 import yt_dlp
-import sys
 
 def generate_js_array(playlist_url):
     # yt-dlp options to only extract metadata (fast), not download the videos
     ydl_opts = {
         'extract_flat': True,
-        'quiet': True
+        'quiet': True,
+        'skip_download': True
     }
     
     print("Fetching playlist data from YouTube. Please wait...")
@@ -15,7 +15,7 @@ def generate_js_array(playlist_url):
             # Extract playlist info
             info = ydl.extract_info(playlist_url, download=False)
             
-            if 'entries' not in info:
+            if not info or 'entries' not in info:
                 print("Error: Could not find playlist entries. Make sure the link contains 'list=' parameter.")
                 return
             
@@ -24,14 +24,20 @@ def generate_js_array(playlist_url):
             
             # Start formatting the JavaScript array
             output_lines = ["const officialTracks = ["]
+            
             for index, entry in enumerate(entries):
-                if entry is None:
+                if not entry:
                     continue
-                    
-                # Clean up title for JavaScript (escape double quotes)
-                title = entry.get('title', f'Video {index+1}').replace('"', '\\"')
-                yt_id = entry.get('id', '')
-                meta = f"Day {index + 1}" # Or whatever default meta you want
+                
+                # Safely handle missing titles
+                raw_title = entry.get('title')
+                if raw_title is None:
+                    title = f'Video {index+1}'
+                else:
+                    title = raw_title.replace('"', '\\"')
+                
+                yt_id = entry.get('id', '') or ''
+                meta = f"Day {index + 1}"  # Default meta
                 
                 # Format the exact line
                 line = f'    {{ title: "{title}", meta: "{meta}", ytId: "{yt_id}" }}'
@@ -49,7 +55,7 @@ def generate_js_array(playlist_url):
             with open(file_name, "w", encoding="utf-8") as f:
                 f.write("\n".join(output_lines))
                 
-            print(f"\nSuccess! Successfully extracted {total_videos} videos.")
+            print(f"\nSuccess! Extracted {total_videos} videos (some may be unavailable).")
             print(f"The formatted code has been saved to '{file_name}' in the same folder.")
             
     except Exception as e:
