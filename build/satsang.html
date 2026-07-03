@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>108 Kutiya 2.0 - Audio Hub</title>
+    <title>108 Kutiya 2.0 - Audio & Jaap Hub</title>
     
-    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -26,7 +25,6 @@
             --light-blue: #A8D4F5;
             --gold: #F0C060;
             --cream: #EEF4FF;
-            --card-bg: rgba(20, 50, 110, 0.45);
             --border: rgba(100, 170, 255, 0.22);
             --white: #ffffff;
         }
@@ -38,6 +36,7 @@
             min-height: 100vh;
             overflow-x: hidden;
             line-height: 1.6;
+            -webkit-tap-highlight-color: transparent;
         }
 
         /* --- Backgrounds --- */
@@ -60,10 +59,10 @@
         }
 
         /* --- Layout Wrappers --- */
-        .audio-hub-section {
+        .hub-section {
             position: relative;
             z-index: 10;
-            margin: 4rem auto;
+            margin: 3rem auto;
             max-width: 1100px;
             padding: 0 1.2rem;
         }
@@ -72,7 +71,7 @@
             display: flex;
             align-items: center;
             gap: 1.5rem;
-            margin-bottom: 2.5rem;
+            margin-bottom: 2rem;
         }
 
         .sec-heading h2 {
@@ -81,6 +80,7 @@
             color: var(--gold);
             letter-spacing: 2px;
             text-transform: uppercase;
+            white-space: nowrap;
         }
 
         .sec-line {
@@ -89,7 +89,7 @@
             background: linear-gradient(90deg, rgba(240, 192, 96, 0.4), transparent);
         }
 
-        /* --- Main Dashboard Container --- */
+        /* --- Main Dashboard Container (Audio) --- */
         .audio-dashboard {
             background: linear-gradient(145deg, rgba(13, 33, 81, 0.7) 0%, rgba(6, 15, 34, 0.9) 100%);
             border: 1px solid var(--border);
@@ -101,13 +101,13 @@
             box-shadow: 0 30px 60px rgba(0, 0, 0, 0.7);
             backdrop-filter: blur(15px);
             width: 100%;
-            height: auto; /* Allows container to stretch with content */
+            height: auto;
         }
 
         @media (max-width: 850px) {
             .audio-dashboard {
-                display: flex; /* Switches to column on mobile */
-                flex-direction: column-reverse; /* Puts Player on top, Playlist on bottom on mobile (Optional, but usually better UX) */
+                display: flex;
+                flex-direction: column-reverse;
                 padding: 1.5rem;
                 gap: 2rem;
             }
@@ -119,14 +119,14 @@
             padding-right: 1.5rem;
             display: flex;
             flex-direction: column;
-            min-width: 0; /* Prevents flex blowout */
+            min-width: 0;
         }
 
         @media (max-width: 850px) {
             .audio-playlist-wrapper {
                 border-right: none;
                 padding-right: 0;
-                border-top: 1px solid rgba(100, 170, 255, 0.15); /* Separator for mobile */
+                border-top: 1px solid rgba(100, 170, 255, 0.15);
                 padding-top: 1.5rem;
             }
         }
@@ -140,7 +140,6 @@
             text-transform: uppercase;
         }
 
-        /* Horizontal Scrollable Tabs */
         .playlist-tabs-slider {
             display: flex;
             flex-wrap: nowrap;
@@ -151,12 +150,9 @@
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             width: 100%;
             -webkit-overflow-scrolling: touch;
-            scrollbar-width: none; /* Firefox */
+            scrollbar-width: none;
         }
-
-        .playlist-tabs-slider::-webkit-scrollbar {
-            display: none; /* Chrome/Safari */
-        }
+        .playlist-tabs-slider::-webkit-scrollbar { display: none; }
 
         .pl-tab-btn {
             background: rgba(255, 255, 255, 0.05);
@@ -166,11 +162,10 @@
             border-radius: 20px;
             font-size: 0.82rem;
             white-space: nowrap;
-            flex-shrink: 0; /* Prevents buttons from squishing */
+            flex-shrink: 0;
             cursor: pointer;
             transition: all 0.3s ease;
         }
-
         .pl-tab-btn.active, .pl-tab-btn:hover {
             background: var(--light-blue);
             color: #000000;
@@ -178,24 +173,16 @@
             border-color: var(--light-blue);
         }
 
-        /* Scrollable Track List */
         #playlist-container {
             overflow-y: auto;
             flex: 1;
             padding-right: 5px;
             max-height: 400px;
         }
-
         @media (max-width: 850px) {
-            #playlist-container {
-                max-height: 280px; /* Optimized height for mobile */
-            }
+            #playlist-container { max-height: 280px; }
         }
-
-        #playlist-container::-webkit-scrollbar {
-            width: 5px;
-        }
-        
+        #playlist-container::-webkit-scrollbar { width: 5px; }
         #playlist-container::-webkit-scrollbar-thumb {
             background: var(--sky-blue);
             border-radius: 10px;
@@ -213,17 +200,14 @@
             background: rgba(255, 255, 255, 0.02);
             border: 1px solid transparent;
         }
-
         .playlist-item:hover {
             background: rgba(74, 159, 224, 0.1);
             border-color: rgba(74, 159, 224, 0.2);
         }
-
         .playlist-item.active {
             background: rgba(240, 192, 96, 0.12);
             border-color: rgba(240, 192, 96, 0.4);
         }
-
         .track-thumb-mini {
             width: 55px;
             height: 40px;
@@ -232,11 +216,7 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
             flex-shrink: 0;
         }
-
-        .track-meta {
-            min-width: 0; /* Prevents long titles from pushing out */
-        }
-
+        .track-meta { min-width: 0; }
         .track-meta h5 {
             font-size: 0.85rem;
             color: var(--white);
@@ -244,9 +224,8 @@
             font-weight: 500;
             white-space: nowrap;
             overflow: hidden;
-            text-overflow: ellipsis; /* Adds '...' to long list titles */
+            text-overflow: ellipsis;
         }
-
         .track-meta p {
             font-size: 0.75rem;
             color: var(--light-blue);
@@ -261,7 +240,7 @@
             align-items: center;
             text-align: center;
             padding: 0;
-            min-width: 0; /* Crucial for long text wrapping */
+            min-width: 0;
             height: auto;
             flex: 1;
         }
@@ -278,17 +257,13 @@
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), 0 0 20px rgba(240, 192, 96, 0.2);
             background: #060F22;
         }
-
         #player-cover-art {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: transform 0.5s ease;
         }
-
-        .player-thumbnail-zone:hover #player-cover-art {
-            transform: scale(1.03);
-        }
+        .player-thumbnail-zone:hover #player-cover-art { transform: scale(1.03); }
 
         .live-indicator {
             position: absolute;
@@ -305,7 +280,6 @@
             backdrop-filter: blur(4px);
         }
 
-        /* Text Wrapping Fixes */
         .now-playing-title {
             font-family: 'Cinzel Decorative', cursive;
             font-size: clamp(1.1rem, 4vw, 1.4rem);
@@ -317,7 +291,6 @@
             width: 100%;
             display: block;
         }
-
         .now-playing-sub {
             font-size: clamp(0.8rem, 3vw, 0.9rem);
             color: var(--light-blue);
@@ -330,26 +303,20 @@
             display: block;
         }
 
-        /* Audio Controls */
-        .player-controls-wrapper {
-            width: 100%;
-            max-width: 420px;
-        }
-
+        /* --- Audio Controls --- */
+        .player-controls-wrapper { width: 100%; max-width: 420px; }
         .progress-bar-container {
             display: flex;
             align-items: center;
             gap: 12px;
             margin-bottom: 1.5rem;
         }
-
         .time-stamp {
             font-size: 0.75rem;
             color: var(--light-blue);
             font-family: monospace;
             width: 45px;
         }
-
         .progress-slider {
             flex: 1;
             -webkit-appearance: none;
@@ -360,7 +327,6 @@
             outline: none;
             cursor: pointer;
         }
-
         .progress-slider::-webkit-slider-thumb {
             -webkit-appearance: none;
             appearance: none;
@@ -369,7 +335,6 @@
             border-radius: 50%;
             background: var(--gold);
             box-shadow: 0 0 8px var(--gold);
-            cursor: pointer;
         }
 
         .btn-actions-row {
@@ -378,7 +343,6 @@
             justify-content: center;
             gap: 25px;
         }
-
         .control-btn {
             background: transparent;
             border: none;
@@ -387,12 +351,10 @@
             cursor: pointer;
             transition: transform 0.2s ease, color 0.2s ease;
         }
-
         .control-btn:hover {
             color: var(--gold);
             transform: scale(1.15);
         }
-
         .master-play-btn {
             width: 58px;
             height: 58px;
@@ -406,7 +368,6 @@
             box-shadow: 0 8px 20px rgba(240, 192, 96, 0.3);
             font-weight: bold;
         }
-
         .master-play-btn:hover {
             background: var(--white);
             box-shadow: 0 8px 25px rgba(255, 255, 255, 0.5);
@@ -423,31 +384,123 @@
             overflow: hidden;
             opacity: 0;
         }
+
+        /* ========================================= */
+        /* --- NAAM JAAP COUNTER SECTION (NEW) --- */
+        /* ========================================= */
+        .jaap-dashboard {
+            background: linear-gradient(145deg, rgba(13, 33, 81, 0.7) 0%, rgba(6, 15, 34, 0.9) 100%);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 3rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(15px);
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .sphere-counter {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 35% 35%, rgba(74, 159, 224, 0.4), var(--navy) 70%);
+            border: 2px solid rgba(240, 192, 96, 0.5);
+            box-shadow: 
+                0 15px 35px rgba(0,0,0,0.6), 
+                inset 0 -15px 25px rgba(0,0,0,0.7), 
+                inset 0 15px 25px rgba(255,255,255,0.15),
+                0 0 25px rgba(74, 159, 224, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 2.5rem;
+            cursor: pointer;
+            user-select: none; /* Prevents text selection on rapid tap */
+            transition: all 0.1s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Tap effect for Sphere */
+        .sphere-counter:active {
+            transform: scale(0.92);
+            box-shadow: 
+                0 5px 15px rgba(0,0,0,0.6), 
+                inset 0 -5px 15px rgba(0,0,0,0.7), 
+                inset 0 5px 15px rgba(255,255,255,0.1),
+                0 0 10px rgba(74, 159, 224, 0.1);
+            border-color: var(--gold);
+        }
+
+        #tally-count {
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--gold);
+            font-family: 'Inter', sans-serif;
+            text-shadow: 0 4px 15px rgba(240, 192, 96, 0.4);
+            pointer-events: none; /* Allows tap to pass through text to the sphere */
+        }
+
+        .jaap-controls {
+            display: flex;
+            gap: 1.5rem;
+            width: 100%;
+            justify-content: center;
+        }
+
+        .jaap-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: var(--cream);
+            padding: 10px 24px;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            min-width: 100px;
+        }
+
+        .jaap-btn:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--light-blue);
+            transform: translateY(-2px);
+        }
+
+        .jaap-btn:active {
+            transform: translateY(1px);
+        }
+
+        .jaap-btn.reset-btn {
+            color: #ff6b6b;
+            border-color: rgba(255, 107, 107, 0.3);
+        }
+        .jaap-btn.reset-btn:hover {
+            background: rgba(255, 107, 107, 0.1);
+            border-color: #ff6b6b;
+        }
     </style>
 </head>
 <body>
 
-    <!-- Dynamic Backgrounds -->
     <div class="bg-fixed"></div>
     <canvas id="starfield"></canvas>
 
-    <!-- Main Content -->
-    <div class="audio-hub-section">
+    <div class="hub-section">
         <div class="sec-heading">
-            <h2>Audio Book & Discourses Hub</h2>
+            <h2>Audio Book Hub</h2>
             <div class="sec-line"></div>
         </div>
 
         <div class="audio-dashboard">
-            
-            <!-- LEFT PANEL: Dynamic Playlists -->
             <div class="audio-playlist-wrapper">
                 <div class="playlist-title">Select Playlist / प्रसंग चुनें</div>
                 <div id="playlist-tabs-container" class="playlist-tabs-slider"></div>
                 <div id="playlist-container"></div>
             </div>
 
-            <!-- RIGHT PANEL: Player -->
             <div class="active-player-pane">
                 <div class="player-thumbnail-zone">
                     <img id="player-cover-art" src="" alt="Satsang Thumbnail">
@@ -471,16 +524,31 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
 
+    <div class="hub-section">
+        <div class="sec-heading">
+            <h2>Naam Jaap Counter</h2>
+            <div class="sec-line"></div>
+        </div>
+
+        <div class="jaap-dashboard">
+            <div class="sphere-counter" onclick="incrementJaap()">
+                <span id="tally-count">0</span>
+            </div>
+
+            <div class="jaap-controls">
+                <button class="jaap-btn" onclick="decrementJaap()">- 1</button>
+                <button class="jaap-btn reset-btn" onclick="resetJaap()">Reset</button>
+            </div>
         </div>
     </div>
 
     <div id="yt-player-container"></div>
 
-    <!-- Data Source -->
     <script src="./playlists.js"></script>
 
-    <!-- Starfield Animation Script -->
     <script>
         (function () {
             const c = document.getElementById('starfield');
@@ -520,9 +588,42 @@
             }
             requestAnimationFrame(tick);
         })();
+
+        // ==========================================
+        // JAAP COUNTER JAVASCRIPT LOGIC
+        // ==========================================
+        let jaapCount = 0;
+        const countDisplay = document.getElementById('tally-count');
+
+        function incrementJaap() {
+            jaapCount++;
+            updateJaapUI();
+            
+            // Optional: Haptic Feedback for mobile phones (if supported by browser)
+            if (navigator.vibrate) {
+                navigator.vibrate(50); // Small 50ms vibration
+            }
+        }
+
+        function decrementJaap() {
+            if (jaapCount > 0) {
+                jaapCount--;
+                updateJaapUI();
+            }
+        }
+
+        function resetJaap() {
+            if(confirm("Are you sure you want to reset your Jaap count to zero?")) {
+                jaapCount = 0;
+                updateJaapUI();
+            }
+        }
+
+        function updateJaapUI() {
+            countDisplay.innerText = jaapCount;
+        }
     </script>
 
-    <!-- Audio Player Logic Script -->
     <script>
         const playTrigger = document.getElementById('master-play-trigger');
         const progressBar = document.getElementById('progress-slider');
@@ -538,7 +639,6 @@
         let ytPlayer;
         let timeUpdater;
 
-        // Auto Load YouTube API
         const tag = document.createElement('script');
         tag.src = "https://www.youtube.com/iframe_api";
         const firstScriptTag = document.getElementsByTagName('script')[0];
@@ -570,15 +670,15 @@
         }
 
         function onPlayerStateChange(event) {
-            if (event.data == 1) { // Playing
+            if (event.data == 1) { 
                 isTrackPlaying = true;
                 playTrigger.innerText = '⏸';
                 startTimeUpdater();
-            } else if (event.data == 2) { // Paused
+            } else if (event.data == 2) { 
                 isTrackPlaying = false;
                 playTrigger.innerText = '▶';
                 stopTimeUpdater();
-            } else if (event.data == 0) { // Ended
+            } else if (event.data == 0) { 
                 playNext();
             }
         }
