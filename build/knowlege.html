@@ -676,8 +676,6 @@
         .wisdom-text { font-size: 1.3rem; }
     }
 
-    <!-- ADVANCED AUDIO BOOK & DISCOURSE MEDIA PLAYER -->
-<style>
     .audio-hub-section {
         margin: 6rem auto;
         max-width: 1000px;
@@ -694,6 +692,8 @@
         gap: 2.5rem;
         box-shadow: 0 30px 60px rgba(0, 0, 0, 0.7);
         backdrop-filter: blur(15px);
+        max-width: 100%; /* नया: इसे स्क्रीन से बड़ा नहीं होने देगा */
+        box-sizing: border-box; /* नया: पैडिंग को अंदर ही रखेगा */
     }
 
     @media (max-width: 800px) {
@@ -789,6 +789,7 @@
         justify-content: center;
         text-align: center;
         padding: 1rem;
+        min-width: 0; /* नया और सबसे ज़रूरी: यह टेक्स्ट को बॉक्स तोड़ने से रोकेगा */
     }
 
     .player-disk-zone {
@@ -818,16 +819,24 @@
 
     .now-playing-title {
         font-family: 'Cinzel Decorative', cursive;
-        font-size: 1.3rem;
+        /* नया: बड़ी स्क्रीन पर 1.3rem, छोटी स्क्रीन पर अपने आप छोटा हो जाएगा */
+        font-size: clamp(1rem, 4vw, 1.3rem); 
         color: var(--gold);
         margin-bottom: 0.4rem;
+        word-wrap: break-word; /* नया: लंबे टेक्स्ट को अगली लाइन में तोड़ देगा */
+        overflow-wrap: break-word; /* नया: बॉक्स के बाहर नहीं जाने देगा */
+        line-height: 1.4;
     }
 
     .now-playing-sub {
-        font-size: 0.85rem;
+        /* नया: रिस्पॉन्सिव फॉन्ट साइज़ */
+        font-size: clamp(0.75rem, 3vw, 0.85rem);
         color: var(--light-blue);
         margin-bottom: 2rem;
         opacity: 0.8;
+        word-wrap: break-word; /* नया: टेक्स्ट अगली लाइन में जाएगा */
+        overflow-wrap: break-word; 
+        line-height: 1.4;
     }
 
     /* Custom Standard Audio Controls */
@@ -911,6 +920,35 @@
         transform: scale(1.05);
     }
 
+	.playlist-tabs-slider {
+        display: flex;
+        overflow-x: auto;
+        gap: 10px;
+        padding-bottom: 12px;
+        margin-bottom: 15px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        scrollbar-width: none; /* Firefox के लिए स्क्रॉलबार छुपाना */
+    }
+    .playlist-tabs-slider::-webkit-scrollbar {
+        display: none; /* Chrome/Safari के लिए स्क्रॉलबार छुपाना */
+    }
+    .pl-tab-btn {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: #ffffff;
+        padding: 8px 18px;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        white-space: nowrap; /* टेक्स्ट को टूटने नहीं देगा */
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+    .pl-tab-btn.active {
+        background: #A8D4F5; /* आपका थीम कलर */
+        color: #000000;
+        font-weight: bold;
+        border-color: #A8D4F5;
+    }
     
 
         
@@ -1092,6 +1130,19 @@
                     <button class="control-btn" onclick="playNext()">⏭</button>
                 </div>
             </div>
+
+			<div class="audio-playlist-wrapper">
+    <div class="playlist-title">Select Playlist / प्रसंग चुनें</div>
+    
+    <!-- NEW: Horizontal Tabs Slider -->
+    <div id="playlist-tabs-container" class="playlist-tabs-slider">
+        <!-- Tabs will be injected here via JS -->
+    </div>
+
+    <div id="playlist-container">
+        <!-- Tracks dynamically generated here -->
+    </div>
+</div>
         </div>
     </div>
 </div>
@@ -1241,12 +1292,18 @@
 
 
 
+    // ==========================================
+    // 2. MULTI-PLAYLIST YOUTUBE AUDIO LOGIC
+    // ==========================================
     const playTrigger = document.getElementById('master-play-trigger');
     const progressBar = document.getElementById('progress-slider');
     const curTimeTxt = document.getElementById('current-time');
     const totDurTxt = document.getElementById('total-duration');
     
-    let activeTrackIdx = 0;
+    let currentViewPlaylistIdx = 0; // यूज़र अभी कौन सा टैब देख रहा है
+    let playingPlaylistIdx = 0;     // बैकग्राउंड में कौन सी प्लेलिस्ट बज रही है
+    let activeTrackIdx = 0;         // बैकग्राउंड में कौन सा ट्रैक बज रहा है
+    
     let isTrackPlaying = false;
     let ytPlayer;
     let timeUpdater;
@@ -1258,10 +1315,13 @@
     firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
     function onYouTubeIframeAPIReady() {
+        // By default, load the first track of the first playlist
+        let initialTrack = masterPlaylists[0].tracks[0];
+        
         ytPlayer = new YT.Player('yt-player-container', {
             height: '10',
             width: '10',
-            videoId: officialTracks[activeTrackIdx].ytId,
+            videoId: initialTrack.ytId,
             playerVars: { 'playsinline': 1, 'controls': 0, 'disablekb': 1 },
             events: {
                 'onReady': onPlayerReady,
@@ -1271,6 +1331,7 @@
     }
 
     function onPlayerReady(event) {
+        initPlaylistTabs();
         assemblePlaylist();
         updatePlayerUI();
     }
@@ -1289,16 +1350,50 @@
         }
     }
 
+    // --- TABS LOGIC ---
+    function initPlaylistTabs() {
+        const tabsContainer = document.getElementById('playlist-tabs-container');
+        if(!tabsContainer) return;
+        tabsContainer.innerHTML = '';
+
+        masterPlaylists.forEach((playlist, index) => {
+            const btn = document.createElement('button');
+            btn.className = `pl-tab-btn ${index === currentViewPlaylistIdx ? 'active' : ''}`;
+            btn.innerText = playlist.name;
+            btn.onclick = () => switchPlaylistTab(index);
+            tabsContainer.appendChild(btn);
+        });
+    }
+
+    function switchPlaylistTab(index) {
+        currentViewPlaylistIdx = index;
+        
+        // Update Tabs UI
+        document.querySelectorAll('.pl-tab-btn').forEach((btn, i) => {
+            if(i === index) btn.classList.add('active');
+            else btn.classList.remove('active');
+        });
+
+        // Re-render the tracks list below
+        assemblePlaylist();
+    }
+
+    // --- TRACKS LIST LOGIC ---
     function assemblePlaylist() {
         const container = document.getElementById('playlist-container');
         if(!container) return;
-
         container.innerHTML = '';
 
-        officialTracks.forEach((track, i) => {
+        const tracksToShow = masterPlaylists[currentViewPlaylistIdx].tracks;
+
+        tracksToShow.forEach((track, i) => {
+            // Check if this row is the exact one currently playing
+            const isPlayingHere = (currentViewPlaylistIdx === playingPlaylistIdx && i === activeTrackIdx);
+            
             const row = document.createElement('div');
-            row.className = `playlist-item ${i === activeTrackIdx ? 'active' : ''}`;
-            row.onclick = () => loadAndPlayTrack(i);
+            row.className = `playlist-item ${isPlayingHere ? 'active' : ''}`;
+            row.onclick = () => loadAndPlayTrack(i, currentViewPlaylistIdx);
+            
             row.innerHTML = `
                 <div class="track-num">${String(i + 1).padStart(2, '0')}</div>
                 <div class="track-meta">
@@ -1310,49 +1405,50 @@
         });
     }
 
-    function loadAndPlayTrack(index) {
-        activeTrackIdx = index;
-        const track = officialTracks[activeTrackIdx];
+    function loadAndPlayTrack(trackIndex, playlistIndex) {
+        playingPlaylistIdx = playlistIndex;
+        activeTrackIdx = trackIndex;
+        
+        const trackToPlay = masterPlaylists[playingPlaylistIdx].tracks[activeTrackIdx];
         
         updatePlayerUI();
-
-        document.querySelectorAll('.playlist-item').forEach((el, idx) => {
-            if(idx === index) el.classList.add('active');
-            else el.classList.remove('active');
-        });
+        assemblePlaylist(); // Re-render to highlight the correct track
 
         if(ytPlayer && ytPlayer.loadVideoById) {
-            ytPlayer.loadVideoById(track.ytId);
+            ytPlayer.loadVideoById(trackToPlay.ytId);
         }
     }
 
+    // --- PLAYER CONTROLS ---
     function updatePlayerUI() {
         const titleEl = document.getElementById('player-title');
         const catEl = document.getElementById('player-category');
-        if(titleEl) titleEl.innerText = officialTracks[activeTrackIdx].title;
-        if(catEl) catEl.innerText = officialTracks[activeTrackIdx].meta;
+        const currentTrack = masterPlaylists[playingPlaylistIdx].tracks[activeTrackIdx];
+        
+        if(titleEl) titleEl.innerText = currentTrack.title;
+        // Show Playlist Name + Track Meta in the subtitle
+        if(catEl) catEl.innerText = `${masterPlaylists[playingPlaylistIdx].name} • ${currentTrack.meta}`;
     }
 
     function toggleAudioState() {
         if (!ytPlayer || !ytPlayer.playVideo) return;
-        
-        if (isTrackPlaying) {
-            ytPlayer.pauseVideo();
-        } else {
-            ytPlayer.playVideo();
-        }
+        if (isTrackPlaying) ytPlayer.pauseVideo();
+        else ytPlayer.playVideo();
     }
 
     function playNext() {
-        let target = (activeTrackIdx + 1) % officialTracks.length;
-        loadAndPlayTrack(target);
+        const currentPlaylistTracks = masterPlaylists[playingPlaylistIdx].tracks;
+        let nextIdx = (activeTrackIdx + 1) % currentPlaylistTracks.length;
+        loadAndPlayTrack(nextIdx, playingPlaylistIdx);
     }
 
     function playPrev() {
-        let target = (activeTrackIdx - 1 + officialTracks.length) % officialTracks.length;
-        loadAndPlayTrack(target);
+        const currentPlaylistTracks = masterPlaylists[playingPlaylistIdx].tracks;
+        let prevIdx = (activeTrackIdx - 1 + currentPlaylistTracks.length) % currentPlaylistTracks.length;
+        loadAndPlayTrack(prevIdx, playingPlaylistIdx);
     }
 
+    // --- TIMERS & SLIDERS ---
     function startTimeUpdater() {
         stopTimeUpdater();
         timeUpdater = setInterval(() => {

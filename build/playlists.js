@@ -1,5 +1,9 @@
- const officialTracks = [
-    { title: "LIVE : Day 1 / Satsang Kripa Prasad / 23-04-2026 / Swami Karun Dass Ji / Charan Chhaya, Vrindavan", meta: "Day 1", ytId: "EUXIsbNHcuw" },
+// playlists.js
+const masterPlaylists = [
+    {
+        name: "Satsang Kripa Prasad",
+        tracks: [
+            { title: "LIVE : Day 1 / Satsang Kripa Prasad / 23-04-2026 / Swami Karun Dass Ji / Charan Chhaya, Vrindavan", meta: "Day 1", ytId: "EUXIsbNHcuw" },
     { title: "LIVE : Day 2 / Satsang Kripa Prasad / 24-04-2026 / Swami Karun Dass Ji / Shri Radha Naam Maalika", meta: "Day 2", ytId: "ZNVODm5A_dE" },
     { title: "LIVE : Day 3 / Satsang Kripa Prasad / 25-04-2026 / Swami Karun Dass Ji / Shri Radha Naam Maalika", meta: "Day 3", ytId: "ilsW_UYdJkY" },
     { title: "LIVE : Day 4 / Satsang Kripa Prasad / 26-04-2026 / Swami Karun Dass Ji / Shri Radha Naam Maalika", meta: "Day 4", ytId: "HVnlvly9zmg" },
@@ -50,8 +54,20 @@
     { title: "LIVE : Day 49 / Satsang Kripa Prasad / 11-06-2026 / Swami Karun Dass Ji / Shri Radha Naam Maalika", meta: "Day 49", ytId: "KeC05zeVWyE" },
     { title: "LIVE: Day 50 / Satsang Kripa Prasad / 06-12-2026 / Swami Karun Dass Ji / Shri Radha Naam Maalika", meta: "Day 50", ytId: "BIBlbG2S-Vw" },
     { title: "LIVE : Day 51 / Satsang Kripa Prasad / 14-06-2026 / Swami Karun Dass Ji / Shri Radha Naam Maalika", meta: "Day 51", ytId: "M2GmRFjTa4M" },
-
-	{ title: "श्रीराधा नाम संकीर्तन ll 23rd June 2024 ll Swami Karun Dass Ji Maharaj ll Charan Chhaya, Vrindavan", meta: "Day 1", ytId: "EtGRUwrEFnA" },
+        ]
+    },
+    {
+        name: "Prem Pataka Shodashi",
+        tracks: [
+            { title: "Prem Pataka - Part 1", meta: "Chapter 1", ytId: "jNQXAC9IVRw" },
+            { title: "Prem Pataka - Part 2", meta: "Chapter 2", ytId: "jNQXAC9IVRw" }
+            // ... दूसरी प्लेलिस्ट के वीडियो
+        ]
+    },
+    {
+        name: "Radha Naam Jap",
+        tracks: [
+            { title: "श्रीराधा नाम संकीर्तन ll 23rd June 2024 ll Swami Karun Dass Ji Maharaj ll Charan Chhaya, Vrindavan", meta: "Day 1", ytId: "EtGRUwrEFnA" },
     { title: "श्रीराधा नाम संकीर्तन ll 24th June 2024 ll Swami Karun Dass Ji Maharaj ll Charan Chhaya, Vrindavan", meta: "Day 2", ytId: "2PpIMoi7wDs" },
     { title: "श्रीराधा नाम संकीर्तन ll 25th June 2024 ll Swami Karun Dass Ji Maharaj ll Charan Chhaya, Vrindavan", meta: "Day 3", ytId: "qqjuvm4yRj4" },
     { title: "श्रीराधा नाम संकीर्तन ll 26th June 2024 ll Swami Karun Dass Ji Maharaj ll Charan Chhaya, Vrindavan", meta: "Day 4", ytId: "cf_BkJVMHEE" },
@@ -150,4 +166,6 @@
     { title: "श्री राधा नाम संकीर्तन ll 7th February 2025 ll Swami Karun Dass Ji Maharaj #nimbarktv #108_कुटिया", meta: "Day 97", ytId: "pWetVaMFH0k" },
     { title: "श्री राधा नाम संकीर्तन ll 8th February 2025 ll Swami Karun Dass Ji Maharaj #nimbarktv #108_कुटिया", meta: "Day 98", ytId: "lTXyfrJgAeA" },
     { title: "श्री राधा नाम संकीर्तन ll 9th February 2025 ll Swami Karun Dass Ji Maharaj #108_कुटिया #nimbarktv", meta: "Day 99", ytId: "5WW_BeuQFCk" }
+        ]
+    }
 ];
