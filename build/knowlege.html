@@ -1096,8 +1096,8 @@
     </div>
 </div>
 
-<!-- Core HTML5 Global Audio Target -->
-<audio id="global-audio-engine" src=""></audio>
+<!-- INVISIBLE YOUTUBE PLAYER CONTAINER (FIXED) -->
+<div id="yt-player-container" style="position: absolute; width: 0; height: 0; left: -9999px; overflow: hidden;"></div>
 
 		<div class="cta-row fade-up delay-1">
 			<p class="cta-copy">Experience the profound wisdom and live narrations of these sacred texts by joining the daily virtual congregations.</p>
@@ -1139,6 +1139,9 @@
 		})();
 
     // Comprehensive array of 12 spiritual quotes matching the books theme
+    // ==========================================
+    // 1. WISDOM SLIDER LOGIC
+    // ==========================================
     const wisdomQuotes = [
         { text: "वृन्दावन की सहज माधुरी को समझने के लिए केवल बुद्धि नहीं, बल्कि शुद्ध निष्काम हृदय की आवश्यकता है।", source: "BRAJ VRINDAVAN MADHURI" },
         { text: "जब हृदय में प्रेम की पताका फहराती है, तब माया के सारे बंधन स्वतः ही छिन्न-भिन्न हो जाते हैं।", source: "PREM PATAKA SHODASHI" },
@@ -1162,11 +1165,12 @@
         const track = document.getElementById('wisdom-track');
         const dotsContainer = document.getElementById('slider-dots');
         
+        if(!track || !dotsContainer) return; // Safety check
+
         track.innerHTML = '';
         dotsContainer.innerHTML = '';
 
         wisdomQuotes.forEach((quote, index) => {
-            // Create Slide Element
             const slide = document.createElement('div');
             slide.className = `wisdom-slide ${index === 0 ? 'active' : ''}`;
             slide.innerHTML = `
@@ -1175,7 +1179,6 @@
             `;
             track.appendChild(slide);
 
-            // Create Dot Element
             const dot = document.createElement('div');
             dot.className = `dot ${index === 0 ? 'active' : ''}`;
             dot.onclick = () => goToSlide(index);
@@ -1190,19 +1193,13 @@
         const dots = document.querySelectorAll('.dot');
 
         slides.forEach((slide, index) => {
-            if (index === currentIndex) {
-                slide.classList.add('active');
-            } else {
-                slide.classList.remove('active');
-            }
+            if (index === currentIndex) slide.classList.add('active');
+            else slide.classList.remove('active');
         });
 
         dots.forEach((dot, index) => {
-            if (index === currentIndex) {
-                dot.classList.add('active');
-            } else {
-                dot.classList.remove('active');
-            }
+            if (index === currentIndex) dot.classList.add('active');
+            else dot.classList.remove('active');
         });
     }
 
@@ -1233,39 +1230,68 @@
         startAutoplay();
     }
 
-    // Initialize on page load
     document.addEventListener('DOMContentLoaded', initSlider);
 
-    // Exact list of real tracks and names matching Maharaj Ji's digital catalog
-    const officialTracks = [
-        { 
-            title: "Braj Vrindavan Madhuri", 
-            meta: "Satsang Kripa Prasad Excerpt", 
-            src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" // Premium copyright free fluid stream placeholder
-        },
-        { 
-            title: "Prem Pataka Shodashi", 
-            meta: "Chapter 1: 16 Divine Virtues", 
-            src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3"
-        },
-        { 
-            title: "Shri Radha Naam Sankirtan", 
-            meta: "Live Chanting from 108 Kutiya", 
-            src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3"
-        },
-        { 
-            title: "Mujhe Bula Lo Shri Vrindavan", 
-            meta: "Popular Devotional Bhajan", 
-            src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3"
-        },
-        { 
-            title: "Jag Ke Bandhan", 
-            meta: "Classic Vairagya Upadesh", 
-            src: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3"
-        }
-    ];
 
-    const audioEngine = document.getElementById('global-audio-engine');
+    // ==========================================
+    // 2. YOUTUBE AUDIO PLAYER LOGIC
+    // ==========================================
+    const officialTracks = [
+    { title: "Satsang Kripa Prasad - Day 1", meta: "23-04-2026 / Charan Chhaya, Vrindavan", ytId: "EUXIsbNHcuw" },
+    { title: "Satsang Kripa Prasad - Day 2", meta: "24-04-2026 / Shri Radha Naam Maalika", ytId: "ZNVODm5A_dE" },
+    { title: "Satsang Kripa Prasad - Day 3", meta: "Swami Karun Dass Ji Maharaj", ytId: "PASTE_ID_HERE" },
+    { title: "Satsang Kripa Prasad - Day 4", meta: "Swami Karun Dass Ji Maharaj", ytId: "PASTE_ID_HERE" },
+    { title: "Satsang Kripa Prasad - Day 5", meta: "Swami Karun Dass Ji Maharaj", ytId: "PASTE_ID_HERE" },
+    { title: "Satsang Kripa Prasad - Day 6", meta: "Swami Karun Dass Ji Maharaj", ytId: "PASTE_ID_HERE" },
+    { title: "Satsang Kripa Prasad - Day 7", meta: "Swami Karun Dass Ji Maharaj", ytId: "PASTE_ID_HERE" },
+    { title: "Satsang Kripa Prasad - Day 8", meta: "Swami Karun Dass Ji Maharaj", ytId: "PASTE_ID_HERE" },
+    { title: "Satsang Kripa Prasad - Day 9", meta: "Swami Karun Dass Ji Maharaj", ytId: "PASTE_ID_HERE" },
+    { title: "Satsang Kripa Prasad - Day 10", meta: "Swami Karun Dass Ji Maharaj", ytId: "PASTE_ID_HERE" },
+    { title: "Satsang Kripa Prasad - Day 11", meta: "Swami Karun Dass Ji Maharaj", ytId: "PASTE_ID_HERE" },
+    { title: "Satsang Kripa Prasad - Day 12", meta: "Swami Karun Dass Ji Maharaj", ytId: "PASTE_ID_HERE" },
+    { title: "Satsang Kripa Prasad - Day 13", meta: "Swami Karun Dass Ji Maharaj", ytId: "PASTE_ID_HERE" },
+    { title: "Satsang Kripa Prasad - Day 14", meta: "Swami Karun Dass Ji Maharaj", ytId: "PASTE_ID_HERE" },
+    { title: "Satsang Kripa Prasad - Day 15", meta: "Swami Karun Dass Ji Maharaj", ytId: "PASTE_ID_HERE" },
+    { title: "Satsang Kripa Prasad - Day 16", meta: "Swami Karun Dass Ji Maharaj", ytId: "PASTE_ID_HERE" },
+    { title: "Satsang Kripa Prasad - Day 17", meta: "Swami Karun Dass Ji Maharaj", ytId: "PASTE_ID_HERE" },
+    { title: "Satsang Kripa Prasad - Day 18", meta: "Swami Karun Dass Ji Maharaj", ytId: "PASTE_ID_HERE" },
+    { title: "Satsang Kripa Prasad - Day 19", meta: "Swami Karun Dass Ji Maharaj", ytId: "PASTE_ID_HERE" },
+    { title: "Satsang Kripa Prasad - Day 20", meta: "Swami Karun Dass Ji Maharaj", ytId: "PASTE_ID_HERE" },
+    { title: "Satsang Kripa Prasad - Day 21", meta: "Swami Karun Dass Ji Maharaj", ytId: "PASTE_ID_HERE" },
+    { title: "Satsang Kripa Prasad - Day 22", meta: "Swami Karun Dass Ji Maharaj", ytId: "PASTE_ID_HERE" },
+    { title: "Satsang Kripa Prasad - Day 23", meta: "Swami Karun Dass Ji Maharaj", ytId: "PASTE_ID_HERE" },
+    { title: "Satsang Kripa Prasad - Day 24", meta: "Swami Karun Dass Ji Maharaj", ytId: "PASTE_ID_HERE" },
+    { title: "Satsang Kripa Prasad - Day 25", meta: "Swami Karun Dass Ji Maharaj", ytId: "PASTE_ID_HERE" },
+    { title: "Satsang Kripa Prasad - Day 26", meta: "Swami Karun Dass Ji Maharaj", ytId: "PASTE_ID_HERE" },
+    { title: "Satsang Kripa Prasad - Day 27", meta: "Swami Karun Dass Ji Maharaj", ytId: "PASTE_ID_HERE" },
+    { title: "Satsang Kripa Prasad - Day 28", meta: "Swami Karun Dass Ji Maharaj", ytId: "PASTE_ID_HERE" },
+    { title: "Satsang Kripa Prasad - Day 29", meta: "Swami Karun Dass Ji Maharaj", ytId: "PASTE_ID_HERE" },
+    { title: "Satsang Kripa Prasad - Day 30", meta: "Swami Karun Dass Ji Maharaj", ytId: "PASTE_ID_HERE" },
+    { title: "Satsang Kripa Prasad - Day 31", meta: "Swami Karun Dass Ji Maharaj", ytId: "PASTE_ID_HERE" },
+    { title: "Satsang Kripa Prasad - Day 32", meta: "Swami Karun Dass Ji Maharaj", ytId: "PASTE_ID_HERE" },
+    { title: "Satsang Kripa Prasad - Day 33", meta: "Swami Karun Dass Ji Maharaj", ytId: "PASTE_ID_HERE" },
+    { title: "Satsang Kripa Prasad - Day 34", meta: "Swami Karun Dass Ji Maharaj", ytId: "PASTE_ID_HERE" },
+    { title: "Satsang Kripa Prasad - Day 35", meta: "Swami Karun Dass Ji Maharaj", ytId: "PASTE_ID_HERE" },
+    { title: "Satsang Kripa Prasad - Day 36", meta: "Swami Karun Dass Ji Maharaj", ytId: "PASTE_ID_HERE" },
+    { title: "Satsang Kripa Prasad - Day 37", meta: "Swami Karun Dass Ji Maharaj", ytId: "PASTE_ID_HERE" },
+    { title: "Satsang Kripa Prasad - Day 38", meta: "Swami Karun Dass Ji Maharaj", ytId: "PASTE_ID_HERE" },
+    { title: "Satsang Kripa Prasad - Day 39", meta: "Swami Karun Dass Ji Maharaj", ytId: "PASTE_ID_HERE" },
+    { title: "Satsang Kripa Prasad - Day 40", meta: "Swami Karun Dass Ji Maharaj", ytId: "PASTE_ID_HERE" },
+    { title: "Satsang Kripa Prasad - Day 41", meta: "Swami Karun Dass Ji Maharaj", ytId: "PASTE_ID_HERE" },
+    { title: "Satsang Kripa Prasad - Day 42", meta: "Swami Karun Dass Ji Maharaj", ytId: "PASTE_ID_HERE" },
+    { title: "Satsang Kripa Prasad - Day 43", meta: "Swami Karun Dass Ji Maharaj", ytId: "PASTE_ID_HERE" },
+    { title: "Satsang Kripa Prasad - Day 44", meta: "Swami Karun Dass Ji Maharaj", ytId: "PASTE_ID_HERE" },
+    { title: "Satsang Kripa Prasad - Day 45", meta: "Swami Karun Dass Ji Maharaj", ytId: "PASTE_ID_HERE" },
+    { title: "Satsang Kripa Prasad - Day 46", meta: "Swami Karun Dass Ji Maharaj", ytId: "PASTE_ID_HERE" },
+    { title: "Satsang Kripa Prasad - Day 47", meta: "Swami Karun Dass Ji Maharaj", ytId: "PASTE_ID_HERE" },
+    { title: "Satsang Kripa Prasad - Day 48", meta: "Swami Karun Dass Ji Maharaj", ytId: "PASTE_ID_HERE" },
+    { title: "Satsang Kripa Prasad - Day 49", meta: "Swami Karun Dass Ji Maharaj", ytId: "PASTE_ID_HERE" },
+    { title: "Satsang Kripa Prasad - Day 50", meta: "Swami Karun Dass Ji Maharaj", ytId: "PASTE_ID_HERE" },
+    { title: "Satsang Kripa Prasad - Day 51", meta: "Swami Karun Dass Ji Maharaj", ytId: "PASTE_ID_HERE" }
+];
+
+
+
     const playTrigger = document.getElementById('master-play-trigger');
     const progressBar = document.getElementById('progress-slider');
     const curTimeTxt = document.getElementById('current-time');
@@ -1273,9 +1299,51 @@
     
     let activeTrackIdx = 0;
     let isTrackPlaying = false;
+    let ytPlayer;
+    let timeUpdater;
+
+    // Load YouTube API
+    const tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    const firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+    function onYouTubeIframeAPIReady() {
+        ytPlayer = new YT.Player('yt-player-container', {
+            height: '10',
+            width: '10',
+            videoId: officialTracks[activeTrackIdx].ytId,
+            playerVars: { 'playsinline': 1, 'controls': 0, 'disablekb': 1 },
+            events: {
+                'onReady': onPlayerReady,
+                'onStateChange': onPlayerStateChange
+            }
+        });
+    }
+
+    function onPlayerReady(event) {
+        assemblePlaylist();
+        updatePlayerUI();
+    }
+
+    function onPlayerStateChange(event) {
+        if (event.data == 1) { // Playing
+            isTrackPlaying = true;
+            playTrigger.innerText = '⏸';
+            startTimeUpdater();
+        } else if (event.data == 2) { // Paused
+            isTrackPlaying = false;
+            playTrigger.innerText = '▶';
+            stopTimeUpdater();
+        } else if (event.data == 0) { // Ended
+            playNext();
+        }
+    }
 
     function assemblePlaylist() {
         const container = document.getElementById('playlist-container');
+        if(!container) return;
+
         container.innerHTML = '';
 
         officialTracks.forEach((track, i) => {
@@ -1291,46 +1359,39 @@
             `;
             container.appendChild(row);
         });
-
-        // Initialize display configuration without playing instantly
-        document.getElementById('player-title').innerText = officialTracks[activeTrackIdx].title;
-        document.getElementById('player-category').innerText = officialTracks[activeTrackIdx].meta;
-        audioEngine.src = officialTracks[activeTrackIdx].src;
     }
 
     function loadAndPlayTrack(index) {
         activeTrackIdx = index;
         const track = officialTracks[activeTrackIdx];
         
-        document.getElementById('player-title').innerText = track.title;
-        document.getElementById('player-category').innerText = track.meta;
-        audioEngine.src = track.src;
+        updatePlayerUI();
 
-        // Highlight playlist row
         document.querySelectorAll('.playlist-item').forEach((el, idx) => {
             if(idx === index) el.classList.add('active');
             else el.classList.remove('active');
         });
 
-        executePlay();
+        if(ytPlayer && ytPlayer.loadVideoById) {
+            ytPlayer.loadVideoById(track.ytId);
+        }
+    }
+
+    function updatePlayerUI() {
+        const titleEl = document.getElementById('player-title');
+        const catEl = document.getElementById('player-category');
+        if(titleEl) titleEl.innerText = officialTracks[activeTrackIdx].title;
+        if(catEl) catEl.innerText = officialTracks[activeTrackIdx].meta;
     }
 
     function toggleAudioState() {
-        if (isTrackPlaying) executePause();
-        else executePlay();
-    }
-
-    function executePlay() {
-        audioEngine.play().then(() => {
-            isTrackPlaying = true;
-            playTrigger.innerText = '⏸';
-        }).catch(err => console.log("Streaming link initialize handle:", err));
-    }
-
-    function executePause() {
-        audioEngine.pause();
-        isTrackPlaying = false;
-        playTrigger.innerText = '▶';
+        if (!ytPlayer || !ytPlayer.playVideo) return;
+        
+        if (isTrackPlaying) {
+            ytPlayer.pauseVideo();
+        } else {
+            ytPlayer.playVideo();
+        }
     }
 
     function playNext() {
@@ -1343,7 +1404,37 @@
         loadAndPlayTrack(target);
     }
 
-    // Convert seconds to clean display layout (MM:SS)
+    function startTimeUpdater() {
+        stopTimeUpdater();
+        timeUpdater = setInterval(() => {
+            if (ytPlayer && ytPlayer.getDuration) {
+                const currentTime = ytPlayer.getCurrentTime();
+                const duration = ytPlayer.getDuration();
+                
+                if (duration > 0) {
+                    const percent = (currentTime / duration) * 100;
+                    if(progressBar) progressBar.value = percent;
+                    if(curTimeTxt) curTimeTxt.innerText = formatTimeLayout(currentTime);
+                    if(totDurTxt) totDurTxt.innerText = formatTimeLayout(duration);
+                }
+            }
+        }, 500);
+    }
+
+    function stopTimeUpdater() {
+        if (timeUpdater) clearInterval(timeUpdater);
+    }
+
+    if(progressBar) {
+        progressBar.addEventListener('input', () => {
+            if (ytPlayer && ytPlayer.getDuration) {
+                const duration = ytPlayer.getDuration();
+                const seekTime = (progressBar.value / 100) * duration;
+                ytPlayer.seekTo(seekTime, true);
+            }
+        });
+    }
+
     function formatTimeLayout(seconds) {
         if (isNaN(seconds)) return "0:00";
         const mins = Math.floor(seconds / 60);
@@ -1351,28 +1442,6 @@
         return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
     }
 
-    // Handle background engine updates
-    audioEngine.addEventListener('timeupdate', () => {
-        if(audioEngine.duration) {
-            const percent = (audioEngine.currentTime / audioEngine.duration) * 100;
-            progressBar.value = percent;
-            curTimeTxt.innerText = formatTimeLayout(audioEngine.currentTime);
-            totDurTxt.innerText = formatTimeLayout(audioEngine.duration);
-        }
-    });
-
-    // Jump duration via range slider handle
-    progressBar.addEventListener('input', () => {
-        if(audioEngine.duration) {
-            audioEngine.currentTime = (progressBar.value / 100) * audioEngine.duration;
-        }
-    });
-
-    audioEngine.addEventListener('ended', () => {
-        playNext();
-    });
-
-    document.addEventListener('DOMContentLoaded', assemblePlaylist);
 	</script>
 </body>
 
