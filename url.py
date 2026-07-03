@@ -24,7 +24,6 @@ def generate_js_array(playlist_url):
             
             # Start formatting the JavaScript array
             output_lines = ["const officialTracks = ["]
-            
             for index, entry in enumerate(entries):
                 if entry is None:
                     continue
