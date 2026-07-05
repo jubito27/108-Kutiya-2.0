@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Divya Jaap - Ultimate Tally Counter</title>
+    <title>Anhad Naad - Voice & Touch Jaap Counter</title>
     
-    <!-- Fonts -->
+    <!-- Fonts & Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Inter:wght@300;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
     
     <style>
-        /* --- Reset & Variables --- */
+        /* --- Dark Spiritual Theme Styling --- */
         *, *::before, *::after {
             margin: 0;
             padding: 0;
@@ -20,511 +20,651 @@
         }
 
         :root {
-            --bg-dark: #050b14;
-            --bg-light: #0d1f3d;
+            --bg-deep: #030712;
+            --bg-glow: #0b1528;
             --gold: #FFD700;
-            --gold-glow: rgba(255, 215, 0, 0.5);
-            --blue-glow: rgba(74, 159, 224, 0.4);
-            --text-main: #EEF4FF;
-            --danger: #ff4757;
+            --gold-orange: #FF8C00;
+            --gold-alpha: rgba(255, 215, 0, 0.4);
+            --text-light: #F3F4F6;
+            --glass: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --success: #10B981;
         }
 
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg-dark);
-            color: var(--text-main);
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-deep);
+            color: var(--text-light);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            overflow: hidden; /* Prevents scroll bounce on mobile */
+            overflow: hidden;
             user-select: none;
         }
 
-        /* --- Background Animation --- */
-        #particle-canvas {
+        /* Ambient Cosmic Background */
+        #ambient-canvas {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            inset: 0;
             z-index: 0;
+            background: radial-gradient(circle at center, var(--bg-glow) 0%, var(--bg-deep) 100%);
             pointer-events: none;
-            background: radial-gradient(circle at center, var(--bg-light) 0%, var(--bg-dark) 100%);
         }
 
-        /* --- Main UI Container --- */
-        .app-container {
+        .container {
             position: relative;
             z-index: 10;
             flex: 1;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            padding: 2rem 1rem;
-            max-width: 600px;
+            justify-content: space-between;
+            padding: 1.5rem 1rem;
+            max-width: 500px;
             margin: 0 auto;
             width: 100%;
         }
 
-        /* --- Header & Mala Counter --- */
-        .header {
-            text-align: center;
-            margin-bottom: 2rem;
-            animation: fadeInDown 1s ease;
-        }
-
-        .title {
-            font-family: 'Cinzel Decorative', cursive;
-            font-size: 2.2rem;
-            color: var(--gold);
-            text-shadow: 0 0 15px var(--gold-glow);
-            letter-spacing: 2px;
-            margin-bottom: 0.5rem;
-        }
-
-        .mala-tracker {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 8px 25px;
-            border-radius: 30px;
-            border: 1px solid rgba(255, 215, 0, 0.2);
-            font-size: 1.1rem;
-            backdrop-filter: blur(10px);
-            display: inline-block;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-        }
-
-        .mala-tracker span {
-            color: var(--gold);
-            font-weight: 700;
-            font-size: 1.3rem;
-        }
-
-        /* --- The 3D Tap Sphere & Progress Ring --- */
-        .counter-wrapper {
-            position: relative;
-            width: 280px;
-            height: 280px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 3rem;
-            animation: zoomIn 1s ease cubic-bezier(0.2, 0.8, 0.2, 1);
-        }
-
-        /* Circular SVG Progress */
-        .progress-ring {
-            position: absolute;
-            top: 0;
-            left: 0;
+        /* --- Top Stats Panel --- */
+        .top-stats {
             width: 100%;
-            height: 100%;
-            transform: rotate(-90deg);
-            pointer-events: none;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-bottom: 1rem;
+            animation: fadeInDown 0.8s ease;
+        }
+
+        .stat-box {
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 10px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .stat-box p {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #9CA3AF;
+            margin-bottom: 2px;
+        }
+
+        .stat-box span {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--gold);
+        }
+
+        /* --- Dynamic Header (Clickable to Edit) --- */
+        .header-zone {
+            text-align: center;
+            margin: 0.5rem 0;
+            cursor: pointer;
+            padding: 5px 15px;
+            border-radius: 12px;
+            transition: background 0.3s;
+        }
+        
+        .header-zone:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .header-title {
+            font-family: 'Cinzel Decorative', cursive;
+            font-size: 2rem;
+            color: var(--gold);
+            text-shadow: 0 0 20px var(--gold-alpha);
+            letter-spacing: 3px;
+        }
+
+        .edit-hint {
+            font-size: 0.7rem;
+            color: #6B7280;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 2px;
+        }
+
+        /* --- Voice / Mic Button --- */
+        .voice-control-box {
+            margin-bottom: 0.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .mic-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 1.3rem;
+            transition: all 0.3s ease;
+        }
+
+        .mic-btn.listening {
+            background: rgba(16, 185, 129, 0.2);
+            border-color: var(--success);
+            box-shadow: 0 0 15px rgba(16, 185, 129, 0.4);
+            animation: pulseMic 1.5s infinite alternate;
+        }
+
+        .voice-status {
+            font-size: 0.75rem;
+            color: #9CA3AF;
+        }
+
+        /* --- Virtual Interactive Bead String --- */
+        .mala-string-container {
+            width: 100%;
+            height: 40px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+
+        .mala-line {
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(255,215,0,0.3), transparent);
             z-index: 1;
         }
 
+        .beads-row {
+            display: flex;
+            gap: 16px;
+            position: absolute;
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            z-index: 2;
+        }
+
+        .bead {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 35% 35%, #b06ab3, #450036);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.5), inset -3px -3px 5px rgba(0,0,0,0.6);
+            border: 1px solid rgba(255,215,0,0.2);
+        }
+
+        .bead.active-bead {
+            background: radial-gradient(circle at 35% 35%, #ffd700, #ff4500);
+            box-shadow: 0 0 15px var(--gold);
+        }
+
+        /* --- The Main 3D Sphere Area --- */
+        .sphere-wrapper {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .progress-ring {
+            position: absolute;
+            transform: rotate(-90deg);
+            pointer-events: none;
+            z-index: 3;
+        }
+
         .progress-ring__circle {
-            transition: stroke-dashoffset 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: stroke-dashoffset 0.25s ease;
             stroke-linecap: round;
         }
 
-        /* The Interactive Sphere */
-        .tap-sphere {
+        .main-sphere {
             position: relative;
-            width: 230px;
-            height: 230px;
+            width: 240px;
+            height: 240px;
             border-radius: 50%;
-            background: radial-gradient(circle at 30% 30%, #1e4b8f, #07132a 70%);
-            border: 3px solid rgba(255, 215, 0, 0.3);
+            background: radial-gradient(circle at 30% 30%, #1e3a8a, #030712 80%);
+            border: 2px solid rgba(255, 215, 0, 0.2);
             box-shadow: 
-                0 20px 50px rgba(0,0,0,0.8), 
-                inset 0 -15px 25px rgba(0,0,0,0.8), 
-                inset 0 15px 25px rgba(255,255,255,0.2),
-                0 0 30px var(--blue-glow);
+                0 25px 60px rgba(0,0,0,0.8), 
+                inset 0 -20px 30px rgba(0,0,0,0.9), 
+                inset 0 20px 30px rgba(255,255,255,0.15),
+                0 0 40px rgba(30, 58, 138, 0.5);
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            z-index: 2;
+            z-index: 5;
             overflow: hidden;
-            transition: transform 0.1s;
+            transition: transform 0.08s ease;
         }
 
-        /* Breathing Animation */
-        .tap-sphere::before {
-            content: '';
-            position: absolute;
-            inset: -10px;
-            border-radius: 50%;
-            background: radial-gradient(circle, var(--gold-glow) 0%, transparent 70%);
-            opacity: 0.3;
-            animation: pulseGlow 3s infinite alternate;
-            pointer-events: none;
-        }
-
-        .tap-sphere:active {
-            transform: scale(0.94);
-            box-shadow: 
-                0 10px 20px rgba(0,0,0,0.8), 
-                inset 0 -5px 15px rgba(0,0,0,0.8), 
-                inset 0 5px 15px rgba(255,255,255,0.1),
-                0 0 15px var(--gold-glow);
+        .main-sphere:active {
+            transform: scale(0.93);
             border-color: var(--gold);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8), 0 0 30px var(--gold-alpha);
         }
 
-        #count-display {
-            font-size: 5rem;
-            font-weight: 900;
+        #counter-num {
+            font-size: 5.5rem;
+            font-weight: 800;
             color: var(--gold);
-            text-shadow: 0 5px 20px rgba(255, 215, 0, 0.6);
-            z-index: 3;
-            pointer-events: none;
+            line-height: 1;
+            text-shadow: 0 4px 25px rgba(255, 215, 0, 0.5);
         }
 
-        /* Ripple Effect on Tap */
+        .bead-label {
+            font-size: 0.85rem;
+            color: #9CA3AF;
+            letter-spacing: 2px;
+            margin-top: -5px;
+            text-transform: uppercase;
+        }
+
         .ripple {
             position: absolute;
             border-radius: 50%;
-            background: rgba(255, 215, 0, 0.6);
+            background: rgba(255, 215, 0, 0.4);
             transform: scale(0);
-            animation: rippleAnim 0.6s linear;
+            animation: rip 0.5s linear;
             pointer-events: none;
         }
 
-        /* --- Controls (-1, Reset) --- */
-        .controls {
+        /* --- Footer Controls --- */
+        .bottom-actions {
+            width: 100%;
             display: flex;
-            gap: 2rem;
-            animation: fadeInUp 1s ease;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
         }
 
-        .btn {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            color: var(--text-main);
-            padding: 12px 30px;
-            border-radius: 40px;
-            font-size: 1.1rem;
+        .action-btn {
+            flex: 1;
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            color: var(--text-light);
+            padding: 14px;
+            border-radius: 30px;
+            font-size: 1rem;
             font-weight: 500;
             cursor: pointer;
-            backdrop-filter: blur(5px);
+            backdrop-filter: blur(10px);
             transition: all 0.3s ease;
             display: flex;
             align-items: center;
             justify-content: center;
-            min-width: 120px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            gap: 8px;
         }
 
-        .btn:hover {
-            background: rgba(255, 255, 255, 0.1);
-            transform: translateY(-3px);
-            box-shadow: 0 15px 25px rgba(0,0,0,0.3);
+        .action-btn:hover {
+            background: rgba(255,255,255,0.08);
+            border-color: var(--gold);
+            transform: translateY(-2px);
         }
 
-        .btn:active {
-            transform: translateY(1px);
-        }
+        .action-btn:active { transform: translateY(1px); }
+        .btn-reset { color: #EF4444; border-color: rgba(239, 68, 68, 0.2); }
+        .btn-reset:hover { background: rgba(239, 68, 68, 0.1); border-color: #EF4444; }
 
-        .btn-reset {
-            color: var(--danger);
-            border-color: rgba(255, 71, 87, 0.3);
-        }
-        .btn-reset:hover {
-            background: rgba(255, 71, 87, 0.1);
-            border-color: var(--danger);
-            box-shadow: 0 0 15px rgba(255, 71, 87, 0.3);
-        }
-
-        /* --- Milestone Celebration Modal --- */
-        #milestone-popup {
+        /* --- Celebration Modal --- */
+        .overlay {
             position: fixed;
             inset: 0;
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(10px);
-            z-index: 100;
+            background: rgba(0,0,0,0.85);
+            backdrop-filter: blur(15px);
+            z-index: 1000;
             display: flex;
             align-items: center;
             justify-content: center;
             flex-direction: column;
             opacity: 0;
             pointer-events: none;
-            transition: opacity 0.4s ease;
+            transition: opacity 0.5s ease;
         }
-
-        #milestone-popup.show {
-            opacity: 1;
-            pointer-events: all;
-        }
-
-        .milestone-text {
-            font-family: 'Cinzel Decorative', cursive;
-            font-size: 3rem;
-            color: var(--gold);
-            text-shadow: 0 0 30px var(--gold);
-            transform: scale(0.5);
+        .overlay.active { opacity: 1; pointer-events: all; }
+        
+        .overlay-card {
+            text-align: center;
+            transform: scale(0.7);
             transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
+        .overlay.active .overlay-card { transform: scale(1); }
 
-        #milestone-popup.show .milestone-text {
-            transform: scale(1);
+        .overlay-card h2 {
+            font-family: 'Cinzel Decorative', cursive;
+            font-size: 2.8rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+            text-shadow: 0 0 30px var(--gold);
         }
 
-        /* --- Animations Keyframes --- */
-        @keyframes pulseGlow {
-            0% { transform: scale(1); opacity: 0.2; }
-            100% { transform: scale(1.1); opacity: 0.5; }
-        }
-        @keyframes rippleAnim {
-            to { transform: scale(4); opacity: 0; }
-        }
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes zoomIn {
-            from { opacity: 0; transform: scale(0.8); }
-            to { opacity: 1; transform: scale(1); }
-        }
+        /* --- Keyframe Animations --- */
+        @keyframes rip { to { transform: scale(4); opacity: 0; } }
+        @keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes pulseMic { 0% { transform: scale(1); } 100% { transform: scale(1.1); } }
 
     </style>
 </head>
 <body>
 
-    <!-- Background Canvas for Divine Particles -->
-    <canvas id="particle-canvas"></canvas>
+    <canvas id="ambient-canvas"></canvas>
 
-    <!-- Milestone Celebration Overlay -->
-    <div id="milestone-popup">
-        <h2 class="milestone-text">1 Mala Complete!</h2>
-        <p style="color: white; margin-top: 10px; opacity: 0.8;">Tap anywhere to continue</p>
+    <!-- Celebration Screen -->
+    <div class="overlay" id="celebration-screen" onclick="closeCelebration()">
+        <div class="overlay-card">
+            <h2>पूर्ण माला!</h2>
+            <p style="font-size: 1.2rem; color: #D1D5DB;">108 जाप सफलतापूर्वक संपन्न हुए।</p>
+            <p style="margin-top: 2rem; font-size: 0.9rem; color: var(--gold); opacity: 0.7;">कहीं भी टैप करके आगे बढ़ें</p>
+        </div>
     </div>
 
-    <!-- Main UI -->
-    <div class="app-container">
+    <!-- Main Content -->
+    <div class="container">
         
-        <header class="header">
-            <h1 class="title">श्री राधा</h1>
-            <div class="mala-tracker">
-                Mala: <span id="mala-display">0</span>
+        <!-- Statistics Display -->
+        <div class="top-stats">
+            <div class="stat-box">
+                <p>कुल माला</p>
+                <span id="stat-mala">0</span>
             </div>
-        </header>
+            <div class="stat-box">
+                <p>लाइफटाइम जाप</p>
+                <span id="stat-total">0</span>
+            </div>
+            <div class="stat-box">
+                <p>Streak (दिन)</p>
+                <span id="stat-streak">1🔥</span>
+            </div>
+        </div>
 
-        <!-- Counter Area -->
-        <div class="counter-wrapper">
-            <!-- Circular Progress SVG -->
-            <svg class="progress-ring" width="280" height="280">
-                <circle cx="140" cy="140" r="130" fill="transparent" stroke="rgba(255,255,255,0.05)" stroke-width="8"></circle>
-                <circle class="progress-ring__circle" id="progress-circle" cx="140" cy="140" r="130" fill="transparent" stroke="url(#gradient)" stroke-width="8" stroke-dasharray="816.8" stroke-dashoffset="816.8"></circle>
+        <!-- Clickable Deity Name Option (Tap to edit) -->
+        <div class="header-zone" onclick="changeDeityName()" title="Tap to change name">
+            <h1 class="header-title" id="deity-name">Shree Ram</h1>
+            <div class="edit-hint">✍️ नाम बदलने के लिए टच करें</div>
+        </div>
+
+        <!-- Voice Activation Block -->
+        <div class="voice-control-box">
+            <button class="mic-btn" id="mic-trigger" onclick="toggleVoiceRecognition()">🎙️</button>
+            <span class="voice-status" id="mic-status">Voice Jaap: OFF</span>
+        </div>
+
+        <!-- Virtual String Bead Row -->
+        <div class="mala-string-container">
+            <div class="mala-line"></div>
+            <div class="beads-row" id="beads-slider"></div>
+        </div>
+
+        <!-- Sphere UI (Touch Counter) -->
+        <div class="sphere-wrapper">
+            <svg class="progress-ring" width="300" height="300">
+                <circle cx="150" cy="150" r="140" fill="transparent" stroke="rgba(255,255,255,0.03)" stroke-width="6"></circle>
+                <circle class="progress-ring__circle" id="circle-progress" cx="150" cy="150" r="140" fill="transparent" stroke="url(#gold-gradient)" stroke-width="6" stroke-dasharray="879.64" stroke-dashoffset="879.64"></circle>
                 <defs>
-                    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <linearGradient id="gold-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
                         <stop offset="0%" stop-color="#FFD700" />
-                        <stop offset="100%" stop-color="#FF8C00" />
+                        <stop offset="100%" stop-color="#FF4500" />
                     </linearGradient>
                 </defs>
             </svg>
 
-            <!-- 3D Tap Sphere -->
-            <div class="tap-sphere" id="tap-zone">
-                <span id="count-display">0</span>
+            <div class="main-sphere" id="sphere-clicker">
+                <span id="counter-num">0</span>
+                <span class="bead-label">मनका</span>
             </div>
         </div>
 
-        <!-- Controls -->
-        <div class="controls">
-            <button class="btn" id="btn-minus">- 1 Undo</button>
-            <button class="btn btn-reset" id="btn-reset">Reset</button>
+        <!-- Downward System Handles -->
+        <div class="bottom-actions">
+            <button class="action-btn" id="btn-undo" onclick="decrementCounter()">↩ Undo (-1)</button>
+            <button class="action-btn btn-reset" id="btn-reset" onclick="resetCounter()">🔄 Reset</button>
         </div>
 
     </div>
 
+    <!-- Web Audio API Core Engine -->
     <script>
-        // ==========================================
-        // DIVINE PARTICLES BACKGROUND (HTML5 CANVAS)
-        // ==========================================
-        const canvas = document.getElementById('particle-canvas');
-        const ctx = canvas.getContext('2d');
-        let width, height, particles;
-
-        function initParticles() {
-            width = canvas.width = window.innerWidth;
-            height = canvas.height = window.innerHeight;
-            particles = [];
-            for (let i = 0; i < 60; i++) {
-                particles.push({
-                    x: Math.random() * width,
-                    y: Math.random() * height,
-                    r: Math.random() * 2 + 1,
-                    dx: (Math.random() - 0.5) * 0.5,
-                    dy: (Math.random() - 0.5) * 0.5,
-                    alpha: Math.random() * 0.5 + 0.1
-                });
-            }
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        function playDivineBell() {
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(587.33, audioCtx.currentTime); 
+            osc.frequency.exponentialRampToValueAtTime(293.66, audioCtx.currentTime + 1.5);
+            gain.gain.setValueAtTime(0.5, audioCtx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 3);
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+            osc.start();
+            osc.stop(audioCtx.currentTime + 3);
         }
+    </script>
 
-        function drawParticles() {
-            ctx.clearRect(0, 0, width, height);
-            particles.forEach(p => {
-                p.x += p.dx;
-                p.y += p.dy;
-                
-                // Wrap around edges
-                if (p.x < 0) p.x = width;
-                if (p.x > width) p.x = 0;
-                if (p.y < 0) p.y = height;
-                if (p.y > height) p.y = 0;
+    <!-- UI Background Particles -->
+    <script>
+        const canvas = document.getElementById('ambient-canvas');
+        const ctx = canvas.getContext('2d');
+        let w, h, dots = [];
 
+        function resize() {
+            w = canvas.width = window.innerWidth;
+            h = canvas.height = window.innerHeight;
+            dots = Array.from({length: 40}, () => ({
+                x: Math.random() * w, y: Math.random() * h,
+                r: Math.random() * 2, speed: Math.random() * 0.2 + 0.05,
+                opacity: Math.random() * 0.5 + 0.2
+            }));
+        }
+        function draw() {
+            ctx.clearRect(0,0,w,h);
+            dots.forEach(d => {
+                d.y -= d.speed;
+                if(d.y < 0) d.y = h;
                 ctx.beginPath();
-                ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(255, 215, 0, ${p.alpha})`; // Gold particles
-                ctx.shadowBlur = 10;
-                ctx.shadowColor = '#FFD700';
+                ctx.arc(d.x, d.y, d.r, 0, Math.PI*2);
+                ctx.fillStyle = `rgba(255, 215, 0, ${d.opacity})`;
                 ctx.fill();
             });
-            requestAnimationFrame(drawParticles);
+            requestAnimationFrame(draw);
         }
+        window.addEventListener('resize', resize);
+        resize(); draw();
+    </script>
+
+    <!-- Main Management System Script -->
+    <script>
+        const MALA_LIMIT = 108;
         
-        window.addEventListener('resize', initParticles);
-        initParticles();
-        drawParticles();
+        let targetWord = localStorage.getItem('jaap_target_word') || "Shree Ram";
+        let beadCount = parseInt(localStorage.getItem('jaap_beads')) || 0;
+        let totalMala = parseInt(localStorage.getItem('jaap_malas')) || 0;
+        let lifetimeCount = parseInt(localStorage.getItem('jaap_lifetime')) || 0;
+        let lastTapTime = 0;
 
-        // ==========================================
-        // JAAP COUNTER LOGIC & STORAGE
-        // ==========================================
-        const TARGET = 108; // 1 Mala = 108 Beads
-        let count = parseInt(localStorage.getItem('divyaJaapCount')) || 0;
-        let malaCount = parseInt(localStorage.getItem('divyaMalaCount')) || 0;
+        const counterNum = document.getElementById('counter-num');
+        const statMala = document.getElementById('stat-mala');
+        const statTotal = document.getElementById('stat-total');
+        const deityNameDisplay = document.getElementById('deity-name');
+        const sphereClicker = document.getElementById('sphere-clicker');
+        const progressCircle = document.getElementById('circle-progress');
+        const beadsSlider = document.getElementById('beads-slider');
+        const celebrationScreen = document.getElementById('celebration-screen');
+        const ringCircumference = 2 * Math.PI * 140;
 
-        const countDisplay = document.getElementById('count-display');
-        const malaDisplay = document.getElementById('mala-display');
-        const tapZone = document.getElementById('tap-zone');
-        const progressCircle = document.getElementById('progress-circle');
-        const milestonePopup = document.getElementById('milestone-popup');
+        // --- SPEECH RECOGNITION SYSTEM ---
+        let recognition = null;
+        let isListening = false;
+        const micTrigger = document.getElementById('mic-trigger');
+        const micStatus = document.getElementById('mic-status');
 
-        // SVG Ring setup
-        const radius = progressCircle.r.baseVal.value;
-        const circumference = radius * 2 * Math.PI;
-        progressCircle.style.strokeDasharray = `${circumference} ${circumference}`;
+        if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
+            const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+            recognition = new SpeechRecognition();
+            recognition.continuous = true;
+            recognition.interimResults = false;
+            recognition.lang = 'hi-IN'; 
 
-        function updateUI() {
-            countDisplay.innerText = count;
-            malaDisplay.innerText = malaCount;
-            
-            // Calculate progress for the circular ring (0 to 108)
-            const progressPercent = (count % TARGET) / TARGET;
-            const offset = circumference - (progressPercent * circumference);
-            
-            // If count is exactly 108 (or multiple), ring should be full
-            if (count > 0 && count % TARGET === 0) {
-                progressCircle.style.strokeDashoffset = 0;
-            } else {
-                progressCircle.style.strokeDashoffset = offset;
-            }
+            recognition.onresult = function(event) {
+                const resultIndex = event.resultIndex;
+                const spokenText = event.results[resultIndex][0].transcript.trim().toLowerCase();
+                const cleanedTarget = targetWord.trim().toLowerCase();
 
-            // Save data locally
-            localStorage.setItem('divyaJaapCount', count);
-            localStorage.setItem('divyaMalaCount', malaCount);
-        }
-
-        // Initialize UI on load
-        updateUI();
-
-        // TAP EVENT (Increment)
-        tapZone.addEventListener('pointerdown', function(e) {
-            // 1. Increment Count
-            count++;
-            
-            // 2. Haptic Feedback (Vibration on mobile)
-            if (navigator.vibrate) navigator.vibrate(30);
-
-            // 3. Ripple Visual Effect
-            createRipple(e, this);
-
-            // 4. Check for Milestone (1 Mala Complete)
-            if (count > 0 && count % TARGET === 0) {
-                malaCount++;
-                showMilestone();
-                if (navigator.vibrate) navigator.vibrate([100, 50, 100]); // Special vibration for milestone
-            }
-
-            updateUI();
-        });
-
-        // Decrement Button
-        document.getElementById('btn-minus').addEventListener('click', () => {
-            if (count > 0) {
-                // If we undo a 108 multiple, remove a mala count
-                if (count % TARGET === 0 && malaCount > 0) {
-                    malaCount--;
+                if (spokenText.includes(cleanedTarget) || cleanedTarget.includes(spokenText)) {
+                    triggerCountAction();
                 }
-                count--;
-                if (navigator.vibrate) navigator.vibrate(20);
-                updateUI();
+            };
+
+            recognition.onend = function() {
+                if (isListening) {
+                    recognition.start(); 
+                }
+            };
+        } else {
+            micStatus.innerText = "Speech Not Supported in this Browser";
+            micTrigger.style.display = "none";
+        }
+
+        // --- FIX IMPLEMENTED HERE ---
+        function setupMalaBeads() {
+            beadsSlider.innerHTML = '';
+            // We now generate enough beads evenly on both sides (-110 to 110)
+            // This ensures index 0 stays dead center, and we never run out of beads during 108 clicks.
+            for(let i = -110; i <= 110; i++) {
+                const b = document.createElement('div');
+                b.className = 'bead';
+                b.id = `bead-idx-${i}`; // ID helps target the active bead smoothly
+                beadsSlider.appendChild(b);
             }
+        }
+
+        function updateDisplay() {
+            deityNameDisplay.innerText = targetWord;
+            counterNum.innerText = beadCount;
+            statMala.innerText = totalMala;
+            statTotal.innerText = lifetimeCount;
+
+            const progress = beadCount / MALA_LIMIT;
+            const offset = ringCircumference - (progress * ringCircumference);
+            progressCircle.style.strokeDashoffset = beadCount === 0 ? ringCircumference : offset;
+
+            const offsetPx = -beadCount * 36; 
+            beadsSlider.style.transform = `translateX(${offsetPx}px)`;
+
+            // Dynamically assign active bead highlight
+            const prevActive = document.querySelector('.active-bead');
+            if (prevActive) prevActive.classList.remove('active-bead');
+            
+            const currentActive = document.getElementById(`bead-idx-${beadCount}`);
+            if (currentActive) currentActive.classList.add('active-bead');
+
+            localStorage.setItem('jaap_beads', beadCount);
+            localStorage.setItem('jaap_malas', totalMala);
+            localStorage.setItem('jaap_lifetime', lifetimeCount);
+            localStorage.setItem('jaap_target_word', targetWord);
+        }
+
+        function triggerCountAction(event) {
+            beadCount++;
+            lifetimeCount++;
+
+            if(navigator.vibrate) navigator.vibrate(40);
+            if(event) createTapWave(event, sphereClicker);
+
+            if(beadCount >= MALA_LIMIT) {
+                totalMala++;
+                beadCount = 0;
+                playDivineBell(); 
+                if(navigator.vibrate) navigator.vibrate([200, 100, 200]);
+                celebrationScreen.classList.add('active');
+            }
+            updateDisplay();
+        }
+
+        sphereClicker.addEventListener('pointerdown', function(e) {
+            const now = Date.now();
+            if(now - lastTapTime < 180) return; 
+            lastTapTime = now;
+            triggerCountAction(e);
         });
 
-        // Reset Button
-        document.getElementById('btn-reset').addEventListener('click', () => {
-            if(confirm("क्या आप सच में अपनी जाँप की गिनती शुरू से (Zero) करना चाहते हैं?")) {
-                count = 0;
-                malaCount = 0;
-                updateUI();
+        function decrementCounter() {
+            if(beadCount > 0) {
+                beadCount--;
+                if(lifetimeCount > 0) lifetimeCount--;
+                if(navigator.vibrate) navigator.vibrate(20);
+                updateDisplay();
             }
-        });
+        }
 
-        // ==========================================
-        // EFFECTS HELPER FUNCTIONS
-        // ==========================================
-        function createRipple(event, element) {
-            const circle = document.createElement('span');
-            const diameter = Math.max(element.clientWidth, element.clientHeight);
-            const radius = diameter / 2;
+        function resetCounter() {
+            if(confirm("क्या आप सच में अपनी जाप की संख्या को शून्य करना चाहते हैं?")) {
+                beadCount = 0;
+                totalMala = 0;
+                updateDisplay();
+            }
+        }
 
+        function changeDeityName() {
+            const newName = prompt("अपने आराध्य देव/मंत्र का नाम लिखें (e.g., Shree Radha, Om Namah Shivay):", targetWord);
+            if(newName && newName.trim() !== "") {
+                targetWord = newName.trim();
+                updateDisplay();
+                if(isListening) micStatus.innerText = `Listening for: "${targetWord}"`;
+            }
+        }
+
+        function toggleVoiceRecognition() {
+            if(!recognition) return;
+
+            if(!isListening) {
+                isListening = true;
+                recognition.start();
+                micTrigger.classList.add('listening');
+                micStatus.innerText = `Listening for: "${targetWord}"`;
+            } else {
+                isListening = false;
+                recognition.stop();
+                micTrigger.classList.remove('listening');
+                micStatus.innerText = "Voice Jaap: OFF";
+            }
+        }
+
+        function closeCelebration() {
+            celebrationScreen.classList.remove('active');
+        }
+
+        function createTapWave(e, element) {
+            const wave = document.createElement('span');
+            const size = Math.max(element.clientWidth, element.clientHeight);
+            const radius = size / 2;
             const rect = element.getBoundingClientRect();
-            
-            // Calculate click position relative to the element
-            let clientX = event.clientX;
-            let clientY = event.clientY;
-            
-            // Fallback for touch
-            if(clientX === undefined && event.touches && event.touches.length > 0){
-                clientX = event.touches[0].clientX;
-                clientY = event.touches[0].clientY;
-            }
 
-            circle.style.width = circle.style.height = `${diameter}px`;
-            circle.style.left = `${clientX - rect.left - radius}px`;
-            circle.style.top = `${clientY - rect.top - radius}px`;
-            circle.classList.add('ripple');
+            wave.style.width = wave.style.height = `${size}px`;
+            wave.style.left = `${(e.clientX || rect.left + radius) - rect.left - radius}px`;
+            wave.style.top = `${(e.clientY || rect.top + radius) - rect.top - radius}px`;
+            wave.classList.add('ripple');
 
-            const existingRipple = element.querySelector('.ripple');
-            if (existingRipple) existingRipple.remove();
-
-            element.appendChild(circle);
-            
-            setTimeout(() => circle.remove(), 600);
+            const oldWave = element.querySelector('.ripple');
+            if(oldWave) oldWave.remove();
+            element.appendChild(wave);
+            setTimeout(() => wave.remove(), 500);
         }
 
-        function showMilestone() {
-            milestonePopup.classList.add('show');
-        }
-
-        // Close milestone popup on click anywhere
-        milestonePopup.addEventListener('click', () => {
-            milestonePopup.classList.remove('show');
-            // When closing popup after a mala, reset the visual ring gracefully
-            progressCircle.style.transition = 'none'; // disable animation instantly
-            progressCircle.style.strokeDashoffset = circumference; // reset to empty
-            setTimeout(() => {
-                progressCircle.style.transition = 'stroke-dashoffset 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
-            }, 50);
-        });
-
+        // Execution Start
+        setupMalaBeads();
+        updateDisplay();
     </script>
 </body>
 </html>
