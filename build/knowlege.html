@@ -4,10 +4,10 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>108 कुटिया — Knowledge & Books</title>
-	<link
-		href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap"
-		rel="stylesheet">
+	<title>108 कुटिया — ज्ञान एवं साहित्य</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Elms+Sans:ital,wght@0,100..900;1,100..900&family=Reem+Kufi+Fun:wght@400..700&family=Yatra+One&display=swap" rel="stylesheet">
 	<style>
 		*,
 		*::before,
@@ -18,14 +18,14 @@
 		}
 
 		:root {
-			--navy: #0B1A3A;
-			--deep-blue: #0D2151;
+			--navy: #050b18; 
+			--deep-blue: #091630;
 			--accent-blue: #2A5FC8;
-			--sky-blue: #4A9FE0;
-			--light-blue: #A8D4F5;
-			--gold: #F0C060;
-			--cream: #EEF4FF;
-			--card-bg: rgba(20, 50, 110, 0.45);
+			--sky-blue: #6ab9fc; 
+			--light-blue: #c4e5ff; 
+			--gold: #f2cb7c; 
+			--cream: #ffffff; 
+			--card-bg: rgba(6, 15, 34, 0.85); 
 			--border: rgba(100, 170, 255, 0.22);
 			--white: #ffffff;
 		}
@@ -35,12 +35,14 @@
 		}
 
 		body {
-			font-family: 'Inter', sans-serif;
-			background: var(--navy);
+			font-family: "Elms Sans", sans-serif;
+			background: #050b18;
 			color: var(--cream);
 			min-height: 100vh;
 			overflow-x: hidden;
-			line-height: 1.6;
+			line-height: 1.8; /* Increased for better readability */
+			font-size: 18px; /* Increased base font size */
+			font-weight: 500; /* Made text bolder */
 		}
 
 		a {
@@ -53,10 +55,10 @@
 			inset: 0;
 			z-index: 0;
 			background:
-				radial-gradient(ellipse at 10% 20%, rgba(42, 95, 200, 0.25) 0%, transparent 50%),
-				radial-gradient(ellipse at 90% 80%, rgba(26, 58, 122, 0.35) 0%, transparent 50%),
-				radial-gradient(ellipse at 50% 50%, rgba(11, 26, 58, 0.9) 0%, transparent 100%),
-				linear-gradient(160deg, #060F22 0%, #0D2151 50%, #060F22 100%);
+				radial-gradient(ellipse at 10% 20%, rgba(42, 95, 200, 0.15) 0%, transparent 50%),
+				radial-gradient(ellipse at 90% 80%, rgba(26, 58, 122, 0.2) 0%, transparent 50%),
+				radial-gradient(ellipse at 50% 50%, rgba(5, 11, 24, 0.95) 0%, transparent 100%),
+				linear-gradient(160deg, #030814 0%, #091630 50%, #030814 100%);
 		}
 
 		.mandala-bg {
@@ -66,7 +68,7 @@
 			transform: translate(-50%, -50%);
 			width: min(100vw, 900px);
 			height: min(100vw, 900px);
-			opacity: 0.03;
+			opacity: 0.015; 
 			animation: spin 120s linear infinite;
 			z-index: 0;
 			pointer-events: none;
@@ -81,13 +83,14 @@
 			inset: 0;
 			z-index: 0;
 			pointer-events: none;
+			opacity: 0.6; 
 		}
 
 		header {
 			position: sticky;
 			top: 0;
 			z-index: 200;
-			background: rgba(6, 15, 34, 0.96);
+			background: rgba(3, 8, 20, 0.98);
 			border-bottom: 1px solid rgba(100, 170, 255, 0.2);
 			backdrop-filter: blur(16px);
 		}
@@ -99,6 +102,8 @@
 			padding: 14px 2rem;
 			max-width: 1200px;
 			margin: 0 auto;
+			flex-wrap: wrap;
+			gap: 15px;
 		}
 
 		.logo-link {
@@ -121,8 +126,8 @@
 		}
 
 		.site-name {
-			font-family: 'Cinzel Decorative', cursive;
-			font-size: 1rem;
+			font-family: 'Yatra One', cursive;
+			font-size: 1.4rem;
 			background: linear-gradient(120deg, var(--gold) 0%, var(--sky-blue) 100%);
 			-webkit-background-clip: text;
 			-webkit-text-fill-color: transparent;
@@ -131,19 +136,19 @@
 
 		nav {
 			display: flex;
-			gap: 0;
+			gap: 10px;
 			flex-wrap: wrap;
+			align-items: center;
 		}
 
 		nav a {
-			font-family: 'Cinzel Decorative', cursive;
-			font-size: 0.55rem;
-			letter-spacing: 1.5px;
-			color: rgba(168, 212, 245, 0.65);
-			padding: 8px 10px;
+			font-family: 'Yatra One', cursive;
+			font-size: 1rem;
+			letter-spacing: 1px;
+			color: var(--light-blue);
+			padding: 8px 12px;
 			position: relative;
 			transition: color 0.3s;
-			text-transform: uppercase;
 		}
 
 		nav a::after {
@@ -152,56 +157,70 @@
 			bottom: 0;
 			left: 50%;
 			width: 0;
-			height: 1.5px;
+			height: 2px;
 			background: var(--sky-blue);
 			transform: translateX(-50%);
 			transition: width 0.3s;
 		}
 
-		nav a:hover { color: var(--light-blue); }
+		nav a:hover { color: var(--white); }
 		nav a:hover::after { width: 70%; }
 		nav a.active { color: var(--gold); }
 		nav a.active::after { width: 70%; background: var(--gold); }
+
+		/* Google Translate Widget Styling */
+		#google_translate_element {
+			margin-left: 15px;
+		}
+		.goog-te-combo {
+			background: var(--navy);
+			color: var(--gold);
+			border: 1px solid var(--gold);
+			padding: 5px;
+			border-radius: 5px;
+			font-family: "Elms Sans", sans-serif;
+			font-size: 0.9rem;
+			outline: none;
+		}
 
 		.hero-banner {
 			position: relative;
 			z-index: 10;
 			padding: 6rem 2rem 5rem;
 			text-align: center;
-			background: linear-gradient(180deg, rgba(13, 33, 81, 0) 0%, rgba(13, 33, 81, 0.6) 100%);
+			background: linear-gradient(180deg, rgba(5, 11, 24, 0) 0%, rgba(5, 11, 24, 0.8) 100%);
 			border-bottom: 1px solid var(--border);
 		}
 
 		.hero-label {
-			font-family: 'Cinzel Decorative', cursive;
-			font-size: 0.75rem;
-			letter-spacing: 6px;
+			font-family: 'Yatra One', cursive;
+			font-size: 1.1rem;
+			letter-spacing: 4px;
 			color: var(--sky-blue);
-			text-transform: uppercase;
 			margin-bottom: 1.2rem;
-			opacity: 0.9;
+			opacity: 1;
 		}
 
 		.hero-title {
-			font-family: 'Cinzel Decorative', cursive;
-			font-size: clamp(2rem, 5vw, 3.5rem);
+			font-family: 'Yatra One', cursive;
+			font-size: clamp(2.5rem, 6vw, 4rem);
 			background: linear-gradient(130deg, #ffffff 0%, var(--gold) 60%, var(--sky-blue) 100%);
 			-webkit-background-clip: text;
 			-webkit-text-fill-color: transparent;
 			background-clip: text;
 			line-height: 1.3;
 			margin-bottom: 1rem;
-			text-shadow: 0 10px 30px rgba(0,0,0,0.5);
+			text-shadow: 0 10px 30px rgba(0,0,0,0.8);
 		}
 
 		.hero-sub {
-			font-family: 'Cormorant Garamond', serif;
-			font-style: italic;
-			font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+			font-family: "Elms Sans", sans-serif;
+			font-size: clamp(1.3rem, 2.5vw, 1.6rem);
 			color: var(--light-blue);
-			max-width: 800px;
+			max-width: 900px;
 			margin: 0 auto;
-			opacity: 0.85;
+			opacity: 1;
+			font-weight: 500;
 		}
 
 		.page-wrap {
@@ -221,21 +240,19 @@
 		}
 
 		.sec-heading h2 {
-			font-family: 'Cinzel Decorative', cursive;
-			font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+			font-family: 'Yatra One', cursive;
+			font-size: clamp(1.5rem, 3vw, 2.2rem);
 			color: var(--gold);
-			letter-spacing: 2px;
+			letter-spacing: 1px;
 			white-space: nowrap;
-			text-transform: uppercase;
 		}
 
 		.sec-line {
 			flex: 1;
-			height: 1px;
-			background: linear-gradient(90deg, rgba(240, 192, 96, 0.4), transparent);
+			height: 2px;
+			background: linear-gradient(90deg, rgba(240, 192, 96, 0.5), transparent);
 		}
 
-		/* Beautiful Book Layouts */
 		.book-showcase {
 			display: grid;
 			grid-template-columns: 1fr 1fr;
@@ -246,13 +263,16 @@
 			border: 1px solid var(--border);
 			border-radius: 20px;
 			padding: 4rem;
-			box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+			box-shadow: 0 20px 50px rgba(0,0,0,0.5);
 			transition: transform 0.4s ease, border-color 0.4s ease;
+			backdrop-filter: blur(10px);
+			cursor: pointer;
 		}
 
 		.book-showcase:hover {
-			transform: translateY(-5px);
-			border-color: rgba(240, 192, 96, 0.4);
+			transform: translateY(-8px);
+			border-color: rgba(240, 192, 96, 0.8);
+			box-shadow: 0 25px 60px rgba(240, 192, 96, 0.15);
 		}
 
 		.book-showcase.reverse {
@@ -275,33 +295,32 @@
 			}
 			.book-showcase.reverse .book-visual { order: 1; }
 			.book-showcase.reverse .book-content { order: 2; }
-			.book-content .hindi-desc { border-left: none; border-bottom: 2px solid var(--sky-blue); padding-left: 0; padding-bottom: 1rem; }
+			.book-content .hindi-desc { border-left: none; border-bottom: 3px solid var(--sky-blue); padding-left: 0; padding-bottom: 1.5rem; }
 		}
 
-		/* 3D CSS Book Design (No images needed) */
 		.book-3d-container {
 			perspective: 1200px;
 			width: 100%;
-			max-width: 300px;
+			max-width: 320px;
 			margin: 0 auto;
 		}
 
 		.book-3d {
 			width: 100%;
-			height: 420px;
+			height: 450px;
 			position: relative;
 			transform-style: preserve-3d;
 			transform: rotateY(-20deg) rotateX(5deg);
 			transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-			box-shadow: inset 6px 0 15px rgba(0,0,0,0.3), 20px 30px 45px rgba(0,0,0,0.7);
+			box-shadow: inset 6px 0 15px rgba(0,0,0,0.5), 20px 30px 45px rgba(0,0,0,0.9);
 			border-radius: 3px 12px 12px 3px;
-			border-left: 12px solid #8B6508; /* Dark gold spine */
+			border-left: 12px solid #8B6508;
 			display: flex;
 			align-items: center;
 			justify-content: center;
 		}
 
-		.book-3d::before { /* Book Pages Edge */
+		.book-3d::before { 
 			content: '';
 			position: absolute;
 			right: -10px;
@@ -327,9 +346,9 @@
 			border-left: 12px solid #4a150b;
 		}
 
-		.book-3d-container:hover .book-3d {
+		.book-3d-container:hover .book-3d, .book-showcase:hover .book-3d {
 			transform: rotateY(0deg) rotateX(0deg) scale(1.05);
-			box-shadow: inset 4px 0 10px rgba(0,0,0,0.2), 10px 20px 30px rgba(0,0,0,0.5);
+			box-shadow: inset 4px 0 10px rgba(0,0,0,0.4), 10px 20px 30px rgba(0,0,0,0.7);
 		}
 
 		.book-cover-inner {
@@ -340,86 +359,70 @@
 			justify-content: space-between;
 			height: 90%;
 			width: 90%;
-			border: 1.5px solid rgba(240, 192, 96, 0.5);
+			border: 2px solid rgba(240, 192, 96, 0.6);
 			border-radius: 4px 8px 8px 4px;
 		}
 
 		.b-ornament {
-			font-size: 1.5rem;
+			font-size: 2rem;
 			color: var(--gold);
-			opacity: 0.8;
+			opacity: 0.9;
 		}
 
 		.b-title {
-			font-family: 'Cinzel Decorative', cursive;
+			font-family: 'Yatra One', cursive;
 			font-size: 2.2rem;
 			color: var(--white);
-			line-height: 1.2;
-			text-shadow: 0 4px 10px rgba(0,0,0,0.5);
-		}
-
-		.b-title-hi {
-			font-family: 'Inter', sans-serif;
-			font-size: 1.1rem;
-			color: var(--gold);
-			margin-top: 0.5rem;
-			font-weight: 500;
+			line-height: 1.3;
+			text-shadow: 0 4px 10px rgba(0,0,0,0.8);
 		}
 
 		.b-author {
-			font-family: 'Cormorant Garamond', serif;
-			font-size: 1.1rem;
-			letter-spacing: 2px;
+			font-family: "Elms Sans", sans-serif;
+			font-size: 1.2rem;
+			font-weight: bold;
 			color: var(--light-blue);
-			text-transform: uppercase;
 		}
 
 		.book-content h3 {
-			font-family: 'Cinzel Decorative', cursive;
-			font-size: 2.2rem;
+			font-family: 'Yatra One', cursive;
+			font-size: 2.8rem;
 			color: var(--gold);
-			margin-bottom: 0.5rem;
-		}
-
-		.book-content h4 {
-			font-family: 'Inter', sans-serif;
-			font-weight: 400;
-			font-size: 1.2rem;
-			color: var(--light-blue);
-			margin-bottom: 2rem;
-			letter-spacing: 1px;
+			margin-bottom: 1.5rem;
+			line-height: 1.2;
 		}
 
 		.book-content .hindi-desc {
-			font-size: 1.15rem;
-			line-height: 1.8;
-			color: rgba(238, 244, 255, 0.95);
-			margin-bottom: 1.8rem;
-			border-left: 3px solid var(--sky-blue);
-			padding-left: 1.5rem;
-		}
-
-		.book-content .english-desc {
-			font-family: 'Cormorant Garamond', serif;
 			font-size: 1.3rem;
-			font-style: italic;
-			line-height: 1.7;
-			color: rgba(168, 212, 245, 0.9);
-		}
-		
-		.citation-note {
-			display: inline-block;
-			font-size: 0.85rem;
-			color: var(--sky-blue);
-			background: rgba(74, 159, 224, 0.1);
-			padding: 2px 8px;
-			border-radius: 4px;
-			margin-top: 1rem;
-			font-style: normal;
-			font-family: 'Inter', sans-serif;
+			line-height: 1.9;
+			color: var(--white);
+			margin-bottom: 2rem;
+			border-left: 4px solid var(--sky-blue);
+			padding-left: 1.8rem;
+			font-weight: 500;
 		}
 
-		/* Extended Teachings Section */
+		.pdf-btn {
+			display: inline-flex;
+			align-items: center;
+			gap: 10px;
+			padding: 12px 30px;
+			background: linear-gradient(130deg, #F0C060, #d4a03c);
+			color: #050b18;
+			font-family: 'Yatra One', cursive;
+			font-size: 1.2rem;
+			border-radius: 50px;
+			text-decoration: none;
+			box-shadow: 0 6px 20px rgba(240, 192, 96, 0.4);
+			transition: all 0.3s ease;
+		}
+
+		.pdf-btn:hover {
+			transform: translateY(-3px);
+			box-shadow: 0 10px 25px rgba(240, 192, 96, 0.6);
+			background: #ffffff;
+		}
+
 		.teachings-grid {
 			display: grid;
 			grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -428,12 +431,19 @@
 		}
 
 		.teaching-card {
-			background: linear-gradient(145deg, rgba(13, 33, 81, 0.4), rgba(6, 15, 34, 0.6));
+			background: linear-gradient(145deg, rgba(13, 33, 81, 0.8), rgba(6, 15, 34, 0.95));
 			border: 1px solid var(--border);
 			border-radius: 16px;
 			padding: 2.5rem;
 			position: relative;
 			overflow: hidden;
+			box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+			transition: transform 0.3s ease;
+		}
+
+		.teaching-card:hover {
+			transform: translateY(-5px);
+			border-color: var(--gold);
 		}
 
 		.teaching-card::before {
@@ -442,54 +452,54 @@
 			top: 0;
 			left: 0;
 			width: 100%;
-			height: 3px;
+			height: 4px;
 			background: linear-gradient(90deg, var(--sky-blue), var(--gold), var(--sky-blue));
-			opacity: 0.7;
+			opacity: 0.9;
 		}
 
 		.teaching-card h4 {
-			font-family: 'Cinzel Decorative', cursive;
-			font-size: 1.4rem;
+			font-family: 'Yatra One', cursive;
+			font-size: 1.8rem;
 			color: var(--gold);
-			margin-bottom: 1rem;
+			margin-bottom: 1.2rem;
 			letter-spacing: 1px;
 		}
 
 		.teaching-card p {
-			font-family: 'Cormorant Garamond', serif;
-			font-size: 1.2rem;
-			line-height: 1.7;
-			color: rgba(238, 244, 255, 0.85);
-			margin-bottom: 1rem;
+			font-family: "Elms Sans", sans-serif;
+			font-size: 1.25rem;
+			line-height: 1.8;
+			color: var(--white);
+			font-weight: 500;
 		}
 
 		.blockquote-styled {
-			background: rgba(42, 95, 200, 0.1);
-			border-left: 4px solid var(--gold);
-			padding: 2rem;
-			margin: 4rem 0;
-			border-radius: 0 12px 12px 0;
+			background: rgba(42, 95, 200, 0.15);
+			border-left: 5px solid var(--gold);
+			padding: 3rem 2rem;
+			margin: 5rem 0;
+			border-radius: 0 16px 16px 0;
 			text-align: center;
 		}
 
 		.blockquote-styled p {
-			font-family: 'Cormorant Garamond', serif;
+			font-family: "Elms Sans", sans-serif;
 			font-style: italic;
-			font-size: 1.6rem;
+			font-size: 1.8rem;
+			font-weight: bold;
 			color: var(--cream);
-			line-height: 1.5;
+			line-height: 1.6;
 		}
 
 		.blockquote-styled cite {
 			display: block;
-			margin-top: 1rem;
-			font-family: 'Cinzel Decorative', cursive;
-			font-size: 1rem;
+			margin-top: 1.5rem;
+			font-family: 'Yatra One', cursive;
+			font-size: 1.3rem;
 			color: var(--gold);
 			letter-spacing: 2px;
 		}
 
-		/* Call to Action */
 		.cta-row {
 			text-align: center;
 			display: flex;
@@ -497,63 +507,62 @@
 			align-items: center;
 			gap: 1.5rem;
 			padding: 4rem 0 2rem;
-			background: radial-gradient(circle at center, rgba(42, 95, 200, 0.15) 0%, transparent 60%);
+			background: radial-gradient(circle at center, rgba(42, 95, 200, 0.2) 0%, transparent 60%);
 			border-radius: 20px;
 			margin-top: 4rem;
 		}
 
 		.cta-copy {
-			font-family: 'Cormorant Garamond', serif;
-			font-style: italic;
-			font-size: 1.4rem;
-			color: rgba(168, 212, 245, 0.9);
-			max-width: 600px;
+			font-family: "Elms Sans", sans-serif;
+			font-weight: bold;
+			font-size: 1.6rem;
+			color: var(--light-blue);
+			max-width: 750px;
+			line-height: 1.6;
 		}
 
 		.cta-button {
 			display: inline-flex;
 			align-items: center;
 			gap: 1rem;
-			padding: 16px 45px;
+			padding: 18px 50px;
 			border-radius: 50px;
-			font-family: 'Cinzel Decorative', cursive;
-			font-size: 0.9rem;
-			font-weight: bold;
-			letter-spacing: 2px;
+			font-family: 'Yatra One', cursive;
+			font-size: 1.3rem;
+			letter-spacing: 1px;
 			text-decoration: none;
 			transition: all 0.3s ease;
 			background: linear-gradient(130deg, #F0C060, #d4a03c);
-			color: #0B1A3A;
+			color: #050b18;
 			box-shadow: 0 8px 25px rgba(240, 192, 96, 0.4);
-			text-transform: uppercase;
 		}
 
 		.cta-button:hover {
 			transform: translateY(-5px);
 			box-shadow: 0 12px 35px rgba(240, 192, 96, 0.6);
+			background: #ffffff;
 		}
 
 		footer {
 			position: relative;
 			z-index: 10;
 			text-align: center;
-			padding: 2rem;
+			padding: 2.5rem;
 			border-top: 1px solid var(--border);
-			color: rgba(168, 212, 245, 0.4);
-			font-size: 0.85rem;
+			color: var(--light-blue);
+			font-size: 1.1rem;
 			letter-spacing: 2px;
-			font-family: 'Cinzel Decorative', cursive;
-			background: #060F22;
+			font-family: 'Yatra One', cursive;
+			background: rgba(3, 8, 20, 0.98);
 		}
 
 		.om-sym {
 			color: var(--gold);
-			font-size: 1.4rem;
+			font-size: 1.6rem;
 			margin: 0 12px;
 			vertical-align: middle;
 		}
 
-		/* Entry Animations */
 		.fade-up {
 			opacity: 0;
 			transform: translateY(30px);
@@ -566,398 +575,122 @@
 			to { opacity: 1; transform: translateY(0); }
 		}
 
-        .premium-wisdom-section {
-        margin: 5rem auto;
-        max-width: 850px;
-        padding: 0 1rem;
-        position: relative;
-    }
+		.premium-wisdom-section {
+			margin: 5rem auto;
+			max-width: 900px;
+			padding: 0 1rem;
+			position: relative;
+		}
 
-    .wisdom-slider-container {
-        background: linear-gradient(135deg, rgba(13, 33, 81, 0.6) 0%, rgba(6, 15, 34, 0.8) 100%);
-        border: 1px solid rgba(240, 192, 96, 0.25);
-        border-radius: 24px;
-        padding: 4rem 3rem 3rem;
-        text-align: center;
-        position: relative;
-        overflow: hidden;
-        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), inset 0 0 20px rgba(74, 159, 224, 0.15);
-        backdrop-filter: blur(12px);
-    }
+		.wisdom-slider-container {
+			background: linear-gradient(135deg, rgba(13, 33, 81, 0.8) 0%, rgba(6, 15, 34, 0.95) 100%);
+			border: 1px solid rgba(240, 192, 96, 0.35);
+			border-radius: 24px;
+			padding: 5rem 3rem 4rem;
+			text-align: center;
+			position: relative;
+			overflow: hidden;
+			box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8), inset 0 0 20px rgba(74, 159, 224, 0.15);
+			backdrop-filter: blur(12px);
+		}
 
-    .wisdom-slider-container::before {
-        content: '“';
-        position: absolute;
-        top: -10px;
-        left: 50%;
-        transform: translateX(-50%);
-        font-size: 8rem;
-        font-family: 'Cormorant Garamond', serif;
-        color: var(--gold);
-        opacity: 0.15;
-        line-height: 1;
-    }
+		.wisdom-slider-container::before {
+			content: '“';
+			position: absolute;
+			top: -10px;
+			left: 50%;
+			transform: translateX(-50%);
+			font-size: 8rem;
+			font-family: "Elms Sans", sans-serif;
+			color: var(--gold);
+			opacity: 0.25;
+			line-height: 1;
+		}
 
-    .wisdom-track {
-        position: relative;
-        min-height: 140px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
+		.wisdom-track {
+			position: relative;
+			min-height: 160px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
 
-    .wisdom-slide {
-        position: absolute;
-        width: 100%;
-        opacity: 0;
-        transform: translateX(30px) scale(0.98);
-        transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-        pointer-events: none;
-    }
+		.wisdom-slide {
+			position: absolute;
+			width: 100%;
+			opacity: 0;
+			transform: translateX(30px) scale(0.98);
+			transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+			pointer-events: none;
+		}
 
-    .wisdom-slide.active {
-        opacity: 1;
-        transform: translateX(0) scale(1);
-        pointer-events: auto;
-        position: relative;
-    }
+		.wisdom-slide.active {
+			opacity: 1;
+			transform: translateX(0) scale(1);
+			pointer-events: auto;
+			position: relative;
+		}
 
-    .wisdom-text {
-        font-family: 'Cormorant Garamond', serif;
-        font-size: 1.6rem;
-        color: var(--cream);
-        font-style: italic;
-        line-height: 1.6;
-        text-shadow: 0 2px 10px rgba(0,0,0,0.4);
-    }
+		.wisdom-text {
+			font-family: "Elms Sans", sans-serif;
+			font-size: 1.8rem;
+			font-weight: bold;
+			color: var(--cream);
+			font-style: italic;
+			line-height: 1.6;
+			text-shadow: 0 4px 15px rgba(0,0,0,0.8);
+		}
 
-    .wisdom-source {
-        font-family: 'Cinzel Decorative', cursive;
-        font-size: 0.8rem;
-        color: var(--sky-blue);
-        margin-top: 1.5rem;
-        letter-spacing: 3px;
-        font-weight: bold;
-        display: block;
-    }
+		.wisdom-source {
+			font-family: 'Yatra One', cursive;
+			font-size: 1.2rem;
+			color: var(--sky-blue);
+			margin-top: 1.5rem;
+			letter-spacing: 2px;
+			display: block;
+		}
 
-    /* Slider Controls */
-    .slider-arrow {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-10%);
-        background: rgba(11, 26, 58, 0.8);
-        border: 1px solid rgba(240, 192, 96, 0.3);
-        color: var(--gold);
-        width: 44px;
-        height: 44px;
-        border-radius: 50%;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: all 0.3s ease;
-        z-index: 10;
-        font-size: 1.2rem;
-    }
+		.slider-arrow {
+			position: absolute;
+			top: 50%;
+			transform: translateY(-10%);
+			background: rgba(5, 11, 24, 0.9);
+			border: 2px solid rgba(240, 192, 96, 0.6);
+			color: var(--gold);
+			width: 50px;
+			height: 50px;
+			border-radius: 50%;
+			cursor: pointer;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			transition: all 0.3s ease;
+			z-index: 10;
+			font-size: 1.5rem;
+			font-weight: bold;
+		}
 
-    .slider-arrow:hover {
-        background: var(--gold);
-        color: var(--navy);
-        box-shadow: 0 0 15px rgba(211, 154, 39, 0.5);
-    }
+		.slider-arrow:hover {
+			background: var(--gold);
+			color: var(--navy);
+			box-shadow: 0 0 20px rgba(211, 154, 39, 0.8);
+		}
 
-    .arrow-left { left: -22px; }
-    .arrow-right { right: -22px; }
+		.arrow-left { left: -25px; }
+		.arrow-right { right: -25px; }
 
-    @media (max-width: 900px) {
-        .slider-arrow { display: none; }
-        .wisdom-slider-container { padding: 3rem 1.5rem 2.5rem; }
-        .wisdom-text { font-size: 1.3rem; }
-    }
+		@media (max-width: 900px) {
+			.slider-arrow { display: none; }
+			.wisdom-slider-container { padding: 3rem 1.5rem 2.5rem; }
+			.wisdom-text { font-size: 1.5rem; }
+		}
 
-    .audio-hub-section {
-        margin: 6rem auto;
-        max-width: 1000px;
-        padding: 0 1rem;
-    }
-
-    .audio-dashboard {
-        background: linear-gradient(145deg, rgba(13, 33, 81, 0.7) 0%, rgba(6, 15, 34, 0.9) 100%);
-        border: 1px solid var(--border);
-        border-radius: 24px;
-        padding: 2.5rem;
-        display: grid;
-        grid-template-columns: 1.2fr 1.8fr;
-        gap: 2.5rem;
-        box-shadow: 0 30px 60px rgba(0, 0, 0, 0.7);
-        backdrop-filter: blur(15px);
-        max-width: 100%; /* नया: इसे स्क्रीन से बड़ा नहीं होने देगा */
-        box-sizing: border-box; /* नया: पैडिंग को अंदर ही रखेगा */
-    }
-
-    @media (max-width: 800px) {
-        .audio-dashboard {
-            grid-template-columns: 1fr;
-            padding: 1.5rem;
-            gap: 1.5rem;
-        }
-    }
-
-    /* Playlist Sidebar */
-    .audio-playlist-wrapper {
-        border-right: 1px solid rgba(100, 170, 255, 0.15);
-        padding-right: 1.5rem;
-        max-height: 380px;
-        overflow-y: auto;
-    }
-
-    @media (max-width: 800px) {
-        .audio-playlist-wrapper {
-            border-right: none;
-            padding-right: 0;
-            max-height: 250px;
-        }
-    }
-
-    .audio-playlist-wrapper::-webkit-scrollbar {
-        width: 4px;
-    }
-    .audio-playlist-wrapper::-webkit-scrollbar-thumb {
-        background: var(--sky-blue);
-        border-radius: 10px;
-    }
-
-    .playlist-title {
-        font-family: 'Cinzel Decorative', cursive;
-        font-size: 0.85rem;
-        color: var(--gold);
-        letter-spacing: 1px;
-        margin-bottom: 1.2rem;
-        text-transform: uppercase;
-        border-bottom: 1px solid rgba(240, 192, 96, 0.2);
-        padding-bottom: 0.5rem;
-    }
-
-    .playlist-item {
-        display: flex;
-        align-items: center;
-        gap: 12px;
-        padding: 12px;
-        border-radius: 10px;
-        cursor: pointer;
-        margin-bottom: 8px;
-        transition: all 0.3s ease;
-        background: rgba(255, 255, 255, 0.02);
-        border: 1px solid transparent;
-    }
-
-    .playlist-item:hover {
-        background: rgba(74, 159, 224, 0.1);
-        border-color: rgba(74, 159, 224, 0.2);
-    }
-
-    .playlist-item.active {
-        background: rgba(240, 192, 96, 0.12);
-        border-color: rgba(240, 192, 96, 0.4);
-    }
-
-    .track-num {
-        font-size: 0.8rem;
-        color: var(--sky-blue);
-        font-weight: bold;
-        width: 24px;
-    }
-
-    .track-meta h5 {
-        font-size: 0.9rem;
-        color: var(--white);
-        margin-bottom: 2px;
-        font-weight: 500;
-    }
-    .track-meta p {
-        font-size: 0.75rem;
-        color: var(--light-blue);
-        opacity: 0.7;
-        margin: 0;
-    }
-
-    /* Active Player Pane */
-    .active-player-pane {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        text-align: center;
-        padding: 1rem;
-        min-width: 0; /* नया और सबसे ज़रूरी: यह टेक्स्ट को बॉक्स तोड़ने से रोकेगा */
-    }
-
-    .player-disk-zone {
-        position: relative;
-        width: 120px;
-        height: 120px;
-        margin: 0 auto 1.5rem;
-        background: radial-gradient(circle, var(--deep-blue) 30%, #060F22 100%);
-        border: 3px solid var(--gold);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        box-shadow: 0 0 25px rgba(240, 192, 96, 0.3);
-    }
-
-    .player-disk-zone::after {
-        content: '🪷';
-        font-size: 2.5rem;
-        animation: pulseLogo 3s infinite ease-in-out;
-    }
-
-    @keyframes pulseLogo {
-        0%, 100% { transform: scale(1); opacity: 0.8; }
-        50% { transform: scale(1.1); opacity: 1; filter: drop-shadow(0 0 8px var(--gold)); }
-    }
-
-    .now-playing-title {
-        font-family: 'Cinzel Decorative', cursive;
-        /* नया: बड़ी स्क्रीन पर 1.3rem, छोटी स्क्रीन पर अपने आप छोटा हो जाएगा */
-        font-size: clamp(1rem, 4vw, 1.3rem); 
-        color: var(--gold);
-        margin-bottom: 0.4rem;
-        word-wrap: break-word; /* नया: लंबे टेक्स्ट को अगली लाइन में तोड़ देगा */
-        overflow-wrap: break-word; /* नया: बॉक्स के बाहर नहीं जाने देगा */
-        line-height: 1.4;
-    }
-
-    .now-playing-sub {
-        /* नया: रिस्पॉन्सिव फॉन्ट साइज़ */
-        font-size: clamp(0.75rem, 3vw, 0.85rem);
-        color: var(--light-blue);
-        margin-bottom: 2rem;
-        opacity: 0.8;
-        word-wrap: break-word; /* नया: टेक्स्ट अगली लाइन में जाएगा */
-        overflow-wrap: break-word; 
-        line-height: 1.4;
-    }
-
-    /* Custom Standard Audio Controls */
-    .player-controls-wrapper {
-        width: 100%;
-    }
-
-    .progress-bar-container {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        margin-bottom: 1.5rem;
-    }
-
-    .time-stamp {
-        font-size: 0.75rem;
-        color: var(--light-blue);
-        font-family: monospace;
-        width: 40px;
-    }
-
-    .progress-slider {
-        flex: 1;
-        -webkit-appearance: none;
-        appearance: none;
-        height: 5px;
-        border-radius: 5px;
-        background: rgba(168, 212, 245, 0.2);
-        outline: none;
-        cursor: pointer;
-        position: relative;
-    }
-
-    .progress-slider::-webkit-slider-thumb {
-        -webkit-appearance: none;
-        appearance: none;
-        width: 13px;
-        height: 13px;
-        border-radius: 50%;
-        background: var(--gold);
-        box-shadow: 0 0 8px var(--gold);
-        transition: transform 0.1s;
-    }
-
-    .btn-actions-row {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 25px;
-    }
-
-    .control-btn {
-        background: transparent;
-        border: none;
-        color: var(--light-blue);
-        font-size: 1.4rem;
-        cursor: pointer;
-        transition: all 0.2s ease;
-    }
-    .control-btn:hover {
-        color: var(--gold);
-        transform: scale(1.1);
-    }
-
-    .master-play-btn {
-        width: 54px;
-        height: 54px;
-        background: var(--gold);
-        color: var(--navy);
-        border-radius: 50%;
-        font-size: 1.2rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        box-shadow: 0 8px 20px rgba(240, 192, 96, 0.3);
-    }
-    .master-play-btn:hover {
-        background: var(--white);
-        color: var(--navy);
-        box-shadow: 0 8px 25px rgba(255, 255, 255, 0.5);
-        transform: scale(1.05);
-    }
-
-	.playlist-tabs-slider {
-        display: flex;
-        overflow-x: auto;
-        gap: 10px;
-        padding-bottom: 12px;
-        margin-bottom: 15px;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        scrollbar-width: none; /* Firefox के लिए स्क्रॉलबार छुपाना */
-    }
-    .playlist-tabs-slider::-webkit-scrollbar {
-        display: none; /* Chrome/Safari के लिए स्क्रॉलबार छुपाना */
-    }
-    .pl-tab-btn {
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        color: #ffffff;
-        padding: 8px 18px;
-        border-radius: 20px;
-        font-size: 0.85rem;
-        white-space: nowrap; /* टेक्स्ट को टूटने नहीं देगा */
-        cursor: pointer;
-        transition: all 0.3s ease;
-    }
-    .pl-tab-btn.active {
-        background: #A8D4F5; /* आपका थीम कलर */
-        color: #000000;
-        font-weight: bold;
-        border-color: #A8D4F5;
-    }
-    
-
-        
 	</style>
 </head>
 
 <body>
 	<div class="bg-fixed"></div>
-	<svg class="mandala-bg" viewBox="0 0 900 900" xmlns="http://www.w3.org/2000/svg" stroke="#4A9FE0" fill="none" stroke-width="0.5">
+	<svg class="mandala-bg" viewBox="0 0 900 900" xmlns="http://www.w3.org/2000/svg" stroke="#6ab9fc" fill="none" stroke-width="0.5">
 		<g transform="translate(450,450)">
 			<circle r="140" /><circle r="260" /><circle r="400" />
 			<g id="p">
@@ -979,192 +712,137 @@
 				<span class="site-name">108 कुटिया</span>
 			</a>
 			<nav>
-				<a href="./home.html">Home</a>
-				<a href="./about.html">About Maharaj Ji</a>
-				<a href="#" class="active">Knowledge</a>
-				<a href="./temples.html">Temples</a>
-				<a href="./contact-us.html">Contact</a>
+				<a href="./home.html">मुख्य पृष्ठ</a>
+				<a href="./about.html">महाराज जी के बारे में</a>
+				<a href="#" class="active">ज्ञान भंडार</a>
+				<a href="./temples.html">मंदिर</a>
+				<a href="./contact-us.html">संपर्क करें</a>
+				
+				<!-- Google Translate Widget Location -->
+				<div id="google_translate_element"></div>
 			</nav>
 		</div>
 	</header>
 
 	<div class="hero-banner fade-up">
-		<p class="hero-label">✦ &nbsp; The Sacred Texts of Divine Love &nbsp; ✦</p>
-		<h1 class="hero-title">108 कुटिया Literature</h1>
-		<p class="hero-sub">Immerse yourself in the profound spiritual manuscripts authored by Swami Karun Das Ji Maharaj, exploring the esoteric paths of Braj Ras and pure devotion.</p>
+		<p class="hero-label">✦ &nbsp; दिव्य प्रेम के पवित्र ग्रंथ &nbsp; ✦</p>
+		<h1 class="hero-title">108 कुटिया साहित्य</h1>
+		<p class="hero-sub">स्वामी करुण दास जी महाराज द्वारा रचित उन गहन आध्यात्मिक ग्रंथों में गोता लगाएँ, जो ब्रज रस और शुद्ध निष्काम भक्ति के गूढ़ मार्गों का अन्वेषण करते हैं।</p>
 	</div>
 
 	<div class="page-wrap">
 
 		<div class="sec-heading fade-up delay-1">
-			<h2>✦ &nbsp; Masterpieces of Swami Karun Das Ji Maharaj</h2>
+			<h2>✦ &nbsp; स्वामी करुण दास जी महाराज की उत्कृष्ट रचनाएँ</h2>
 			<div class="sec-line"></div>
 		</div>
 
-		<!-- Book 1: Braj Vrindavan Madhuri -->
-		<div class="book-showcase fade-up delay-2">
+		<!-- Wrap the entire showcase in anchor tag linking to PDF -->
+		<a href="braj_vrindavan_madhuri.pdf" target="_blank" class="book-showcase fade-up delay-2">
 			<div class="book-visual">
 				<div class="book-3d-container">
 					<div class="book-3d book-1-bg">
 						<div class="book-cover-inner">
 							<div class="b-ornament">❁</div>
 							<div>
-								<div class="b-title">Braj<br>Vrindavan<br>Madhuri</div>
-								<div class="b-title-hi">ब्रज वृन्दावन माधुरी</div>
+								<div class="b-title">ब्रज<br>वृन्दावन<br>माधुरी</div>
 							</div>
-							<div class="b-author">Swami Karun Das Ji</div>
+							<div class="b-author">स्वामी करुण दास जी</div>
 						</div>
 					</div>
 				</div>
 			</div>
 			<div class="book-content">
-				<h3>Braj Vrindavan Madhuri</h3>
-				<h4>ब्रज वृन्दावन माधुरी</h4>
+				<h3>ब्रज वृन्दावन माधुरी</h3>
 				<p class="hindi-desc">स्वामी करुण दास जी महाराज द्वारा रचित यह अत्यंत दिव्य ग्रंथ ब्रज भूमि की असीम मधुरता का वर्णन करता है। इसमें श्री राधा-कृष्ण की नित्य लीलाओं, वृन्दावन के पवित्र कुंजों, और निष्काम प्रेम-भक्ति के मार्ग को बड़े ही सजीव व भावपूर्ण ढंग से प्रस्तुत किया गया है। यह पवित्र ग्रंथ महाराज जी के दैनिक 'सत्संग कृपा प्रसाद' प्रवचनों का मुख्य आधार भी है।</p>
-				<p class="english-desc">A profound and highly revered manuscript detailing the divine sweetness (Madhuri) of the Braj region. It masterfully explores the intimate, eternal pastimes of Shri Radha-Krishna, the esoteric significance of Vrindavan's sacred groves, and the ultimate path of unconditional devotion. This literature is prominently featured and deeply analyzed in the daily <strong>Satsang Kripa Prasad</strong> discourses delivered by Swami Karun Dass Ji.</p>
+				<span class="pdf-btn">पीडीएफ पढ़ें (PDF) 📄</span>
 			</div>
-		</div>
+		</a>
 
-		<!-- Book 2: Prem Pataka Shodashi -->
-		<div class="book-showcase reverse fade-up delay-1">
+		<a href="prem_pataka_shodashi.pdf" target="_blank" class="book-showcase reverse fade-up delay-1">
 			<div class="book-visual">
 				<div class="book-3d-container">
 					<div class="book-3d book-2-bg">
 						<div class="book-cover-inner">
 							<div class="b-ornament">🪷</div>
 							<div>
-								<div class="b-title">Prem<br>Pataka<br>Shodashi</div>
-								<div class="b-title-hi">प्रेम पताका षोडशी</div>
+								<div class="b-title">प्रेम<br>पताका<br>षोडशी</div>
 							</div>
-							<div class="b-author">Swami Karun Das Ji</div>
+							<div class="b-author">स्वामी करुण दास जी</div>
 						</div>
 					</div>
 				</div>
 			</div>
 			<div class="book-content">
-				<h3>Prem Pataka Shodashi</h3>
-				<h4>प्रेम पताका षोडशी</h4>
+				<h3>प्रेम पताका षोडशी</h3>
 				<p class="hindi-desc">"प्रेम पताका षोडशी" भक्ति मार्ग का एक अनमोल रत्न है। 'षोडशी' का अर्थ है सोलह, जो इस ग्रंथ में वर्णित शुद्ध प्रेम और परा-भक्ति की सोलह विभिन्न अवस्थाओं और दिव्य गुणों को दर्शाता है। यह उत्कृष्ट रचना साधक का मार्गदर्शन करती है कि कैसे हृदय में भगवान के प्रति सर्वोच्च और निष्काम प्रेम की ध्वजा (पताका) को फहराया जाए।</p>
-				<p class="english-desc">An absolute masterpiece focusing on the ultimate philosophy of divine, selfless love. The term 'Shodashi' represents the sixteen magnificent virtues and progressive stages of pure Bhakti. By unraveling these stages, the book guides the true seeker on how to unfurl the 'Flag of Divine Love' (Prem Pataka) within their own heart, leading to absolute surrender at the lotus feet of the Divine.</p>
+				<span class="pdf-btn">पीडीएफ पढ़ें (PDF) 📄</span>
 			</div>
-		</div>
+		</a>
 
 		<div class="blockquote-styled fade-up delay-1">
-			<p>"To read these scriptures is not merely an intellectual exercise; it is an intimate conversation with the divine essence of Braj, awakening the dormant seed of unconditional love within the soul."</p>
-			<cite>— The Core Philosophy of 108 कुटिया</cite>
+			<p>"इन पवित्र ग्रंथों को पढ़ना केवल एक बौद्धिक अभ्यास नहीं है; यह ब्रज के दिव्य सार के साथ एक अंतरंग संवाद है, जो आत्मा के भीतर निष्काम प्रेम के सुप्त बीज को जागृत करता है।"</p>
+			<cite>— 108 कुटिया का मूल दर्शन</cite>
 		</div>
 
-		<!-- Impact & Live Teachings Section -->
 		<div class="sec-heading fade-up delay-1">
-			<h2>✦ &nbsp; Live Discourses & Traditions</h2>
+			<h2>✦ &nbsp; सजीव प्रवचन एवं परंपराएं</h2>
 			<div class="sec-line"></div>
 		</div>
 
 		<div class="teachings-grid fade-up delay-2">
 			<div class="teaching-card">
-				<h4>Satsang Kripa Prasad</h4>
-				<p>Swami Karun Dass Ji regularly conducts the highly anticipated <em>Satsang Kripa Prasad</em> sessions, where he provides deep, serialized commentary on texts like <em>Braj Vrindavan Madhuri</em>. These live broadcasts connect thousands of devotees directly to the spiritual vibrations of the ashram.</p>
+				<h4>सत्संग कृपा प्रसाद</h4>
+				<p>स्वामी करुण दास जी नियमित रूप से बहुप्रतीक्षित 'सत्संग कृपा प्रसाद' सत्र आयोजित करते हैं, जहाँ वे 'ब्रज वृन्दावन माधुरी' जैसे ग्रंथों पर गहन और क्रमबद्ध व्याख्यान देते हैं। ये सजीव प्रसारण हजारों भक्तों को सीधे आश्रम के आध्यात्मिक स्पंदनों से जोड़ते हैं।</p>
 			</div>
 			<div class="teaching-card">
-				<h4>Shri Bhaktmal Katha</h4>
-				<p>A cornerstone of the ashram's spiritual calendar is the grand <em>Shri Bhaktmal Katha</em>. During these multi-day discourses, Maharaj Ji narrates the extraordinary lives, sacrifices, and realizations of legendary saints, inspiring modern seekers to cultivate unwavering faith.</p>
+				<h4>श्री भक्तमाल कथा</h4>
+				<p>आश्रम के आध्यात्मिक पंचांग का एक प्रमुख आधार भव्य 'श्री भक्तमाल कथा' है। इन बहु-दिवसीय प्रवचनों के दौरान, महाराज जी महान संतों के असाधारण जीवन, बलिदान और अनुभूतियों का वर्णन करते हैं, जो आधुनिक साधकों को अटूट आस्था विकसित करने के लिए प्रेरित करते हैं।</p>
 			</div>
 			<div class="teaching-card">
-				<h4>Ashtayam Seva</h4>
-				<p>Central to the teachings found within his books is the practice of <em>Ashtayam Seva</em>—the continuous, eight-fold daily worship of Shri Radha-Krishna. It is a deeply immersive spiritual discipline designed to keep the devotee's consciousness anchored in divine remembrance throughout every phase of the day.</p>
+				<h4>अष्टयाम सेवा</h4>
+				<p>उनके ग्रंथों में पाए जाने वाले उपदेशों के केंद्र में 'अष्टयाम सेवा' का अभ्यास है—श्री राधा-कृष्ण की निरंतर, आठ-पहर की दैनिक पूजा। यह एक अत्यंत गहन आध्यात्मिक अनुशासन है जिसे दिन के हर चरण में भक्त की चेतना को दिव्य स्मरण में स्थिर रखने के लिए डिज़ाइन किया गया है।</p>
 			</div>
 		</div>
 
-        <!-- INTERACTIVE WISDOM WIDGET -->
-<div class="premium-wisdom-section">
-    <div class="sec-heading fade-up">
-        <h2>✦ &nbsp; Divine Wisdom Capsule / दिव्य अमृत बिंदु</h2>
-        <div class="sec-line"></div>
-    </div>
+		<div class="premium-wisdom-section">
+			<div class="sec-heading fade-up">
+				<h2>✦ &nbsp; दिव्य अमृत बिंदु</h2>
+				<div class="sec-line"></div>
+			</div>
 
-    <div class="wisdom-slider-container fade-up delay-1">
-        <button class="slider-arrow arrow-left" onclick="prevSlide()" aria-label="Previous Slide">‹</button>
-        <button class="slider-arrow arrow-right" onclick="nextSlide()" aria-label="Next Slide">›</button>
+			<div class="wisdom-slider-container fade-up delay-1">
+				<button class="slider-arrow arrow-left" onclick="prevSlide()" aria-label="पिछला">‹</button>
+				<button class="slider-arrow arrow-right" onclick="nextSlide()" aria-label="अगला">›</button>
 
-        <div class="wisdom-track" id="wisdom-track">
-            </div>
+				<div class="wisdom-track" id="wisdom-track"></div>
 
-        <div class="slider-dots" id="slider-dots"></div>
-    </div>
-</div>
-
-<!-- PREMIUM AUDIO PREVIEW BLOCK -->
-<div class="audio-hub-section">
-    <div class="sec-heading fade-up">
-        <h2>✦ &nbsp; Audio Book & Discourses Hub</h2>
-        <div class="sec-line"></div>
-    </div>
-
-    <div class="audio-dashboard fade-up delay-1">
-        <!-- Sidebar Playlist -->
-        <div class="audio-playlist-wrapper">
-            <div class="playlist-title">Select Scripture / प्रसंग चुनें</div>
-            <div id="playlist-container">
-                <!-- Items dynamically generated for easy maintenance -->
-            </div>
-        </div>
-
-        <!-- Main Controller Pane -->
-        <div class="active-player-pane">
-            <div class="player-disk-zone" id="disk-zone"></div>
-            <h4 class="now-playing-title" id="player-title">Loading...</h4>
-            <p class="now-playing-sub" id="player-category">Discourse Selection</p>
-
-            <div class="player-controls-wrapper">
-                <!-- Timeline slider -->
-                <div class="progress-bar-container">
-                    <span class="time-stamp" id="current-time">0:00</span>
-                    <input type="range" class="progress-slider" id="progress-slider" min="0" max="100" value="0">
-                    <span class="time-stamp" id="total-duration">0:00</span>
-                </div>
-
-                <!-- Control Buttons -->
-                <div class="btn-actions-row">
-                    <button class="control-btn" onclick="playPrev()">⏮</button>
-                    <button class="control-btn master-play-btn" id="master-play-trigger" onclick="toggleAudioState()">▶</button>
-                    <button class="control-btn" onclick="playNext()">⏭</button>
-                </div>
-            </div>
-
-			<div class="audio-playlist-wrapper">
-    <div class="playlist-title">Select Playlist / प्रसंग चुनें</div>
-    
-    <!-- NEW: Horizontal Tabs Slider -->
-    <div id="playlist-tabs-container" class="playlist-tabs-slider">
-        <!-- Tabs will be injected here via JS -->
-    </div>
-
-    <div id="playlist-container">
-        <!-- Tracks dynamically generated here -->
-    </div>
-</div>
-        </div>
-    </div>
-</div>
-
-<!-- INVISIBLE YOUTUBE PLAYER CONTAINER (FIXED) -->
-<div id="yt-player-container" style="position: absolute; width: 0; height: 0; left: -9999px; overflow: hidden;"></div>
+				<div class="slider-dots" id="slider-dots"></div>
+			</div>
+		</div>
 
 		<div class="cta-row fade-up delay-1">
-			<p class="cta-copy">Experience the profound wisdom and live narrations of these sacred texts by joining the daily virtual congregations.</p>
+			<p class="cta-copy">इन पवित्र ग्रंथों के गहन ज्ञान और सजीव कथाओं का अनुभव करने के लिए दैनिक आभासी सत्संग से जुड़ें।</p>
 			<a href="https://www.youtube.com/c/SwamiKarunDassJi" target="_blank" rel="noopener" class="cta-button">
-				<span>Listen to Live Satsangs on YouTube</span>
+				<span>यूट्यूब पर सजीव सत्संग सुनें ▶</span>
 			</a>
 		</div>
 
 	</div>
 
 	<footer>
-		<span class="om-sym">ॐ</span> Jai Shri Radhe Shyam &nbsp;|&nbsp; 108 कुटिया, Barsana <span class="om-sym">🪷</span>
+		<span class="om-sym">ॐ</span> जय श्री राधे श्याम &nbsp;|&nbsp; 108 कुटिया, बरसाना <span class="om-sym">🪷</span>
 	</footer>
 
-	<script src="./playlists.js"></script>
+	<!-- Google Translate Script -->
+	<script type="text/javascript">
+		function googleTranslateElementInit() {
+		  new google.translate.TranslateElement({pageLanguage: 'hi', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+		}
+	</script>
+	<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
+	<!-- Visual Scripts (Starfield & Wisdom Slider) -->
 	<script>
 		(function () {
 			const c = document.getElementById('starfield');
@@ -1180,7 +858,7 @@
 					const a = s.alpha * (0.5 + 0.5 * Math.sin(t * s.speed + s.phase));
 					ctx.save();
 					ctx.globalAlpha = a;
-					ctx.fillStyle = '#A8D4F5';
+					ctx.fillStyle = '#c4e5ff';
 					ctx.beginPath();
 					ctx.arc(s.x % W, s.y % H, s.r, 0, Math.PI * 2);
 					ctx.fill();
@@ -1191,302 +869,95 @@
 			requestAnimationFrame(tick);
 		})();
 
-    // Comprehensive array of 12 spiritual quotes matching the books theme
-    // ==========================================
-    // 1. WISDOM SLIDER LOGIC
-    // ==========================================
-    const wisdomQuotes = [
-        { text: "वृन्दावन की सहज माधुरी को समझने के लिए केवल बुद्धि नहीं, बल्कि शुद्ध निष्काम हृदय की आवश्यकता है।", source: "BRAJ VRINDAVAN MADHURI" },
-        { text: "जब हृदय में प्रेम की पताका फहराती है, तब माया के सारे बंधन स्वतः ही छिन्न-भिन्न हो जाते हैं।", source: "PREM PATAKA SHODASHI" },
-        { text: "साधना का प्रथम चरण है—अपने अहंकार को पूर्णतः श्री राधा-कृष्ण के चरणों में समर्पित कर देना।", source: "DAILY SATSANG KRIPA PRASAD" },
-        { text: "प्रेम कोई सांसारिक मांग नहीं है, प्रेम तो सर्वस्व न्योछावर कर देने का एक दिव्य और अनादि स्वभाव है।", source: "PREM PATAKA SHODASHI" },
-        { text: "श्री कृष्ण केवल भाव के भूखे हैं; आपका भाव जितना पवित्र होगा, प्रभु उतने ही आपके निकट होंगे।", source: "BRAJ VRINDAVAN MADHURI" },
-        { text: "सच्चा वैराग्य संसार को छोड़ने में नहीं, बल्कि संसार की नश्वरता को समझकर प्रभु में चित्त लगाने में है।", source: "PREM PATAKA SHODASHI" },
-        { text: "108 कुटिया की शांत स्थली में किया गया नाम-जप सीधे अंतरात्मा को जागृत करता है।", source: "DAILY SATSANG KRIPA PRASAD" },
-        { text: "राधा नाम ही ब्रज का प्राण है, इस नाम के बिना निकुंज लीलाओं में प्रवेश असंभव है।", source: "BRAJ VRINDAVAN MADHURI" },
-        { text: "भक्ति मार्ग में तर्क का कोई स्थान नहीं है; यहाँ केवल अटूट विश्वास और अनन्य शरणागति ही काम आती है।", source: "PREM PATAKA SHODASHI" },
-        { text: "अपने दोषों को देखना और दूसरों के सद्गुणों को ग्रहण करना ही एक सच्चे साधक की पहचान है।", source: "DAILY SATSANG KRIPA PRASAD" },
-        { text: "प्रभु की कृपा का प्रसाद हर पल बरस रहा है, बस हमारी पात्रता की झोली सीधी होनी चाहिए।", source: "DAILY SATSANG KRIPA PRASAD" },
-        { text: "जब तक हृदय में संसार की कामना है, तब तक दिव्य रस का आस्वादन संभव नहीं है।", source: "BRAJ VRINDAVAN MADHURI" }
-    ];
+		const wisdomQuotes = [
+			{ text: "वृन्दावन की सहज माधुरी को समझने के लिए केवल बुद्धि नहीं, बल्कि शुद्ध निष्काम हृदय की आवश्यकता है।", source: "ब्रज वृन्दावन माधुरी" },
+			{ text: "जब हृदय में प्रेम की पताका फहराती है, तब माया के सारे बंधन स्वतः ही छिन्न-भिन्न हो जाते हैं।", source: "प्रेम पताका षोडशी" },
+			{ text: "साधना का प्रथम चरण है—अपने अहंकार को पूर्णतः श्री राधा-कृष्ण के चरणों में समर्पित कर देना।", source: "सत्संग कृपा प्रसाद" },
+			{ text: "प्रेम कोई सांसारिक मांग नहीं है, प्रेम तो सर्वस्व न्योछावर कर देने का एक दिव्य और अनादि स्वभाव है।", source: "प्रेम पताका षोडशी" },
+			{ text: "श्री कृष्ण केवल भाव के भूखे हैं; आपका भाव जितना पवित्र होगा, प्रभु उतने ही आपके निकट होंगे।", source: "ब्रज वृन्दावन माधुरी" },
+			{ text: "सच्चा वैराग्य संसार को छोड़ने में नहीं, बल्कि संसार की नश्वरता को समझकर प्रभु में चित्त लगाने में है।", source: "प्रेम पताका षोडशी" },
+			{ text: "108 कुटिया की शांत स्थली में किया गया नाम-जप सीधे अंतरात्मा को जागृत करता है।", source: "सत्संग कृपा प्रसाद" },
+			{ text: "राधा नाम ही ब्रज का प्राण है, इस नाम के बिना निकुंज लीलाओं में प्रवेश असंभव है।", source: "ब्रज वृन्दावन माधुरी" },
+			{ text: "भक्ति मार्ग में तर्क का कोई स्थान नहीं है; यहाँ केवल अटूट विश्वास और अनन्य शरणागति ही काम आती है।", source: "प्रेम पताका षोडशी" },
+			{ text: "अपने दोषों को देखना और दूसरों के सद्गुणों को ग्रहण करना ही एक सच्चे साधक की पहचान है।", source: "सत्संग कृपा प्रसाद" },
+			{ text: "प्रभु की कृपा का प्रसाद हर पल बरस रहा है, बस हमारी पात्रता की झोली सीधी होनी चाहिए।", source: "सत्संग कृपा प्रसाद" },
+			{ text: "जब तक हृदय में संसार की कामना है, तब तक दिव्य रस का आस्वादन संभव नहीं है।", source: "ब्रज वृन्दावन माधुरी" }
+		];
 
-    let currentIndex = 0;
-    let slideInterval;
-    const AUTOPLAY_TIME = 5000; // 5 Seconds
+		let currentIndex = 0;
+		let slideInterval;
+		const AUTOPLAY_TIME = 5000; 
 
-    function initSlider() {
-        const track = document.getElementById('wisdom-track');
-        const dotsContainer = document.getElementById('slider-dots');
-        
-        if(!track || !dotsContainer) return; // Safety check
+		function initSlider() {
+			const track = document.getElementById('wisdom-track');
+			const dotsContainer = document.getElementById('slider-dots');
+			
+			if(!track || !dotsContainer) return; 
 
-        track.innerHTML = '';
-        dotsContainer.innerHTML = '';
+			track.innerHTML = '';
+			dotsContainer.innerHTML = '';
 
-        wisdomQuotes.forEach((quote, index) => {
-            const slide = document.createElement('div');
-            slide.className = `wisdom-slide ${index === 0 ? 'active' : ''}`;
-            slide.innerHTML = `
-                <p class="wisdom-text">"${quote.text}"</p>
-                <span class="wisdom-source">— ${quote.source}</span>
-            `;
-            track.appendChild(slide);
+			wisdomQuotes.forEach((quote, index) => {
+				const slide = document.createElement('div');
+				slide.className = `wisdom-slide ${index === 0 ? 'active' : ''}`;
+				slide.innerHTML = `
+					<p class="wisdom-text">"${quote.text}"</p>
+					<span class="wisdom-source">— ${quote.source}</span>
+				`;
+				track.appendChild(slide);
 
-            const dot = document.createElement('div');
-            dot.className = `dot ${index === 0 ? 'active' : ''}`;
-            dot.onclick = () => goToSlide(index);
-            dotsContainer.appendChild(dot);
-        });
+				const dot = document.createElement('div');
+				dot.className = `dot ${index === 0 ? 'active' : ''}`;
+				dot.onclick = () => goToSlide(index);
+				dotsContainer.appendChild(dot);
+			});
 
-        startAutoplay();
-    }
+			startAutoplay();
+		}
 
-    function updateSliderClasses() {
-        const slides = document.querySelectorAll('.wisdom-slide');
-        const dots = document.querySelectorAll('.dot');
+		function updateSliderClasses() {
+			const slides = document.querySelectorAll('.wisdom-slide');
+			const dots = document.querySelectorAll('.dot');
 
-        slides.forEach((slide, index) => {
-            if (index === currentIndex) slide.classList.add('active');
-            else slide.classList.remove('active');
-        });
+			slides.forEach((slide, index) => {
+				if (index === currentIndex) slide.classList.add('active');
+				else slide.classList.remove('active');
+			});
 
-        dots.forEach((dot, index) => {
-            if (index === currentIndex) dot.classList.add('active');
-            else dot.classList.remove('active');
-        });
-    }
+			dots.forEach((dot, index) => {
+				if (index === currentIndex) dot.classList.add('active');
+				else dot.classList.remove('active');
+			});
+		}
 
-    function nextSlide() {
-        currentIndex = (currentIndex + 1) % wisdomQuotes.length;
-        updateSliderClasses();
-        resetAutoplay();
-    }
+		function nextSlide() {
+			currentIndex = (currentIndex + 1) % wisdomQuotes.length;
+			updateSliderClasses();
+			resetAutoplay();
+		}
 
-    function prevSlide() {
-        currentIndex = (currentIndex - 1 + wisdomQuotes.length) % wisdomQuotes.length;
-        updateSliderClasses();
-        resetAutoplay();
-    }
+		function prevSlide() {
+			currentIndex = (currentIndex - 1 + wisdomQuotes.length) % wisdomQuotes.length;
+			updateSliderClasses();
+			resetAutoplay();
+		}
 
-    function goToSlide(index) {
-        currentIndex = index;
-        updateSliderClasses();
-        resetAutoplay();
-    }
+		function goToSlide(index) {
+			currentIndex = index;
+			updateSliderClasses();
+			resetAutoplay();
+		}
 
-    function startAutoplay() {
-        slideInterval = setInterval(nextSlide, AUTOPLAY_TIME);
-    }
+		function startAutoplay() {
+			slideInterval = setInterval(nextSlide, AUTOPLAY_TIME);
+		}
 
-    function resetAutoplay() {
-        clearInterval(slideInterval);
-        startAutoplay();
-    }
+		function resetAutoplay() {
+			clearInterval(slideInterval);
+			startAutoplay();
+		}
 
-    document.addEventListener('DOMContentLoaded', initSlider);
-
-
-    // ==========================================
-    // 2. YOUTUBE AUDIO PLAYER LOGIC
-    // ==========================================
-
-
-
-    // ==========================================
-    // 2. MULTI-PLAYLIST YOUTUBE AUDIO LOGIC
-    // ==========================================
-    const playTrigger = document.getElementById('master-play-trigger');
-    const progressBar = document.getElementById('progress-slider');
-    const curTimeTxt = document.getElementById('current-time');
-    const totDurTxt = document.getElementById('total-duration');
-    
-    let currentViewPlaylistIdx = 0; // यूज़र अभी कौन सा टैब देख रहा है
-    let playingPlaylistIdx = 0;     // बैकग्राउंड में कौन सी प्लेलिस्ट बज रही है
-    let activeTrackIdx = 0;         // बैकग्राउंड में कौन सा ट्रैक बज रहा है
-    
-    let isTrackPlaying = false;
-    let ytPlayer;
-    let timeUpdater;
-
-    // Load YouTube API
-    const tag = document.createElement('script');
-    tag.src = "https://www.youtube.com/iframe_api";
-    const firstScriptTag = document.getElementsByTagName('script')[0];
-    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-    function onYouTubeIframeAPIReady() {
-        // By default, load the first track of the first playlist
-        let initialTrack = masterPlaylists[0].tracks[0];
-        
-        ytPlayer = new YT.Player('yt-player-container', {
-            height: '10',
-            width: '10',
-            videoId: initialTrack.ytId,
-            playerVars: { 'playsinline': 1, 'controls': 0, 'disablekb': 1 },
-            events: {
-                'onReady': onPlayerReady,
-                'onStateChange': onPlayerStateChange
-            }
-        });
-    }
-
-    function onPlayerReady(event) {
-        initPlaylistTabs();
-        assemblePlaylist();
-        updatePlayerUI();
-    }
-
-    function onPlayerStateChange(event) {
-        if (event.data == 1) { // Playing
-            isTrackPlaying = true;
-            playTrigger.innerText = '⏸';
-            startTimeUpdater();
-        } else if (event.data == 2) { // Paused
-            isTrackPlaying = false;
-            playTrigger.innerText = '▶';
-            stopTimeUpdater();
-        } else if (event.data == 0) { // Ended
-            playNext();
-        }
-    }
-
-    // --- TABS LOGIC ---
-    function initPlaylistTabs() {
-        const tabsContainer = document.getElementById('playlist-tabs-container');
-        if(!tabsContainer) return;
-        tabsContainer.innerHTML = '';
-
-        masterPlaylists.forEach((playlist, index) => {
-            const btn = document.createElement('button');
-            btn.className = `pl-tab-btn ${index === currentViewPlaylistIdx ? 'active' : ''}`;
-            btn.innerText = playlist.name;
-            btn.onclick = () => switchPlaylistTab(index);
-            tabsContainer.appendChild(btn);
-        });
-    }
-
-    function switchPlaylistTab(index) {
-        currentViewPlaylistIdx = index;
-        
-        // Update Tabs UI
-        document.querySelectorAll('.pl-tab-btn').forEach((btn, i) => {
-            if(i === index) btn.classList.add('active');
-            else btn.classList.remove('active');
-        });
-
-        // Re-render the tracks list below
-        assemblePlaylist();
-    }
-
-    // --- TRACKS LIST LOGIC ---
-    function assemblePlaylist() {
-        const container = document.getElementById('playlist-container');
-        if(!container) return;
-        container.innerHTML = '';
-
-        const tracksToShow = masterPlaylists[currentViewPlaylistIdx].tracks;
-
-        tracksToShow.forEach((track, i) => {
-            // Check if this row is the exact one currently playing
-            const isPlayingHere = (currentViewPlaylistIdx === playingPlaylistIdx && i === activeTrackIdx);
-            
-            const row = document.createElement('div');
-            row.className = `playlist-item ${isPlayingHere ? 'active' : ''}`;
-            row.onclick = () => loadAndPlayTrack(i, currentViewPlaylistIdx);
-            
-            row.innerHTML = `
-                <div class="track-num">${String(i + 1).padStart(2, '0')}</div>
-                <div class="track-meta">
-                    <h5>${track.title}</h5>
-                    <p>${track.meta}</p>
-                </div>
-            `;
-            container.appendChild(row);
-        });
-    }
-
-    function loadAndPlayTrack(trackIndex, playlistIndex) {
-        playingPlaylistIdx = playlistIndex;
-        activeTrackIdx = trackIndex;
-        
-        const trackToPlay = masterPlaylists[playingPlaylistIdx].tracks[activeTrackIdx];
-        
-        updatePlayerUI();
-        assemblePlaylist(); // Re-render to highlight the correct track
-
-        if(ytPlayer && ytPlayer.loadVideoById) {
-            ytPlayer.loadVideoById(trackToPlay.ytId);
-        }
-    }
-
-    // --- PLAYER CONTROLS ---
-    function updatePlayerUI() {
-        const titleEl = document.getElementById('player-title');
-        const catEl = document.getElementById('player-category');
-        const currentTrack = masterPlaylists[playingPlaylistIdx].tracks[activeTrackIdx];
-        
-        if(titleEl) titleEl.innerText = currentTrack.title;
-        // Show Playlist Name + Track Meta in the subtitle
-        if(catEl) catEl.innerText = `${masterPlaylists[playingPlaylistIdx].name} • ${currentTrack.meta}`;
-    }
-
-    function toggleAudioState() {
-        if (!ytPlayer || !ytPlayer.playVideo) return;
-        if (isTrackPlaying) ytPlayer.pauseVideo();
-        else ytPlayer.playVideo();
-    }
-
-    function playNext() {
-        const currentPlaylistTracks = masterPlaylists[playingPlaylistIdx].tracks;
-        let nextIdx = (activeTrackIdx + 1) % currentPlaylistTracks.length;
-        loadAndPlayTrack(nextIdx, playingPlaylistIdx);
-    }
-
-    function playPrev() {
-        const currentPlaylistTracks = masterPlaylists[playingPlaylistIdx].tracks;
-        let prevIdx = (activeTrackIdx - 1 + currentPlaylistTracks.length) % currentPlaylistTracks.length;
-        loadAndPlayTrack(prevIdx, playingPlaylistIdx);
-    }
-
-    // --- TIMERS & SLIDERS ---
-    function startTimeUpdater() {
-        stopTimeUpdater();
-        timeUpdater = setInterval(() => {
-            if (ytPlayer && ytPlayer.getDuration) {
-                const currentTime = ytPlayer.getCurrentTime();
-                const duration = ytPlayer.getDuration();
-                
-                if (duration > 0) {
-                    const percent = (currentTime / duration) * 100;
-                    if(progressBar) progressBar.value = percent;
-                    if(curTimeTxt) curTimeTxt.innerText = formatTimeLayout(currentTime);
-                    if(totDurTxt) totDurTxt.innerText = formatTimeLayout(duration);
-                }
-            }
-        }, 500);
-    }
-
-    function stopTimeUpdater() {
-        if (timeUpdater) clearInterval(timeUpdater);
-    }
-
-    if(progressBar) {
-        progressBar.addEventListener('input', () => {
-            if (ytPlayer && ytPlayer.getDuration) {
-                const duration = ytPlayer.getDuration();
-                const seekTime = (progressBar.value / 100) * duration;
-                ytPlayer.seekTo(seekTime, true);
-            }
-        });
-    }
-
-    function formatTimeLayout(seconds) {
-        if (isNaN(seconds)) return "0:00";
-        const mins = Math.floor(seconds / 60);
-        const secs = Math.floor(seconds % 60);
-        return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
-    }
-
+		document.addEventListener('DOMContentLoaded', initSlider);
 	</script>
 </body>
 

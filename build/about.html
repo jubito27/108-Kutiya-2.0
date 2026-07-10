@@ -5,12 +5,14 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>About — Swami Karun Dass Ji Maharaj | 108 कुटिया</title>
-	<link
-		href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap"
-		rel="stylesheet">
+	<!-- Added Yatra One (Spiritual Headings) and Mukta (Readable Bold Hindi Body) -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Elms+Sans:ital,wght@0,100..900;1,100..900&family=Reem+Kufi+Fun:wght@400..700&display=swap" rel="stylesheet">
+	
 	<style>
 		/* ============================================================
-   RESET & ROOT
+	RESET & ROOT
 ============================================================ */
 		*,
 		*::before,
@@ -41,7 +43,8 @@
 		}
 
 		body {
-			font-family: 'Inter', sans-serif;
+			font-family: "Elms Sans", sans-serif;
+			font-weight: 700;
 			background: var(--navy);
 			color: var(--cream);
 			min-height: 100vh;
@@ -136,8 +139,8 @@
 		}
 
 		.site-name {
-			font-family: 'Cinzel Decorative', cursive;
-			font-size: 1rem;
+			font-family: 'Yatra One', cursive;
+			font-size: 1.2rem;
 			background: linear-gradient(120deg, var(--gold) 0%, var(--sky-blue) 100%);
 			-webkit-background-clip: text;
 			-webkit-text-fill-color: transparent;
@@ -151,11 +154,12 @@
 		}
 
 		nav a {
-			font-family: 'Cinzel Decorative', cursive;
-			font-size: 0.55rem;
-			letter-spacing: 1.5px;
-			color: rgba(168, 212, 245, 0.65);
-			padding: 8px 10px;
+			font-family: "Elms Sans", sans-serif;
+			font-weight: 600;
+			font-size: 0.85rem;
+			letter-spacing: 1px;
+			color: rgba(168, 212, 245, 0.75);
+			padding: 8px 12px;
 			position: relative;
 			transition: color 0.3s;
 			text-transform: uppercase;
@@ -205,18 +209,17 @@
 		}
 
 		.hero-label {
-			font-family: 'Cinzel Decorative', cursive;
-			font-size: 0.65rem;
-			letter-spacing: 6px;
+			font-family: 'Yatra One', cursive;
+			font-size: 1.2rem;
+			letter-spacing: 4px;
 			color: var(--sky-blue);
-			text-transform: uppercase;
 			margin-bottom: 1rem;
-			opacity: 0.8;
+			opacity: 0.9;
 		}
 
 		.hero-title {
-			font-family: 'Cinzel Decorative', cursive;
-			font-size: clamp(1.6rem, 4vw, 2.8rem);
+			font-family: 'Yatra One', cursive;
+			font-size: clamp(2rem, 4.5vw, 3.5rem);
 			background: linear-gradient(130deg, var(--white) 0%, var(--gold) 60%, var(--sky-blue) 100%);
 			-webkit-background-clip: text;
 			-webkit-text-fill-color: transparent;
@@ -226,11 +229,12 @@
 		}
 
 		.hero-sub {
-			font-family: 'Cormorant Garamond', serif;
-			font-style: italic;
-			font-size: clamp(1rem, 2vw, 1.3rem);
+			font-family: "Elms Sans", sans-serif;;
+			font-weight: 500;
+			font-size: clamp(1.1rem, 2vw, 1.4rem);
 			color: var(--light-blue);
-			opacity: 0.8;
+			opacity: 0.9;
+			letter-spacing: 0.5px;
 		}
 
 		/* ============================================================
@@ -282,7 +286,6 @@
 			justify-content: center;
 		}
 
-		/* Using YouTube thumbnail as Maharaj's photo */
 		.photo-main img {
 			width: 100%;
 			height: 100%;
@@ -291,7 +294,6 @@
 			border-radius: 16px;
 		}
 
-		/* Overlay gradient on photo */
 		.photo-main::after {
 			content: '';
 			position: absolute;
@@ -312,19 +314,19 @@
 		}
 
 		.photo-caption .name {
-			font-family: 'Cinzel Decorative', cursive;
-			font-size: 0.9rem;
+			font-family: 'Yatra One', cursive;
+			font-size: 1.1rem;
 			color: var(--white);
 			letter-spacing: 1px;
 			display: block;
 		}
 
 		.photo-caption .place {
-			font-family: 'Cormorant Garamond', serif;
-			font-style: italic;
-			font-size: 0.9rem;
+			font-family: "Elms Sans", sans-serif;;
+			font-weight: 900;
+			font-size: 1rem;
 			color: var(--light-blue);
-			opacity: 0.8;
+			opacity: 0.9;
 			display: block;
 			margin-top: 2px;
 		}
@@ -342,55 +344,59 @@
 			border: 1px solid rgba(74, 159, 224, 0.3);
 			border-radius: 20px;
 			padding: 5px 14px;
-			font-size: 0.72rem;
+			font-size: 0.85rem;
+			font-weight: 800;
 			color: var(--light-blue);
 			letter-spacing: 0.5px;
 		}
 
 		/* Intro text */
 		.intro-text h2 {
-			font-family: 'Cinzel Decorative', cursive;
-			font-size: clamp(1rem, 2.5vw, 1.4rem);
+			font-family: 'Yatra One', cursive;
+			font-size: clamp(1.4rem, 3vw, 1.8rem);
 			color: var(--gold);
 			margin-bottom: 1.2rem;
 			letter-spacing: 1px;
 		}
 
 		.intro-text p {
-			font-family: 'Cormorant Garamond', serif;
-			font-size: 1.18rem;
-			line-height: 1.9;
-			color: rgba(238, 244, 255, 0.85);
-			margin-bottom: 1rem;
+			font-family: "Elms Sans", sans-serif;;
+			font-size: 1.25rem;
+			font-weight: 700;
+			line-height: 1.8;
+			color: rgba(238, 244, 255, 0.9);
+			margin-bottom: 1.2rem;
 		}
 
 		.intro-text p strong {
 			color: var(--light-blue);
-			font-style: italic;
+			font-weight: 900;
 		}
 
 		/* Quote block */
 		.quote-block {
 			background: linear-gradient(135deg, rgba(42, 95, 200, 0.15), rgba(13, 33, 81, 0.3));
-			border-left: 3px solid var(--sky-blue);
+			border-left: 4px solid var(--sky-blue);
 			border-radius: 0 12px 12px 0;
 			padding: 1.2rem 1.5rem;
 			margin: 1.5rem 0;
 		}
 
 		.quote-block p {
-			font-family: 'Cormorant Garamond', serif;
-			font-style: italic;
-			font-size: 1.2rem;
-			color: var(--cream);
+			font-family: 'Yatra One', cursive;
+			font-size: 1.4rem;
+			color: var(--gold);
 			margin: 0;
+			line-height: 1.6;
 		}
 
 		.quote-block cite {
 			display: block;
-			font-size: 0.82rem;
+			font-family: 'Mukta', sans-serif;
+			font-size: 0.9rem;
+			font-weight: 800;
 			color: var(--sky-blue);
-			margin-top: 0.5rem;
+			margin-top: 0.8rem;
 			font-style: normal;
 			letter-spacing: 1px;
 		}
@@ -402,14 +408,14 @@
 			display: flex;
 			align-items: center;
 			gap: 1rem;
-			margin-bottom: 2rem;
+			margin-bottom: 2.5rem;
 		}
 
 		.sec-heading h2 {
-			font-family: 'Cinzel Decorative', cursive;
-			font-size: clamp(0.9rem, 2vw, 1.1rem);
+			font-family: 'Yatra One', cursive;
+			font-size: clamp(1.3rem, 2.5vw, 1.6rem);
 			color: var(--gold);
-			letter-spacing: 2px;
+			letter-spacing: 1px;
 			white-space: nowrap;
 		}
 
@@ -428,8 +434,8 @@
 
 		.role-grid {
 			display: grid;
-			grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-			gap: 1.2rem;
+			grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+			gap: 1.5rem;
 		}
 
 		.role-card {
@@ -448,7 +454,7 @@
 			top: 0;
 			left: 0;
 			right: 0;
-			height: 2px;
+			height: 3px;
 			background: linear-gradient(90deg, transparent, var(--accent-blue), var(--sky-blue), transparent);
 			opacity: 0;
 			transition: opacity 0.3s;
@@ -465,26 +471,31 @@
 		}
 
 		.role-icon {
-			font-size: 2rem;
+			font-size: 2.2rem;
 			margin-bottom: 1rem;
 			display: block;
 			filter: drop-shadow(0 0 8px rgba(74, 159, 224, 0.4));
 		}
 
 		.role-card h3 {
-			font-family: 'Cinzel Decorative', cursive;
-			font-size: 0.75rem;
-			letter-spacing: 2px;
+			font-family: 'Yatra One', cursive;
+			font-size: 1.2rem;
+			letter-spacing: 1px;
 			color: var(--light-blue);
 			margin-bottom: 0.7rem;
-			text-transform: uppercase;
 		}
 
 		.role-card p {
-			font-family: 'Cormorant Garamond', serif;
-			font-size: 1.05rem;
-			line-height: 1.75;
-			color: rgba(238, 244, 255, 0.7);
+			font-family: "Elms Sans", sans-serif;;
+			font-size: 1.15rem;
+			font-weight: 700;
+			line-height: 1.7;
+			color: rgba(238, 244, 255, 0.85);
+		}
+		
+		.role-card p strong {
+			color: var(--gold);
+			font-weight: 800;
 		}
 
 		/* ============================================================
@@ -496,7 +507,7 @@
 
 		.timeline {
 			position: relative;
-			padding-left: 2rem;
+			padding-left: 2.5rem;
 		}
 
 		.timeline::before {
@@ -505,51 +516,56 @@
 			left: 0;
 			top: 0;
 			bottom: 0;
-			width: 2px;
+			width: 3px;
 			background: linear-gradient(180deg, var(--sky-blue), var(--accent-blue), transparent);
 		}
 
 		.timeline-item {
 			position: relative;
-			margin-bottom: 2rem;
+			margin-bottom: 2.5rem;
 			padding-left: 1.5rem;
 		}
 
 		.timeline-item::before {
 			content: '';
 			position: absolute;
-			left: -2.5rem;
+			left: -2.85rem;
 			top: 6px;
-			width: 12px;
-			height: 12px;
+			width: 14px;
+			height: 14px;
 			border-radius: 50%;
 			background: var(--sky-blue);
-			box-shadow: 0 0 12px rgba(74, 159, 224, 0.6);
-			border: 2px solid var(--navy);
+			box-shadow: 0 0 14px rgba(74, 159, 224, 0.6);
+			border: 3px solid var(--navy);
 		}
 
 		.timeline-item .t-label {
-			font-family: 'Cinzel Decorative', cursive;
-			font-size: 0.62rem;
-			letter-spacing: 3px;
+			font-family: "Elms Sans", sans-serif;
+			font-weight: 900;
+			font-size: 0.95rem;
+			letter-spacing: 2px;
 			color: var(--sky-blue);
 			text-transform: uppercase;
 			margin-bottom: 0.3rem;
 		}
 
 		.timeline-item h3 {
-			font-family: 'Cormorant Garamond', serif;
-			font-size: 1.2rem;
-			font-weight: 600;
+			font-family: 'Yatra One', cursive;
+			font-size: 1.4rem;
 			color: var(--gold);
-			margin-bottom: 0.4rem;
+			margin-bottom: 0.6rem;
 		}
 
 		.timeline-item p {
-			font-family: 'Cormorant Garamond', serif;
-			font-size: 1.05rem;
-			line-height: 1.8;
-			color: rgba(238, 244, 255, 0.72);
+			font-family: "Elms Sans", sans-serif;
+			font-size: 1.15rem;
+			font-weight: 700;
+			line-height: 1.7;
+			color: rgba(238, 244, 255, 0.85);
+		}
+		
+		.timeline-item p strong {
+			color: var(--light-blue);
 		}
 
 		/* ============================================================
@@ -560,109 +576,62 @@
 		}
 
 		.gurus-intro {
-			font-family: 'Cormorant Garamond', serif;
-			font-size: 1.12rem;
-			line-height: 1.85;
-			color: rgba(238, 244, 255, 0.8);
-			margin-bottom: 2rem;
+			font-family: "Elms Sans", sans-serif;
+			font-size: 1.2rem;
+			font-weight: 700;
+			line-height: 1.8;
+			color: rgba(238, 244, 255, 0.9);
+			margin-bottom: 2.5rem;
 		}
 
 		.gurus-grid {
 			display: grid;
-			grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-			gap: 1rem;
+			grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+			gap: 1.2rem;
 		}
 
 		.guru-pill {
 			display: flex;
 			align-items: center;
-			gap: 10px;
+			gap: 12px;
 			background: rgba(26, 58, 122, 0.35);
 			border: 1px solid rgba(74, 159, 224, 0.2);
-			border-radius: 10px;
-			padding: 12px 14px;
+			border-radius: 12px;
+			padding: 14px 16px;
 			transition: all 0.3s ease;
 		}
 
 		.guru-pill:hover {
-			background: rgba(42, 95, 200, 0.2);
-			border-color: rgba(74, 159, 224, 0.45);
-			transform: translateX(4px);
+			background: rgba(42, 95, 200, 0.25);
+			border-color: rgba(74, 159, 224, 0.5);
+			transform: translateX(5px);
 		}
 
 		.guru-pill .g-dot {
-			width: 8px;
-			height: 8px;
+			width: 10px;
+			height: 10px;
 			border-radius: 50%;
 			background: var(--sky-blue);
 			flex-shrink: 0;
-			box-shadow: 0 0 8px rgba(74, 159, 224, 0.6);
+			box-shadow: 0 0 10px rgba(74, 159, 224, 0.6);
 		}
 
 		.guru-pill .g-name {
-			font-family: 'Cormorant Garamond', serif;
-			font-size: 1rem;
+			font-family: "Elms Sans", sans-serif;
+			font-weight: 800;
+			font-size: 1.1rem;
 			color: var(--cream);
 			line-height: 1.3;
 		}
 
 		.guru-pill .g-place {
-			font-size: 0.78rem;
+			font-family: "Elms Sans", sans-serif;
+			font-size: 0.9rem;
+			font-weight: 600;
 			color: var(--light-blue);
-			opacity: 0.7;
+			opacity: 0.85;
 			display: block;
-		}
-
-		/* ============================================================
-   PHOTO GALLERY
-============================================================ */
-		.gallery-section {
-			margin-bottom: 4rem;
-		}
-
-		.gallery-grid {
-			display: grid;
-			grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-			gap: 1rem;
-		}
-
-		.gallery-item {
-			border-radius: 12px;
-			overflow: hidden;
-			border: 1px solid var(--border);
-			background: var(--card-bg);
-			aspect-ratio: 16/9;
-			position: relative;
-			transition: transform 0.35s ease, box-shadow 0.35s ease;
-		}
-
-		.gallery-item:hover {
-			transform: scale(1.03);
-			box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(42, 95, 200, 0.2);
-		}
-
-		.gallery-item img {
-			width: 100%;
-			height: 100%;
-			object-fit: cover;
-			transition: transform 0.4s ease;
-		}
-
-		.gallery-item:hover img {
-			transform: scale(1.07);
-		}
-
-		.gallery-item .g-caption {
-			position: absolute;
-			bottom: 0;
-			left: 0;
-			right: 0;
-			background: linear-gradient(to top, rgba(6, 15, 34, 0.85), transparent);
-			padding: 0.8rem 0.6rem 0.5rem;
-			font-size: 0.75rem;
-			color: var(--light-blue);
-			font-style: italic;
-			font-family: 'Cormorant Garamond', serif;
+			margin-top: 4px;
 		}
 
 		/* ============================================================
@@ -670,8 +639,8 @@
 ============================================================ */
 		.stats-bar {
 			display: grid;
-			grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-			gap: 1rem;
+			grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+			gap: 1.2rem;
 			margin-bottom: 4rem;
 		}
 
@@ -679,30 +648,32 @@
 			background: linear-gradient(135deg, rgba(42, 95, 200, 0.15), rgba(13, 33, 81, 0.4));
 			border: 1px solid rgba(74, 159, 224, 0.25);
 			border-radius: 14px;
-			padding: 1.5rem 1rem;
+			padding: 1.8rem 1.2rem;
 			text-align: center;
 			transition: transform 0.3s ease, border-color 0.3s;
 		}
 
 		.stat-box:hover {
-			transform: translateY(-4px);
+			transform: translateY(-5px);
 			border-color: rgba(74, 159, 224, 0.5);
 		}
 
 		.stat-number {
-			font-family: 'Cinzel Decorative', cursive;
-			font-size: 2rem;
+			font-family: 'Yatra One', cursive;
+			font-size: 2.2rem;
 			color: var(--gold);
 			display: block;
 			line-height: 1;
-			margin-bottom: 0.4rem;
+			margin-bottom: 0.6rem;
 		}
 
 		.stat-label {
-			font-size: 0.78rem;
+			font-family: "Elms Sans", sans-serif;
+			font-size: 0.95rem;
+			font-weight: 800;
 			color: var(--light-blue);
 			letter-spacing: 1px;
-			opacity: 0.8;
+			opacity: 0.9;
 		}
 
 		/* ============================================================
@@ -714,15 +685,16 @@
 			text-align: center;
 			padding: 1.5rem 2rem;
 			border-top: 1px solid var(--border);
-			color: rgba(168, 212, 245, 0.35);
-			font-size: 0.75rem;
-			letter-spacing: 2px;
-			font-family: 'Cinzel Decorative', cursive;
+			color: rgba(168, 212, 245, 0.5);
+			font-size: 1rem;
+			font-weight: 800;
+			letter-spacing: 1.5px;
+			font-family: "Elms Sans", sans-serif;;
 		}
 
 		.om-sym {
 			color: var(--gold);
-			font-size: 1.2rem;
+			font-size: 1.4rem;
 			margin: 0 12px;
 			vertical-align: middle;
 		}
@@ -846,8 +818,9 @@
 		}
 
 		.video-title {
-			font-family: 'Inter', sans-serif;
-			font-size: 0.95rem;
+			font-family: 'Mukta', sans-serif;
+			font-size: 1.05rem;
+			font-weight: 800;
 			color: var(--cream);
 			line-height: 1.4;
 			display: -webkit-box;
@@ -859,7 +832,7 @@
 
 		/* Modal Popup Player Styles */
 		.video-modal {
-			display: none; /* Hidden by default */
+			display: none;
 			position: fixed;
 			z-index: 9999;
 			left: 0;
@@ -936,11 +909,11 @@
 
 		.cta-copy {
 			width: 100%;
-			font-family: 'Cormorant Garamond', serif;
-			font-style: italic;
-			font-size: 1.15rem;
-			color: rgba(168, 212, 245, 0.7);
-			margin-bottom: 0.5rem;
+			font-family: "Elms Sans", sans-serif;
+			font-weight: 1000;
+			font-size: 1.4rem;
+			color: rgba(168, 212, 245, 0.8);
+			margin-bottom: 0.8rem;
 		}
 
 		.cta-button {
@@ -949,9 +922,10 @@
 			gap: 0.65rem;
 			padding: 13px 36px;
 			border-radius: 40px;
-			font-family: 'Cinzel Decorative', cursive;
-			font-size: 0.78rem;
-			letter-spacing: 2px;
+			font-family: 'Mukta', sans-serif;
+			font-weight: 1000;
+			font-size: 1rem;
+			letter-spacing: 1px;
 			text-decoration: none;
 			transition: all 0.3s ease;
 			white-space: nowrap;
@@ -990,7 +964,6 @@
 			border-color: rgba(74, 159, 224, 0.6);
 		}
 
-		
 		</style>
 </head>
 
@@ -1052,8 +1025,8 @@
 	<!-- ===== HERO BANNER ===== -->
 	<div class="hero-banner fade-up">
 		<p class="hero-label">✦ &nbsp; 108 कुटिया&nbsp; ✦</p>
-		<h1 class="hero-title">Pujya Swami Karun Dass Ji Maharaj</h1>
-		<p class="hero-sub">Sansthapak — Radha Krishna Parivar Seva Trust, Govardhan, Mathura</p>
+		<h1 class="hero-title">पूज्य स्वामी करुण दास जी महाराज</h1>
+		<p class="hero-sub">संस्थापक — राधा कृष्ण परिवार सेवा ट्रस्ट, गोवर्धन, मथुरा</p>
 	</div>
 
 	<!-- ===== MAIN PAGE ===== -->
@@ -1065,57 +1038,50 @@
 			<!-- LEFT: Photo -->
 			<div class="photo-card">
 				<div class="photo-main">
-					<!--
-          Maharaj Ji ki real photo yahan lagayein:
-          <img src="maharaj-ji.jpg" alt="Swami Karun Dass Ji Maharaj">
-          
-          Abhi YouTube thumbnail use kar rahe hain unke channel se
-        -->
 					<img src="./assets/karundasjimaharaj.jpeg"
 						alt="Swami Karun Dass Ji Maharaj — Bhagwat Katha, 108 कुटिया Barsana"
 						onerror="this.style.display='none'; this.parentElement.innerHTML += '<div style=\'display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;gap:1rem;padding:2rem;\'><span style=\'font-size:4rem;\'>🧘</span><span style=\'font-family:Cinzel Decorative,cursive;font-size:0.75rem;letter-spacing:2px;color:rgba(168,212,245,0.6);text-align:center;\'>Swami Karun Dass Ji Maharaj</span></div>'">
 					<div class="photo-caption">
-						<span class="name">Swami Karun Dass Ji Maharaj</span>
-						<span class="place">108 कुटिया, Barsana</span>
+						<span class="name">स्वामी करुण दास जी महाराज</span>
+						<span class="place">108 कुटिया, बरसाना</span>
 					</div>
 				</div>
 
 				<div class="badge-strip">
-					<span class="badge">🕉️ Nimbark Sampraday</span>
-					<span class="badge">📍 Barsana, Mathura</span>
-					<span class="badge">🙏 Sant</span>
+					<span class="badge">🕉️ निंबार्क संप्रदाय</span>
+					<span class="badge">📍 बरसाना, मथुरा</span>
+					<span class="badge">🙏 संत</span>
 				</div>
 			</div>
 
 			<!-- RIGHT: Intro Text -->
 			<div class="intro-text">
-				<h2>Parichay — Who are they?</h2>
+				<h2>परिचय — महाराज जी कौन हैं?</h2>
 
 				<p>
-					<strong>Pujya Swami Karun Dass Ji Maharaj</strong> ek prasidh Sant hain jo
-					<strong>108 कुटिया, Barsana</strong> (Mathura, Uttar Pradesh) mein niwas karte hain.
-					Wo <strong>Radha Krishna Parivar Seva Trust</strong> (registered) ke sansthapak hain
-					jo Govardhan, Mathura mein sthit hai.
+					<strong>पूज्य स्वामी करुण दास जी महाराज</strong> एक प्रसिद्ध संत हैं जो
+					<strong>108 कुटिया, बरसाना</strong> (मथुरा, उत्तर प्रदेश) में निवास करते हैं।
+					वे गोवर्धन, मथुरा में स्थित <strong>राधा कृष्ण परिवार सेवा ट्रस्ट</strong> (पंजीकृत) के संस्थापक हैं।
 				</p>
 
 				<p>
-					Unka pura jeevan bhakti, sadhana aur sant-sewa mein beeta hai.
-					Unka naam Nimbark Sampraday ke prasidh kathakaron mein aata hai —
-					unke <strong>Bhagwat Katha, Ram Katha, Bhaktmal Katha, Raas Leela</strong> aur
-					<strong>Nikunj Ashtayam Katha</strong> ke pravachan poore Bharat mein prasiddh hain.
+					उनका पूरा जीवन भक्ति, साधना और संत-सेवा में बीता है।
+					उनका नाम निंबार्क संप्रदाय के प्रसिद्ध कथावाचकों में आता है —
+					उनकी <strong>भागवत कथा, राम कथा, भक्तमाल कथा, रास लीला</strong> और
+					<strong>निकुंज अष्टयाम कथा</strong> के प्रवचन पूरे भारत में प्रसिद्ध हैं।
 				</p>
 
 				<div class="quote-block">
-					<p>"Pujya Shri Maharaj Ji ne apne jeevan mein gyarah Santons ka sang kiya aur aaj bhi un sabhi ko
-						apne Guru roop mein sweekar karte hain."</p>
+					<p>"पूज्य श्री महाराज जी ने अपने जीवन में ग्यारह संतों का संग किया और आज भी उन सभी को
+						अपने गुरु रूप में स्वीकार करते हैं।"</p>
 					<cite>— YouTube Channel Description, Swami Karun Dass Ji</cite>
 				</div>
 
 				<p>
-					Maharaj Ji ke pravachan <strong>Nimbark TV</strong> par live aate hain, jinhe
-					<strong>lakho shradhalu</strong> door-door se sunte hain. Unka YouTube channel
-					<strong>4 lakh se adhik subscribers</strong> tak pahuncha hai aur
-					karodon views hain.
+					महाराज जी के प्रवचन <strong>निंबार्क टीवी</strong> पर लाइव आते हैं, जिन्हें
+					<strong>लाखों श्रद्धालु</strong> दूर-दूर से सुनते हैं। उनका यूट्यूब चैनल
+					<strong>4 लाख से अधिक सब्सक्राइबर्स</strong> तक पहुँच चुका है और इस पर
+					करोड़ों व्यूज हैं।
 				</p>
 			</div>
 		</div>
@@ -1124,84 +1090,84 @@
 		<div class="stats-bar fade-up delay-2">
 			<div class="stat-box">
 				<span class="stat-number">4L+</span>
-				<span class="stat-label">YouTube Subscribers</span>
+				<span class="stat-label">यूट्यूब सब्सक्राइबर्स</span>
 			</div>
 			<div class="stat-box">
 				<span class="stat-number">5000+</span>
-				<span class="stat-label">Katha Videos</span>
+				<span class="stat-label">कथा वीडियो</span>
 			</div>
 			<div class="stat-box">
 				<span class="stat-number">89M+</span>
-				<span class="stat-label">Total Views</span>
+				<span class="stat-label">कुल व्यूज</span>
 			</div>
 			<div class="stat-box">
 				<span class="stat-number">11</span>
-				<span class="stat-label">Divya Guru-Parampara</span>
+				<span class="stat-label">दिव्य गुरु-परंपरा</span>
 			</div>
 			<div class="stat-box">
 				<span class="stat-number">15+</span>
-				<span class="stat-label">Saal Braj Mein</span>
+				<span class="stat-label">साल ब्रज में</span>
 			</div>
 		</div>
 
 		<!-- ====== ROLE AT 108 KUTIYA ====== -->
 		<div class="role-section fade-up delay-2">
 			<div class="sec-heading">
-				<h2>✦ &nbsp; 108 कुटिया Mein Unka Role</h2>
+				<h2>✦ &nbsp; 108 कुटिया में उनकी भूमिका</h2>
 				<div class="sec-line"></div>
 			</div>
 
 			<div class="role-grid">
 				<div class="role-card">
 					<span class="role-icon">🏛️</span>
-					<h3>Sansthapak — Founder</h3>
+					<h3>संस्थापक — Founder</h3>
 					<p>
-						Swami Ji ne <strong>108 कुटिया, Barsana</strong> ki sthapna ki — yeh ek pavitra ashram hai
-						jo Radha-Krishna ki bhakti ka kendra hai. Yahan niyamit katha, bhajan aur
-						seva ka aayojan hota hai.
+						स्वामी जी ने <strong>108 कुटिया, बरसाना</strong> की स्थापना की — यह एक पवित्र आश्रम है
+						जो राधा-कृष्ण की भक्ति का मुख्य केंद्र है। यहाँ नियमित रूप से कथा, भजन और
+						सेवा का आयोजन होता है।
 					</p>
 				</div>
 				<div class="role-card">
 					<span class="role-icon">📖</span>
-					<h3>Katha Vachak — Preacher</h3>
+					<h3>कथावाचक — Preacher</h3>
 					<p>
-						Maharaj Ji Bhagwat Katha, Bhaktmal Katha, Ram Katha, Raas Leela aur
-						Nikunj Ashtayam Katha ka niyamit aayojan karte hain — desh ke alag-alag
-						sthanon par bhi jaate hain.
+						महाराज जी <strong>भागवत कथा, भक्तमाल कथा, राम कथा, रास लीला</strong> और
+						<strong>निकुंज अष्टयाम कथा</strong> का नियमित आयोजन करते हैं — और देश के विभिन्न स्थानों
+						पर भी जाकर प्रवचन देते हैं।
 					</p>
 				</div>
 				<div class="role-card">
 					<span class="role-icon">🤝</span>
-					<h3>Seva Neta — Seva Leader</h3>
+					<h3>सेवा प्रमुख — Seva Leader</h3>
 					<p>
-						<strong>Radha Krishna Parivar Seva Trust</strong> (Govardhan, Mathura) ke
-						madhyam se wo janseva, garib kalyan aur dharmik shiksha ka kaam karte hain.
+						<strong>राधा कृष्ण परिवार सेवा ट्रस्ट</strong> (गोवर्धन, मथुरा) के
+						माध्यम से वे जनसेवा, गरीब कल्याण और धार्मिक शिक्षा का उत्कृष्ट कार्य करते हैं।
 					</p>
 				</div>
 				<div class="role-card">
 					<span class="role-icon">📡</span>
-					<h3>Digital Pracharak</h3>
+					<h3>डिजिटल प्रचारक</h3>
 					<p>
-						Nimbark TV aur YouTube ke zariye unke pravachan live hote hain.
-						4 lakh se zyada subscribers aur 89 million views ke saath wo digital
-						bhakti marg ke pracharak hain.
+						निंबार्क टीवी और यूट्यूब के जरिए उनके प्रवचन लाइव होते हैं।
+						4 लाख से ज्यादा सब्सक्राइबर्स और 89 मिलियन व्यूज के साथ वे डिजिटल
+						भक्ति मार्ग के प्रमुख प्रचारक हैं।
 					</p>
 				</div>
 				<div class="role-card">
 					<span class="role-icon">🧘</span>
-					<h3>Sadhak — Spiritual Practitioner</h3>
+					<h3>साधक — Spiritual Practitioner</h3>
 					<p>
-						Barsana ke Maan Mandir mein unhone teen saal gufa kakshe mein sadhana ki.
-						Unka jeevan tyag, tapasya aur Radha-Krishna ki aradhana ka pratyaksha
-						udaharan hai.
+						बरसाना के मान मंदिर में उन्होंने तीन साल गुफा कक्ष में साधना की।
+						उनका जीवन त्याग, तपस्या और राधा-कृष्ण की आराधना का प्रत्यक्ष
+						उदाहरण है।
 					</p>
 				</div>
 				<div class="role-card">
 					<span class="role-icon">🌍</span>
-					<h3>Braj Yatra Margdarshak</h3>
+					<h3>ब्रज यात्रा मार्गदर्शक</h3>
 					<p>
-						"Braj Chaurasi Kos Darshan" jaise yatrao ka Maharaj Ji niyamit aayojan
-						karte hain, jismein shradhalu Braj ke pavitra sthano ka darshan karte hain.
+						"ब्रज चौरासी कोस दर्शन" जैसी यात्राओं का महाराज जी नियमित आयोजन
+						करते हैं, जिसमें श्रद्धालु ब्रज के पवित्र स्थानों का दर्शन करते हैं।
 					</p>
 				</div>
 			</div>
@@ -1210,60 +1176,60 @@
 		<!-- ====== SPIRITUAL JOURNEY ====== -->
 		<div class="journey-section fade-up delay-2">
 			<div class="sec-heading">
-				<h2>✦ &nbsp; Aatmik Yatra — Spiritual Journey</h2>
+				<h2>✦ &nbsp; आध्यात्मिक यात्रा — Spiritual Journey</h2>
 				<div class="sec-line"></div>
 			</div>
 
 			<div class="timeline">
 				<div class="timeline-item">
-					<p class="t-label">Prarambh — Beginning</p>
-					<h3>Sant-Sewa aur Satsang</h3>
+					<p class="t-label">प्रारंभ — Beginning</p>
+					<h3>संत-सेवा और सत्संग</h3>
 					<p>
-						Apne jeevan ke shuruaati dino se hi Maharaj Ji ne saints ka satsang shuru kiya.
-						Unka antar-man Radha-Krishna ki bhakti ki aur khincha aur unhone sab kuch
-						chhod Braj ki raah pakdi.
+						अपने जीवन के शुरुआती दिनों से ही महाराज जी ने संतों का सत्संग शुरू किया।
+						उनका अंतर्मन राधा-कृष्ण की भक्ति की ओर खिंचा और उन्होंने सब कुछ
+						छोड़ कर ब्रज की राह पकड़ी।
 					</p>
 				</div>
 
 				<div class="timeline-item">
-					<p class="t-label">Teen Saal — Three Years</p>
-					<h3>Vrindavan Mein Niwas</h3>
+					<p class="t-label">तीन साल — Three Years</p>
+					<h3>वृंदावन में निवास</h3>
 					<p>
-						Pahle teen saal Maharaj Ji ne Vrindavan mein bitaye jahan unhone
-						Swami Shri Krishnanand Ji Maharaj, Thakur Shri Ghanshyamdas Ji
-						aur Shri Jagannath Baba jaise mahaan Santons ki seva aur satsang ka
-						labh uthaya.
+						पहले तीन साल महाराज जी ने वृंदावन में बिताए जहाँ उन्होंने
+						<strong>स्वामी श्री कृष्णानंद जी महाराज, ठाकुर श्री घनश्यामदास जी</strong>
+						और <strong>श्री जगन्नाथ बाबा</strong> जैसे महान संतों की सेवा और सत्संग का
+						लाभ उठाया।
 					</p>
 				</div>
 
 				<div class="timeline-item">
-					<p class="t-label">Barah Saal — Twelve Years</p>
-					<h3>Barsana Mein Sadhana</h3>
+					<p class="t-label">बारह साल — Twelve Years</p>
+					<h3>बरसाना में साधना</h3>
 					<p>
-						Baad mein Maharaj Ji ne poore <strong>barah saal</strong> Shridham Barsana mein
-						niwas kiya. Maan Mandir ke gufa kakshe mein teen saal ki gahan sadhana
-						ki. Yahi par Bhagwan Shiv ne swapna mein darshan dekar Bhagwan
-						Shri Krishna ke aishwarya roop (Shri Vishnu) ki sharanaagati karaai.
+						बाद में महाराज जी ने पूरे <strong>बारह साल</strong> श्रीधाम बरसाना में
+						निवास किया। मान मंदिर के गुफा कक्ष में तीन साल की गहन साधना
+						की। यहीं पर भगवान शिव ने स्वप्न में दर्शन देकर भगवान
+						श्री कृष्ण के ऐश्वर्य रूप (श्री विष्णु) की शरणागति कराई।
 					</p>
 				</div>
 
 				<div class="timeline-item">
 					<p class="t-label">108 कुटिया</p>
-					<h3>Ashram ki Sthapna</h3>
+					<h3>आश्रम की स्थापना</h3>
 					<p>
-						Barsana mein hi Maharaj Ji ne <strong>108 कुटिया</strong> ashram ki neev rakhi —
-						jo aaj ek prasiddh dharmik kendra hai jahan niyamit katha, bhajan,
-						seva aur Braj-darshan ka aayojan hota hai.
+						बरसाना में ही महाराज जी ने <strong>108 कुटिया</strong> आश्रम की नींव रखी —
+						जो आज एक प्रसिद्ध धार्मिक केंद्र है जहाँ नियमित कथा, भजन,
+						सेवा और ब्रज-दर्शन का आयोजन होता है।
 					</p>
 				</div>
 
 				<div class="timeline-item">
-					<p class="t-label">Seva Trust</p>
-					<h3>Radha Krishna Parivar Seva Trust</h3>
+					<p class="t-label">सेवा ट्रस्ट</p>
+					<h3>राधा कृष्ण परिवार सेवा ट्रस्ट</h3>
 					<p>
-						Govardhan, Mathura mein unhone <strong>Radha Krishna Parivar Seva Trust
-							(Registered)</strong> ki sthapna ki jiske zariye samaj-seva, dharmik shiksha
-						aur garib kalyan ke kaam niyamit roop se kiye jaate hain.
+						गोवर्धन, मथुरा में उन्होंने <strong>राधा कृष्ण परिवार सेवा ट्रस्ट
+							(पंजीकृत)</strong> की स्थापना की जिसके जरिए समाज-सेवा, धार्मिक शिक्षा
+						और गरीब कल्याण के काम नियमित रूप से किए जाते हैं।
 					</p>
 				</div>
 			</div>
@@ -1272,93 +1238,94 @@
 		<!-- ====== GURU PARAMPARA ====== -->
 		<div class="gurus-section fade-up delay-3">
 			<div class="sec-heading">
-				<h2>✦ &nbsp; Guru Parampara — 11 Divya Guru</h2>
+				<h2>✦ &nbsp; गुरु परंपरा — 11 दिव्य गुरु</h2>
 				<div class="sec-line"></div>
 			</div>
 
 			<p class="gurus-intro">
-				Pujya Maharaj Ji ki ek visheshtaa yeh hai ki unhone apne jeevan mein <strong>gyarah Santons ka
-					pratyaksha evam apratyaksha satsang</strong> kiya aur aaj bhi un sabhi ko apne Guru-roop mein
-				sweekar karte hain. Yeh unke vipul shishyatwa aur nimrata ka prateek hai.
+				पूज्य महाराज जी की एक विशेषता यह है कि उन्होंने अपने जीवन में <strong>ग्यारह संतों का
+					प्रत्यक्ष एवं अप्रत्यक्ष सत्संग</strong> किया और आज भी उन सभी को अपने गुरु-रूप में
+				स्वीकार करते हैं। यह उनके विपुल शिष्यत्व और नम्रता का प्रतीक है।
 			</p>
 
 			<div class="gurus-grid">
 				<div class="guru-pill">
 					<div class="g-dot"></div>
 					<div>
-						<span class="g-name">Swami Shri Krishnanand Ji Maharaj</span>
-						<span class="g-place">Vrindavan — Pratyaksha Satsang</span>
+						<span class="g-name">स्वामी श्री कृष्णानंद जी महाराज</span>
+						<span class="g-place">वृंदावन — प्रत्यक्ष सत्संग</span>
 					</div>
 				</div>
 				<div class="guru-pill">
 					<div class="g-dot"></div>
 					<div>
-						<span class="g-name">Pt. Shri Gayaprasad Ji</span>
-						<span class="g-place">Govardhan — Pratyaksha Satsang</span>
+						<span class="g-name">पं. श्री गयाप्रसाद जी</span>
+						<span class="g-place">गोवर्धन — प्रत्यक्ष सत्संग</span>
 					</div>
 				</div>
 				<div class="guru-pill">
 					<div class="g-dot"></div>
 					<div>
-						<span class="g-name">Shri Engineer Sarkar Ji</span>
-						<span class="g-place">Darbhanga, Bihar — Pratyaksha</span>
+						<span class="g-name">श्री इंजीनियर सरकार जी</span>
+						<span class="g-place">दरभंगा, बिहार — प्रत्यक्ष</span>
 					</div>
 				</div>
 				<div class="guru-pill">
 					<div class="g-dot"></div>
 					<div>
-						<span class="g-name">Thakur Shri Ghanshyamdas Ji</span>
-						<span class="g-place">Vrindavan — Pratyaksha Satsang</span>
+						<span class="g-name">ठाकुर श्री घनश्यामदास जी</span>
+						<span class="g-place">वृंदावन — प्रत्यक्ष सत्संग</span>
 					</div>
 				</div>
 				<div class="guru-pill">
 					<div class="g-dot"></div>
 					<div>
-						<span class="g-name">Acharya Charan Shri Shriji Maharaj</span>
-						<span class="g-place">Salimabad, Shri Nimbark Teerth — Pratyaksha</span>
+						<span class="g-name">आचार्य चरण श्री श्रीजी महाराज</span>
+						<span class="g-place">सलीमाबाद, श्री निंबार्क तीर्थ — प्रत्यक्ष</span>
 					</div>
 				</div>
 				<div class="guru-pill">
 					<div class="g-dot"></div>
 					<div>
-						<span class="g-name">Shri Jagannath Baba</span>
-						<span class="g-place">Vrindavan — Pratyaksha Satsang</span>
+						<span class="g-name">श्री जगन्नाथ बाबा</span>
+						<span class="g-place">वृंदावन — प्रत्यक्ष सत्संग</span>
 					</div>
 				</div>
 				<div class="guru-pill">
 					<div class="g-dot"></div>
 					<div>
-						<span class="g-name">Bhai Shri Hanumanprasad Poddar Ji</span>
-						<span class="g-place">Gorakhpur — Apratyaksha Satsang</span>
+						<span class="g-name">भाई श्री हनुमानप्रसाद पोद्दार जी</span>
+						<span class="g-place">गोरखपुर — अप्रत्यक्ष सत्संग</span>
 					</div>
 				</div>
 				<div class="guru-pill">
 					<div class="g-dot"></div>
 					<div>
-						<span class="g-name">Pujya Shri Radha Baba</span>
-						<span class="g-place">Gorakhpur — Apratyaksha Satsang</span>
+						<span class="g-name">पूज्य श्री राधा बाबा</span>
+						<span class="g-place">गोरखपुर — अप्रत्यक्ष सत्संग</span>
 					</div>
 				</div>
 				<div class="guru-pill">
 					<div class="g-dot"></div>
 					<div>
-						<span class="g-name">Pujya Shri Jayadayal Goyandka Ji</span>
-						<span class="g-place">Gorakhpur — Apratyaksha Satsang</span>
+						<span class="g-name">पूज्य श्री जयदयाल गोयंदका जी</span>
+						<span class="g-place">गोरखपुर — अप्रत्यक्ष सत्संग</span>
 					</div>
 				</div>
 				<div class="guru-pill">
 					<div class="g-dot"></div>
 					<div>
-						<span class="g-name">Pujya Shri Balkrishndas Ji Maharaj</span>
-						<span class="g-place">Vrindavan — Apratyaksha Satsang</span>
+						<span class="g-name">पूज्य श्री बालकृष्णदास जी महाराज</span>
+						<span class="g-place">वृंदावन — अप्रत्यक्ष सत्संग</span>
 					</div>
 				</div>
 			</div>
 		</div>
-				<!-- ====== VIDEO GALLERY ====== -->
+		
+		<!-- ====== VIDEO GALLERY ====== -->
 	<div class="video-section fade-up delay-3">
 		<div class="sec-heading">
-			<h2>✦ &nbsp; Pravachan & Satsang Videos</h2>
+			<h2>✦ &nbsp; प्रवचन और सत्संग वीडियो</h2>
 			<div class="sec-line"></div>
 		</div>
 		
@@ -1379,7 +1346,7 @@
 
 		<!-- CTA -->
 		<div class="cta-row">
-			<p class="cta-copy">Unke pravachan sunne ke liye visit karein —</p>
+			<p class="cta-copy">उनके प्रवचन सुनने के लिए पधारें —</p>
 			<a href="https://www.youtube.com/c/SwamiKarunDassJi" target="_blank" rel="noopener" class="cta-button youtube">
 				▶ &nbsp; YouTube Channel
 			</a>
@@ -1393,12 +1360,10 @@
 
 	</div><!-- /page-wrap -->
 
-	
-
 	<!-- FOOTER -->
 	<footer>
 		<span class="om-sym">ॐ</span>
-		Jai Shri Radhe Shyam &nbsp;|&nbsp; 108 कुटिया, Barsana
+		Jai Shri Radhe Shyam &nbsp;|&nbsp; 108 कुटिया, बरसाना
 		<span class="om-sym">🪷</span>
 	</footer>
 

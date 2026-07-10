@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="hi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>108 Kutiya — स्वास्थ्य सेवाएँ</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Elms+Sans:ital,wght@0,100..900;1,100..900&family=Reem+Kufi+Fun:wght@400..700&family=Yatra+One&display=swap" rel="stylesheet">
+    <style>
+        :root{
+            --navy: #0B1A3A;
+            --gold: #F0C060;
+            --cream: #EEF4FF;
+            --card-bg: rgba(20,50,110,0.45);
+            --border: rgba(100,170,255,0.22);
+            --accent-blue: #2A5FC8;
+        }
+        *{box-sizing:border-box;margin:0;padding:0}
+        body{font-family:"Elms Sans",sans-serif;background:var(--navy);color:var(--cream);min-height:100vh}
+        header{position:sticky;top:0;background:rgba(6,15,34,0.96);border-bottom:1px solid var(--border);z-index:50}
+        .header-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;padding:12px 2rem}
+        .logo-orb{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:1.5px solid rgba(240,192,96,0.6)}
+        nav a{font-size:0.75rem;color:rgba(168,212,245,0.8);padding:8px 10px;text-decoration:none}
+        .hero{padding:4rem 2rem;text-align:center;border-bottom:1px solid var(--border)}
+        .hero h1{font-size:clamp(1.6rem,4vw,2.4rem);background:linear-gradient(120deg,var(--gold),#4A9FE0);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+        .hero p{color:rgba(168,212,245,0.85);margin-top:0.5rem}
+        .page-wrap{max-width:1100px;margin:2rem auto;padding:0 2rem}
+        .intro-card{background:var(--card-bg);border:1px solid var(--border);padding:1.6rem;border-radius:12px;margin-bottom:1.8rem}
+        .sec-heading{display:flex;align-items:center;gap:1rem;margin-bottom:1rem}
+        .sec-heading h2{color:var(--gold);letter-spacing:1px}
+
+        .cards-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1.2rem;margin-top:1rem}
+        .service-card{background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);border:1px solid var(--border);border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
+        .service-img{width:100%;height:220px;overflow:hidden}
+        .service-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s}
+        .service-card:hover .service-img img{transform:scale(1.05)}
+        .service-body{padding:1.2rem}
+        .service-title{color:var(--gold);font-weight:700;margin-bottom:0.6rem}
+        .service-desc{color:rgba(238,244,255,0.85);line-height:1.7;margin-bottom:0.8rem}
+        .service-meta{display:flex;gap:0.6rem;flex-wrap:wrap}
+        .chip{background:rgba(42,95,200,0.12);border:1px solid rgba(74,159,224,0.18);padding:6px 10px;border-radius:999px;font-size:0.85rem;color:var(--cream)}
+
+        .contact{margin-top:0.8rem;color:var(--cream);font-size:0.95rem}
+        footer{padding:1.2rem 2rem;text-align:center;border-top:1px solid var(--border);color:rgba(168,212,245,0.45);margin-top:2rem}
+
+        @media(max-width:768px){.service-img{height:160px}}
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="header-inner">
+            <a href="./index.html" class="logo-link" style="display:flex;align-items:center;gap:12px;color:inherit;text-decoration:none">
+                <div class="logo-orb">🪷</div>
+                <span style="background:linear-gradient(120deg,var(--gold),#4A9FE0);-webkit-background-clip:text;-webkit-text-fill-color:transparent">108 Kutiya</span>
+            </a>
+            <nav>
+                <a href="./home.html">Home</a>
+                <a href="./about.html">About</a>
+                <a href="./temples.html">Temples</a>
+                <a href="./contact-us.html">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="hero">
+        <h1>स्वास्थ्य व चिकित्सा सुविधाएँ — 108 कुटिया</h1>
+        <p>स्वामी करुण दास जी महाराज द्वारा संचालित स्वास्थ्य और चिकित्सा सेवाओं का संपूर्ण विवरण। यह पृष्ठ हॉस्पिटल, क्लिनिक, मोबाइल मेडिकल कैंप और आपातकालीन सेवाओं के बारे में है।</p>
+    </div>
+
+    <main class="page-wrap">
+        <div class="intro-card">
+            <div class="sec-heading">
+                <h2>108 कुटिया — चिकित्सा मिशन</h2>
+            </div>
+            <p style="color:rgba(238,244,255,0.9);line-height:1.8">स्वामी करुण दास जी महाराज और 108 कुटिया के तहत चलने वाली स्वास्थ्य सेवाएँ: निःशुल्क मेडिकल चेकअप, प्राथमिक चिकित्सा, दवा वितरण, गर्भनिरोध एवं मातृ-शिशु देखभाल, आयुर्वेदिक परामर्श और आपातकालीन एम्बुलेंस सेवाएँ। नीचे दी गई सूची में प्रमुख सुविधाओं का विस्तृत विवरण, संपर्क व छवियाँ प्रस्तुत हैं।</p>
+        </div>
+
+        <div class="sec-heading">
+            <h2>प्रमुख चिकित्सा केंद्र और सेवाएँ</h2>
+        </div>
+
+        <div class="cards-grid">
+            <!-- 1. 108 Kutiya Central Hospital -->
+            <article class="service-card">
+                <div class="service-img">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/8/8d/Community_Health_Centre_%28generic%29.jpg" alt="108 Kutiya Central Hospital">
+                </div>
+                <div class="service-body">
+                    <div class="service-title">108 कुटिया सेंट्रल हॉस्पिटल</div>
+                    <div class="service-desc">यह प्रमुख अस्पताल है जहाँ सामान्य और आपातकालीन चिकित्सा सेवाएँ उपलब्ध हैं। यहाँ डॉक्टर, नर्स और फार्मासिस्ट सतत सक्रिय रहते हैं। इमरजेंसी वार्ड, चोट-चिकित्सा, छोटी सर्जरी और इन्वेस्टिगेशन सुविधाएँ उपलब्ध हैं।</div>
+                    <div class="service-meta">
+                        <span class="chip">सेवाएँ: आपातकालीन, दवा वितरण</span>
+                        <span class="chip">समय: 24x7</span>
+                        <span class="chip">स्थान: बरसाना परिसर</span>
+                    </div>
+                    <div class="contact">संपर्क: +91 98765 43210 • Email: health@108kutiya.org</div>
+                </div>
+            </article>
+
+            <!-- 2. Mobile Medical Camp -->
+            <article class="service-card">
+                <div class="service-img">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/3/35/Mobile_clinic_%28generic%29.jpg" alt="Mobile Medical Camp">
+                </div>
+                <div class="service-body">
+                    <div class="service-title">मोबाइल मेडिकल कैंप</div>
+                    <div class="service-desc">गांवों और दूरस्थ इलाकों में नियमित मोबाइल मेडिकल कैंप लगाया जाता है। इन कैंपों में निःशुल्क सलाह, प्राथमिक जाँच और जरूरी दवाइयाँ वितरित की जाती हैं। विशेष कैंप बच्चों और वृद्धों के लिए समर्पित होते हैं।</div>
+                    <div class="service-meta">
+                        <span class="chip">सेवाएँ: निःशुल्क जाँच, टीकाकरण</span>
+                        <span class="chip">समय: मासिक शेड्यूल</span>
+                    </div>
+                    <div class="contact">कैंप शेड्यूल के लिए: +91 91234 56789</div>
+                </div>
+            </article>
+
+            <!-- 3. Maternal & Child Care Clinic -->
+            <article class="service-card">
+                <div class="service-img">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/9/99/Maternal_and_child_health_%28generic%29.jpg" alt="Maternal and Child Care">
+                </div>
+                <div class="service-body">
+                    <div class="service-title">मातृ व बाल स्वास्थ्य केंद्र</div>
+                    <div class="service-desc">गर्भवती माताओं और नवजात शिशुओं के लिए विशेष देखभाल उपलब्ध है — प्रसव पूर्व परामर्श, पोषण मार्गदर्शन, मां व शिशु की जाँच और टीकाकरण। महिला स्वास्थ्य व प्रसव सहायता में प्रशिक्षित स्टाफ मौजूद है।</div>
+                    <div class="service-meta">
+                        <span class="chip">सेवाएँ: प्रसवपूर्व, टीकाकरण</span>
+                        <span class="chip">समय: 9:00 - 17:00</span>
+                    </div>
+                    <div class="contact">बुकिंग: +91 90000 11122</div>
+                </div>
+            </article>
+
+            <!-- 4. Ayurveda & Wellness Center -->
+            <article class="service-card">
+                <div class="service-img">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/0/02/Ayurveda_clinic_%28generic%29.jpg" alt="Ayurveda Clinic">
+                </div>
+                <div class="service-body">
+                    <div class="service-title">आयुर्वेदिक उपचार व वेलनेस</div>
+                    <div class="service-desc">परंपरागत आयुर्वेदिक परामर्श, पंचकर्म, देसी जड़ी-बूटियों और जीवनशैली कार्यक्रम उपलब्ध हैं। यह सेवा शारीरिक व मानसिक स्वास्थ्य को संतुलित करने के लिए निर्देशित है।</div>
+                    <div class="service-meta">
+                        <span class="chip">सेवाएँ: आयुर्वेद, पंचकर्म</span>
+                        <span class="chip">समय: 10:00 - 16:00</span>
+                    </div>
+                    <div class="contact">परामर्श के लिए: +91 90000 22233</div>
+                </div>
+            </article>
+
+            <!-- 5. Blood Donation & Pathology -->
+            <article class="service-card">
+                <div class="service-img">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/5/5d/Blood_donation_camp_%28generic%29.jpg" alt="Blood Donation">
+                </div>
+                <div class="service-body">
+                    <div class="service-title">रक्तदान केंद्र एवं प्रयोगशाला</div>
+                    <div class="service-desc">नियमित रक्तदान शिविर और बेसिक लैब टेस्टिंग (CBC, BP, BS इत्यादि) उपलब्ध हैं। आपातकालीन रक्त की व्यवस्था के लिए डायरेक्ट संपर्क सुविधा है।</div>
+                    <div class="service-meta">
+                        <span class="chip">सेवाएँ: रक्तदान, लैब टेस्ट</span>
+                        <span class="chip">समय: शेड्यूल्ड कैंप</span>
+                    </div>
+                    <div class="contact">रक्तदाताओं के लिए संपर्क: +91 90000 33344</div>
+                </div>
+            </article>
+
+            <!-- 6. Ambulance & Emergency Response -->
+            <article class="service-card">
+                <div class="service-img">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6f/Ambulance_%28generic%29.jpg" alt="Ambulance Service">
+                </div>
+                <div class="service-body">
+                    <div class="service-title">एम्बुलेंस और आपातकालीन सेवा</div>
+                    <div class="service-desc">108 कुटिया आपातकालीन एम्बुलेंस सुविधा प्रदान करता है जो घायल या अस्वस्थ व्यक्तियों को त्वरित रूप से नज़दीकी अस्पताल तक पहुँचाती है। प्राथमिक जीवन रक्षा (BLS) सुविधाएँ उपलब्ध हैं।</div>
+                    <div class="service-meta">
+                        <span class="chip">सेवाएँ: एम्बुलेंस, प्राथमिक जीवन रक्षा</span>
+                        <span class="chip">समय: 24x7</span>
+                    </div>
+                    <div class="contact">आपातकालीन नंबर: 108 • स्थानीय समन्वय: +91 90000 44455</div>
+                </div>
+            </article>
+
+        </div>
+
+        <div style="margin-top:2rem;" class="intro-card">
+            <h3 style="color:var(--gold);margin-bottom:0.6rem">कैसे पहुँचें</h3>
+            <p style="color:rgba(238,244,255,0.9);line-height:1.7">108 कुटिया चिकित्सा केंद्र बरसाना गाँव के समीप स्थित हैं। परिवहन के लिए स्थानीय बसें उपलब्ध हैं; आवश्यक होने पर एम्बुलेंस सेवा संपर्क करें। अस्पताल परिसर में पार्किंग व रोगी प्रतीक्षा क्षेत्र सुव्यवस्थित हैं।</p>
+            <p style="color:rgba(238,244,255,0.9);line-height:1.7">अधिक जानकारी और मेडिकल सहायता के लिए ऊपर दिए गए फोन नंबरों पर संपर्क करें।</p>
+        </div>
+
+    </main>
+
+    <footer>
+        <span>ॐ</span> Jai Shri Radhe Shyam | 108 Kutiya — स्वास्थ्य सेवाएँ
+    </footer>
+</body>
+
+</html>
